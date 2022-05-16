@@ -1,0 +1,77 @@
+<div class="">
+  <div class="w-full h-screen flex items-center justify-center border">
+    <div class="min-w-fit rounded-xl shadow-md px-8 py-12">
+      <div class="mb-6">
+        <h2 class="text-gray-700 text-2xl font-black uppercase">Login</h2>
+        <span class="text-xs text-gray-600">
+          By continuing, you agree to our User Agreement and Privacy Policy.
+        </span>
+      </div>
+
+      <form [formGroup]="ngForm" (submit)="onSubmit()">
+        <div class="mb-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Email address</mat-label>
+            <input matInput type="email" formControlName="email" />
+            <mat-hint *ngIf="true">Email should be valid</mat-hint>
+            <mat-error *ngIf="submitted && f['email'].errors">
+              <p *ngIf="f['email'].errors['required']">
+                Email is <strong>required</strong>
+              </p>
+              <p *ngIf="f['email'].errors['email']">
+                Please enter a valid email address
+              </p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="mb-4">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="{{ showPassword ? 'text' : 'password' }}"
+              formControlName="password"
+            />
+            <mat-icon
+              matSuffix
+              class="text-gray-600 cursor-pointer"
+              (click)="toggleShowPassword()"
+            >
+              {{ showPassword ? "visibility" : "visibility_off" }}
+            </mat-icon>
+            <mat-hint *ngIf="true">Password length should be above 6</mat-hint>
+            <mat-error *ngIf="f['password'].errors">
+              <p *ngIf="f['password'].errors['required']">
+                Password is not <strong>valid</strong>
+              </p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button
+          mat-flat-button
+          type="submit"
+          color="primary"
+          [disabled]="ngForm.status == 'INVALID'"
+        >
+          Login
+        </button>
+
+        <div class="text-xs text-gray-600 mt-6 space-y-4">
+          <p>Forgot your username or password ?</p>
+          <p>
+            New to Reddit?
+            <a
+              class="text-blue-600 font-bold"
+              [routerLink]="['/auth/register']"
+              routerLinkActive="active"
+            >
+              SIGN UP
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
