@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
-import { ProtectedGuard } from './core/guards/protected.guard';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { ProtectedGuard } from 'src/app/core/guards/protected.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +19,7 @@ const routes: Routes = [
       ),
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ComponentsModule } from './shared/components/components.module';
-import { MaterialModule } from './shared/material/material.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 
 import { httpInterceptorProviders } from './core/interceptors';
 
