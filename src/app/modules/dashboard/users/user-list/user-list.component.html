@@ -1,7 +1,6 @@
 <div class="relative bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <!-- {{users$?.page| async}} -->
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
@@ -20,51 +19,68 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            *ngFor="let user of users$ | async"
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+          <ng-container *ngIf="users$ | async as list; else loading">
+            <tr
+              *ngFor="let user of users$ | async"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
             >
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-10 w-10">
-                  <img
-                    class="h-10 w-10 rounded-full"
-                    [src]="user.avatar"
-                    alt=""
-                  />
-                </div>
-                <div class="ml-4">
-                  <a [routerLink]="['/dashboard/users', user?.id]">
-                    {{ user.email }}
-                  </a>
-                </div>
-              </div>
-            </th>
-            <td class="px-6 py-4">{{ user.first_name }}</td>
-            <td class="px-6 py-4">{{ user.last_name }}</td>
-            <td class="px-6 py-4">{{ user.id }}</td>
-            <td class="px-6 py-4 text-right">
-              <a
-                (click)="openDialog(user)"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
               >
-                Edit
-              </a>
-            </td>
-            <td class="px-6 py-4 text-right">
-              <a
-                (click)="deleteUser(user)"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
-              >
-                Delete
-              </a>
-            </td>
-          </tr>
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img
+                      class="h-10 w-10 rounded-full"
+                      [src]="user.avatar"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-4">
+                    <a [routerLink]="['/dashboard/users', user?.id]">
+                      {{ user.email }}
+                    </a>
+                  </div>
+                </div>
+              </th>
+              <td class="px-6 py-4">{{ user.first_name }}</td>
+              <td class="px-6 py-4">{{ user.last_name }}</td>
+              <td class="px-6 py-4">{{ user.id }}</td>
+              <td class="px-6 py-4 text-right">
+                <a
+                  (click)="openDialog(user)"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                >
+                  Edit
+                </a>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <a
+                  (click)="deleteUser(user)"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
+
+      <ng-template #loading>
+        <tr>
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-700 dark:text-gray-800 whitespace-nowrap border"
+            colspan="6"
+          >
+            <div class="flex items-center space-x-3 justify-center">
+              <mat-spinner diameter="16"></mat-spinner>
+              <span>Loading...</span>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
     </div>
   </div>
 </div>
