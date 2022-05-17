@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,12 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   showPassword: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private snackbarService: SnackbarService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -39,5 +47,19 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.authService.register(this.ngForm.value).subscribe({
+      next: (response: any) => {
+        if (response?.token) {
+          this.snackbarService.openSnackBar('Login successful');
+          this.router.navigateByUrl('dashboard');
+        } else {
+          this.snackbarService.openSnackBar(response?.message);
+        }
+        this.ngForm.reset();
+      },
+      error: () => {
+        this.snackbarService.openSnackBar('Something went wrong');
+      },
+    });
   }
 }

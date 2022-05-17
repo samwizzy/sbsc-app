@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   catchError,
   Observable,
@@ -19,7 +20,7 @@ const headers = new HttpHeaders().set('content-type', 'application/json');
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public register(data: AuthPayload): Observable<AuthResponse | ErrorResponse> {
     return this.http.post(`${BASEURL}/api/register`, data, { headers }).pipe(
@@ -40,8 +41,11 @@ export class AuthService {
     return this.http.post(`${BASEURL}/api/login`, data, { headers });
   }
 
-  public logout(data: any) {
-    return this.http.post(`${BASEURL}`, data, { headers });
+  public logout() {
+    this.clearStorage();
+    this.router.navigateByUrl('/auth/login');
+
+    return;
   }
 
   public refreshToken() {
@@ -62,5 +66,10 @@ export class AuthService {
 
   set setAuthId(id: string) {
     localStorage.setItem('id', JSON.stringify(id));
+  }
+
+  clearStorage() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
   }
 }
