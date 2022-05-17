@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  showMobile: boolean = true;
+  showMobile: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}
