@@ -58,6 +58,10 @@ export class AuthService {
     localStorage.setItem('data', JSON.stringify(data));
   }
 
+  get getAuthUser() {
+    return JSON.parse(localStorage.getItem('data') || '{}');
+  }
+
   get getAuthToken(): string | null {
     return localStorage.getItem('token');
   }
@@ -66,20 +70,20 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  get getAuthTokenExpiresAt(): string | null {
-    return localStorage.getItem('expiresAt') || '';
-  }
-
   set setAuthTokenExpiresAt(expiresAt: number) {
     localStorage.setItem('expiresAt', JSON.stringify(expiresAt));
   }
 
-  get getAuthId(): string | null {
-    return localStorage.getItem('id');
+  get getAuthTokenExpiresAt(): string | null {
+    return localStorage.getItem('expiresAt') || '';
   }
 
   set setAuthId(id: string) {
     localStorage.setItem('id', JSON.stringify(id));
+  }
+
+  get getAuthId(): string | null {
+    return localStorage.getItem('id');
   }
 
   clearStorage() {
