@@ -3,17 +3,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserData, userData } from 'src/app/core/models/user';
 import { UserService } from 'src/app/core/services/user.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CronService } from 'src/app/core/services/cron.service';
 import { AccountDialogComponent } from 'src/app/shared/components/account-dialog/account-dialog.component';
-import {
-  catchError,
-  interval,
-  map,
-  of,
-  switchMap,
-  takeWhile,
-  tap,
-  throwError,
-} from 'rxjs';
+import { map } from 'rxjs';
 import * as moment from 'moment';
 
 @Component({
@@ -29,7 +21,8 @@ export class AccountComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private cronService: CronService
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +34,9 @@ export class AccountComponent implements OnInit {
         .subscribe((data) => (this.account = data));
     }
 
-    this.sessionCounter();
+    this.cronService
+      .sessionCounter()
+      .subscribe((value) => (this.countDown = moment(value).format('mm:ss')));
   }
 
   openDialog(account: UserData): void {
@@ -52,28 +47,5 @@ export class AccountComponent implements OnInit {
     const dialogRef = this.dialog.open(AccountDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {});
-  }
-
-  sessionCounter(): void {
-    interval(1000)
-      .pipe(
-        switchMap(() => {
-          const expiresAt = Number(this.authService.getAuthTokenExpiresAt);
-          const timestamp = moment(expiresAt).diff(moment());
-
-          if (timestamp > -1) {
-            this.countDown = moment(timestamp).format('mm:ss');
-            return of(timestamp);
-          }
-
-          return throwError(() => new Error('time out'));
-        }),
-        takeWhile((val) => val > -1),
-        catchError((val) => {
-          this.authService.logout();
-          return of(null);
-        })
-      )
-      .subscribe();
   }
 }
