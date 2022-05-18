@@ -20,6 +20,8 @@ const headers = new HttpHeaders().set('content-type', 'application/json');
   providedIn: 'root',
 })
 export class AuthService {
+  offsetTime = 60000 * 10;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   public register(data: AuthPayload): Observable<AuthResponse | ErrorResponse> {
@@ -27,6 +29,7 @@ export class AuthService {
       switchMap((response: any) => {
         this.setAuthToken = response?.token;
         this.setAuthId = response?.id;
+        this.setAuthTokenExpiresAt = new Date().getTime() + this.offsetTime;
         return of(response);
       }),
       shareReplay(),
@@ -41,15 +44,18 @@ export class AuthService {
     return this.http.post(`${BASEURL}/api/login`, data, { headers });
   }
 
-  public logout() {
+  public logout(): void {
     this.clearStorage();
     this.router.navigateByUrl('/auth/login');
-
-    return;
   }
 
   public refreshToken() {
-    return this.http.post(`${BASEURL}`, { headers });
+    this.setAuthTokenExpiresAt = new Date().getTime() + this.offsetTime;
+    return of(this.setAuthTokenExpiresAt);
+  }
+
+  set setAuthUser(data: AuthResponse) {
+    localStorage.setItem('data', JSON.stringify(data));
   }
 
   get getAuthToken(): string | null {
@@ -58,6 +64,14 @@ export class AuthService {
 
   set setAuthToken(token: string) {
     localStorage.setItem('token', token);
+  }
+
+  get getAuthTokenExpiresAt(): string | null {
+    return localStorage.getItem('expiresAt') || '';
+  }
+
+  set setAuthTokenExpiresAt(expiresAt: number) {
+    localStorage.setItem('expiresAt', JSON.stringify(expiresAt));
   }
 
   get getAuthId(): string | null {
@@ -69,6 +83,7 @@ export class AuthService {
   }
 
   clearStorage() {
+    localStorage.removeItem('data');
     localStorage.removeItem('token');
     localStorage.removeItem('id');
   }
