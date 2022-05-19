@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
         if (response?.token) {
           this.snackbarService.openSnackBar('Login successful');
           this.router.navigateByUrl('dashboard');
+          this.submitted = false;
         } else {
           this.snackbarService.openSnackBar(response?.message);
         }
-        this.ngForm.reset();
       },
       error: () => {
         this.snackbarService.openSnackBar('Something went wrong');

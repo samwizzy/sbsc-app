@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import {
   catchError,
+  EMPTY,
   interval,
   Observable,
   of,
@@ -32,7 +33,7 @@ export class CronService {
       takeWhile((val) => val > -1),
       catchError(() => {
         this.authService.logout();
-        return of(null);
+        return EMPTY;
       })
     );
   }

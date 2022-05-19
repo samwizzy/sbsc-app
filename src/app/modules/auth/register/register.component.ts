@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
         } else {
           this.snackbarService.openSnackBar(response?.message);
         }
+        this.submitted = false;
         this.ngForm.reset();
       },
       error: () => {

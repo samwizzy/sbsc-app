@@ -57,7 +57,14 @@
           color="primary"
           [disabled]="ngForm.status == 'INVALID'"
         >
-          Login
+          <div class="flex items-center space-x-2">
+            <span>Login</span>
+            <mat-spinner
+              *ngIf="submitted"
+              color="accent"
+              diameter="16"
+            ></mat-spinner>
+          </div>
         </button>
 
         <div class="text-xs text-gray-600 mt-6 space-y-4">
