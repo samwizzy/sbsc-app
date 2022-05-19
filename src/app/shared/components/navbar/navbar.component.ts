@@ -8,10 +8,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   showMobile: boolean = false;
+  userId: string = '';
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userId = this.authService.getAuthId ?? '';
+  }
 
   logout(): void {
     this.authService.logout();
