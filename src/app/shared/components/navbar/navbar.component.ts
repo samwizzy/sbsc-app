@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   showMobile: boolean = false;
+  moreMenu: boolean = false;
   userId: string = '';
 
   constructor(private authService: AuthService) {}

@@ -43,10 +43,8 @@
               {{ showPassword ? "visibility" : "visibility_off" }}
             </mat-icon>
             <mat-hint *ngIf="true">Password length should be above 6</mat-hint>
-            <mat-error *ngIf="f['password'].errors">
-              <p *ngIf="f['password'].errors['required']">
-                Password is not <strong>valid</strong>
-              </p>
+            <mat-error *ngIf="f['password'].hasError('required')">
+              Password is not <strong>valid</strong>
             </mat-error>
           </mat-form-field>
         </div>

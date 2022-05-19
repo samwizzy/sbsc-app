@@ -11,10 +11,10 @@ export class SnackbarService {
   openSnackBar(message: string) {
     const snackConfig = new MatSnackBarConfig();
     snackConfig.duration = 2000;
-    snackConfig.verticalPosition = 'top';
-    snackConfig.horizontalPosition = 'center';
+    snackConfig.verticalPosition = 'bottom';
+    snackConfig.horizontalPosition = 'right';
 
-    const snackRef = this.snackBar.open(message, 'Done');
+    const snackRef = this.snackBar.open(message, 'Close', snackConfig);
 
     snackRef.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
