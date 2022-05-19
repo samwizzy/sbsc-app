@@ -1,4 +1,6 @@
-<h1 matDialogTitle>Update user {{ data.first_name }}</h1>
+<h1 matDialogTitle>
+  Update user <span class="text-indigo-600">{{ data.first_name }}</span>
+</h1>
 
 <form [formGroup]="ngForm" (submit)="onSubmit()">
   <mat-dialog-content>
