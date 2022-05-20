@@ -1,0 +1,14 @@
+.slanted {
+  z-index: 1;
+}
+.slanted::after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  transform: skewY(-3deg);
+  right: 0;
+  top: -60px;
+  z-index: -1;
+}
