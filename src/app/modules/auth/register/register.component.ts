@@ -7,8 +7,13 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
+const meta = {
+  title: 'SBSC | Sign up',
+  description: 'Creating an account is now as easy as ever',
+};
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -23,10 +28,12 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackbarService: SnackbarService,
-    private router: Router
+    private router: Router,
+    private seo: SeoService
   ) {}
 
   ngOnInit(): void {
+    this.seo.setMetaTags(meta);
     this.initForm();
   }
 

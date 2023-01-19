@@ -2,9 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { UserData, userData } from 'src/app/core/models/user';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { UserDialogComponent } from 'src/app/shared/components/user-dialog/user-dialog.component';
 
+const meta = {
+  title: 'SBSC | User Details',
+  description: 'This is where you would most likely find me half the time',
+};
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -17,10 +22,13 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private seo: SeoService
   ) {}
 
   ngOnInit(): void {
+    this.seo.setMetaTags(meta);
+
     this.route.params.subscribe((param: any) => {
       this.userService
         .getUserById(param.id)

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { ProtectedGuard } from 'src/app/core/guards/protected.guard';
+import { PlaygroundComponent } from './playground/playground.component';
 
 const routes: Routes = [
   {
@@ -11,19 +12,21 @@ const routes: Routes = [
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'dashboard',
+    path: '',
     canActivate: [ProtectedGuard],
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
   },
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: 'playground', component: PlaygroundComponent },
   { path: '**', redirectTo: 'auth', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

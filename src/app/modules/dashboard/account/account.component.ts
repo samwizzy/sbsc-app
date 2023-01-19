@@ -7,7 +7,12 @@ import { CronService } from 'src/app/core/services/cron.service';
 import { AccountDialogComponent } from 'src/app/shared/components/account-dialog/account-dialog.component';
 import { map } from 'rxjs';
 import * as moment from 'moment';
+import { SeoService } from 'src/app/core/services/seo.service';
 
+const meta = {
+  title: 'SBSC | Account Page',
+  description: 'This is my account profile page',
+};
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -22,10 +27,13 @@ export class AccountComponent implements OnInit {
     public dialog: MatDialog,
     private authService: AuthService,
     private userService: UserService,
-    private cronService: CronService
+    private cronService: CronService,
+    private seo: SeoService
   ) {}
 
   ngOnInit(): void {
+    this.seo.setMetaTags(meta);
+
     const userId = this.authService.getAuthId;
     if (userId) {
       this.userService

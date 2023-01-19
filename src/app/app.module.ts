@@ -11,11 +11,12 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
 import { httpInterceptorProviders } from './core/interceptors';
+import { PlaygroundComponent } from './playground/playground.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PlaygroundComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,

@@ -6,7 +6,12 @@ import { UserService } from 'src/app/core/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from 'src/app/shared/components/user-dialog/user-dialog.component';
 import { Router } from '@angular/router';
+import { SeoService } from 'src/app/core/services/seo.service';
 
+const meta = {
+  title: 'SBSC | User List',
+  description: 'This is where you would most likely find me half the time',
+};
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -18,10 +23,12 @@ export class UserListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private seo: SeoService
   ) {}
 
   ngOnInit(): void {
+    this.seo.setMetaTags(meta);
     this.users$ = this.userService.getAllUsers().pipe();
   }
 

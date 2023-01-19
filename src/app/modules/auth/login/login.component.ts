@@ -7,8 +7,13 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
+const meta = {
+  title: 'SBSC | Login',
+  description: "We are glad to have you back, kindly login to see what's new",
+};
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,10 +28,12 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackbarService: SnackbarService,
-    private router: Router
+    private router: Router,
+    private seo: SeoService
   ) {}
 
   ngOnInit(): void {
+    this.seo.setMetaTags(meta);
     this.initForm();
   }
 
@@ -51,14 +58,16 @@ export class LoginComponent implements OnInit {
       next: (response: any) => {
         if (response?.token) {
           this.snackbarService.openSnackBar('Login successful');
-          this.router.navigateByUrl('dashboard');
+          this.router.navigateByUrl('/');
           this.submitted = false;
         } else {
           this.snackbarService.openSnackBar(response?.message);
+          this.submitted = false;
         }
       },
       error: () => {
         this.snackbarService.openSnackBar('Something went wrong');
+        this.submitted = false;
       },
     });
   }
