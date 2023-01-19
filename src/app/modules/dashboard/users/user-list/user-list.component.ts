@@ -10,7 +10,7 @@ import { SeoService } from 'src/app/core/services/seo.service';
 
 const meta = {
   title: 'SBSC | User List',
-  description: 'This is where you would most likely find me half the time',
+  description: 'All users that have created an account on the SBSC application',
 };
 @Component({
   selector: 'app-user-list',
@@ -29,6 +29,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setMetaTags(meta);
+
     this.users$ = this.userService.getAllUsers().pipe();
   }
 

@@ -8,7 +8,7 @@ import { UserDialogComponent } from 'src/app/shared/components/user-dialog/user-
 
 const meta = {
   title: 'SBSC | User Details',
-  description: 'This is where you would most likely find me half the time',
+  description: 'Preview of the selected user details and information',
 };
 @Component({
   selector: 'app-user-details',
