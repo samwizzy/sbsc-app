@@ -13,12 +13,12 @@ export class AppComponent {
   title = 'sbsc-app';
 
   constructor(router: Router) {
-    // router.events
-    //   .pipe(filter((event: any) => event instanceof NavigationEnd))
-    //   .subscribe((event: NavigationEnd) => {
-    //     gtag('config', 'G-EXC72BX6RP', {
-    //       path_path: event.urlAfterRedirects,
-    //     });
-    //   });
+    router.events
+      .pipe(filter((event: any) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        gtag('config', 'G-EXC72BX6RP', {
+          path_path: event.urlAfterRedirects,
+        });
+      });
   }
 }
