@@ -61,7 +61,9 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/');
           this.submitted = false;
         } else {
-          this.snackbarService.openSnackBar(response?.message);
+          this.snackbarService.openSnackBar(
+            response?.message || 'Interval server error, try again later'
+          );
           this.submitted = false;
         }
       },

@@ -70,6 +70,14 @@
           >
             My account
           </button>
+          <button
+            mat-menu-item
+            [routerLink]="['/thankyou']"
+            [queryParams]="{ refValue: 8000 }"
+            routerLinkActive="btn-active"
+          >
+            Thank you
+          </button>
           <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
       </nav>

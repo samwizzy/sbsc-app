@@ -11,6 +11,7 @@ const meta = {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  text: string = 'SAMUEL';
   constructor(private seo: SeoService) {}
 
   ngOnInit(): void {

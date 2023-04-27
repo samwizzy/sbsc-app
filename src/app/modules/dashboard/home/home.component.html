@@ -14,7 +14,7 @@
           <div class="sm:mt-12 mt-10">
             <a
               class="px-8 py-3 bg-indigo-600 text-white rounded-md"
-              [routerLink]="['auth/register']"
+              [routerLink]="['/auth/register']"
             >
               Create an account
             </a>
@@ -148,12 +148,12 @@
   </div>
 
   <div class="bg-yellow-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-32 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-32 py-8">
       <div class="mb-8">
         <h1 class="text-indigo-800 text-5xl font-black leading-tight mb-4">
           Backed by strong global partners
         </h1>
-        <h2 class="text-yellow-700 text-lg leading-8">
+        <h2 class="text-gray-600 text-lg leading-8">
           Paystack is backed by notable investors as well as some of the best
           payments companies on the planet.
         </h2>
@@ -170,6 +170,39 @@
           </h3>
 
           <p class="text-gray-700 leading-7">
+            With every engagement, our qualified consultants implement best
+            practices and knowledge acquired from the years they spent working
+            in consulting and corporate environments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-32 py-16">
+      <div class="mb-8">
+        <h1 class="text-indigo-300 text-5xl font-black leading-tight mb-4">
+          Backed by strong global partners
+        </h1>
+        <h2 class="text-gray-200 text-lg leading-8">
+          Paystack is backed by notable investors as well as some of the best
+          payments companies on the planet.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-12 sm:gap-x-8 gap-x-0 gap-y-8">
+        <div
+          *ngFor="let item of [1, 2, 3, 4, 5]"
+          class="sm:col-span-4 col-span-12 bg-white rounded-xl shadow-md px-8 py-12"
+          [ngClass]="item !== 1 ? 'row-span-1' : 'row-span-2'"
+        >
+          <h2 class="text-gray-600 uppercase font-bold mb-2">EASY TO USE</h2>
+          <h3 class="text-2xl text-gray-700 font-black mb-4">
+            Get started with ease, Nothing is more seamless.
+          </h3>
+
+          <p class="text-gray-600 leading-7">
             With every engagement, our qualified consultants implement best
             practices and knowledge acquired from the years they spent working
             in consulting and corporate environments.

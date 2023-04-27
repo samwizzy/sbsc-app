@@ -11,10 +11,12 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
 import { httpInterceptorProviders } from './core/interceptors';
-import { PlaygroundComponent } from './playground/playground.component';
+import { ChildComponent } from './child/child.component';
+import { ParantComponent } from './parant/parant.component';
+import { ThankYouComponent } from './modules/thank-you/thank-you.component';
 
 @NgModule({
-  declarations: [AppComponent, PlaygroundComponent],
+  declarations: [AppComponent, ParantComponent, ChildComponent, ThankYouComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

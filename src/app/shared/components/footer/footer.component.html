@@ -4,7 +4,9 @@
       class="grid grid-cols-12 gap-8 pt-4 pb-8 md:justify-start md:space-x-10 text-sm"
     >
       <div class="sm:col-span-3 col-span-6">
-        <h3 class="text-lg font-bold text-gray-700 uppercase mb-3">Company</h3>
+        <h3 class="text-base font-bold text-gray-700 uppercase mb-3">
+          Company
+        </h3>
         <ul class="space-y-2">
           <li>
             <a [routerLink]="['/']" class="text-gray-600 hover:text-indigo-600">
@@ -34,7 +36,7 @@
         </ul>
       </div>
       <div class="sm:col-span-3 col-span-6">
-        <h3 class="text-lg font-bold text-gray-700 uppercase mb-3">
+        <h3 class="text-base font-bold text-gray-700 uppercase mb-3">
           Resources
         </h3>
         <ul class="space-y-2">
@@ -66,7 +68,9 @@
         </ul>
       </div>
       <div class="sm:col-span-3 col-span-6">
-        <h3 class="text-lg font-bold text-gray-700 uppercase mb-3">Business</h3>
+        <h3 class="text-base font-bold text-gray-700 uppercase mb-3">
+          Business
+        </h3>
         <ul class="space-y-2">
           <li>
             <a [routerLink]="['/']" class="text-gray-600 hover:text-indigo-600">
@@ -96,10 +100,15 @@
         </ul>
       </div>
       <div class="sm:col-span-3 col-span-6">
-        <h3 class="text-lg font-bold text-gray-700 uppercase mb-3">Meet us</h3>
+        <h3 class="text-base font-bold text-gray-700 uppercase mb-3">
+          Meet us
+        </h3>
         <ul class="space-y-2">
           <li>
-            <a [routerLink]="['/']" class="text-gray-600 hover:text-indigo-600">
+            <a
+              [routerLink]="['/contactus']"
+              class="text-gray-600 hover:text-indigo-600"
+            >
               Contact Us
             </a>
           </li>
@@ -123,41 +132,41 @@
     </div>
 
     <div
-      class="flex flex-col justify-center items-center pt-8 border-t border-dashed"
+      class="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-dashed"
     >
-      <dl class="flex flex-wrap items-start sm:space-x-2">
-        <dd class="mr-2">
+      <div class="mt-2">
+        <p class="text-sm text-gray-700">
+          Copyright &copy; {{ startDate }} — Samwize Inc. All Rights Reserved.
+        </p>
+      </div>
+
+      <dl class="flex flex-wrap items-start sm:space-x-4">
+        <dd>
           <a href="https://facebook.com/okekesamwize">
-            <img class="h-7 w-7" src="assets/images/facebook.svg" alt="" />
+            <img class="h-5 w-5" src="assets/images/facebook.svg" alt="fb" />
           </a>
         </dd>
-        <dd class="mr-2">
+        <dd>
           <a href="https://twitter.com/sampedia">
-            <img class="h-7 w-7" src="assets/images/twitter.svg" alt="" />
+            <img class="h-5 w-5" src="assets/images/twitter.svg" alt="tw" />
           </a>
         </dd>
-        <dd class="mr-2">
+        <dd>
           <a href="https://www.instagram.com/samwize.o">
-            <img class="h-7 w-7" src="assets/images/instagram.svg" alt="" />
+            <img class="h-5 w-5" src="assets/images/instagram.svg" alt="ins" />
           </a>
         </dd>
-        <dd class="mr-2">
+        <dd>
           <a href="https://linkedin.com/in/samuel-okeke">
-            <img class="h-7 w-7" src="assets/images/linkedin.svg" alt="" />
+            <img class="h-5 w-5" src="assets/images/linkedin.svg" alt="lin" />
           </a>
         </dd>
         <dd>
           <a href="https://www.youtube.com/channel/UCOhiw-CpBGWGBXj0FrAxabQ">
-            <img class="h-7 w-7" src="assets/images/youtube.svg" alt="" />
+            <img class="h-5 w-5" src="assets/images/youtube.svg" alt="yt" />
           </a>
         </dd>
       </dl>
-
-      <div class="mt-2">
-        <p class="text-sm text-gray-700">
-          Copyright &copy; {{ startDate }} — Samwize. All Rights Reserved.
-        </p>
-      </div>
     </div>
   </div>
 </div>

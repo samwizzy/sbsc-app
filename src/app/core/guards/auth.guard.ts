@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
 
     if (token) {
       this.snackbarService.openSnackBar('You are already logged in');
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['home']);
       return false;
     }
     return true;

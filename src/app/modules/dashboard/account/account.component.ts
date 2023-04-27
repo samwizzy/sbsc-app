@@ -8,11 +8,8 @@ import { AccountDialogComponent } from 'src/app/shared/components/account-dialog
 import { map } from 'rxjs';
 import * as moment from 'moment';
 import { SeoService } from 'src/app/core/services/seo.service';
+import { ActivatedRoute } from '@angular/router';
 
-const meta = {
-  title: 'SBSC | Account Page',
-  description: 'This is my account profile page',
-};
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -24,6 +21,7 @@ export class AccountComponent implements OnInit {
   account: UserData = userData;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private authService: AuthService,
     private userService: UserService,
@@ -32,7 +30,9 @@ export class AccountComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.seo.setMetaTags(meta);
+    this.activatedRoute.data.subscribe((data) => {
+      this.seo.setMetaTags(data);
+    });
 
     const userId = this.authService.getAuthId;
     if (userId) {

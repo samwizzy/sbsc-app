@@ -16,13 +16,17 @@ import {
   throwError,
 } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { CronService } from '../services/cron.service';
 
 @Injectable()
 export class AuthTokenInterceptor implements HttpInterceptor {
   private refreshTokenInProgress: boolean = false;
   private refreshTokenSubject = new BehaviorSubject<any>(null);
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cronService: CronService
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -57,6 +61,7 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 
   private addAuthToken(request: HttpRequest<any>) {
     const token = this.authService.getAuthToken;
+    this.cronService.sessionCounter().subscribe();
 
     if (!token) {
       return request;
