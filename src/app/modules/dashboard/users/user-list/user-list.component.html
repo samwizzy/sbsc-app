@@ -37,7 +37,7 @@
                     />
                   </div>
                   <div class="ml-4">
-                    <a [routerLink]="['/users', user?.id]">
+                    <a [routerLink]="['/users', user?.id]" [state]="user">
                       {{ user.email }}
                     </a>
                   </div>
