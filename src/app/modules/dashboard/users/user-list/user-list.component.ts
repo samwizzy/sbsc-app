@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/core/models/user';
@@ -24,6 +25,7 @@ export class UserListComponent implements OnInit {
     private userService: UserService,
     private dialog: MatDialog,
     private router: Router,
+    private location: Location,
     private seo: SeoService
   ) {}
 
@@ -47,5 +49,9 @@ export class UserListComponent implements OnInit {
     this.userService.deleteUser(user.id).subscribe((response) => {
       this.router.navigateByUrl('/dashboard/users');
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
