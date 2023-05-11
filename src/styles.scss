@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;800&family=Roboto:wght@300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 :root {
   --background-rgb: rgb(255, 255, 208);
@@ -19,15 +19,15 @@
   --color: rgb(255, 255, 255);
 }
 
-// @font-face {
-//   font-family: 'Pacifico';
-//   font-style: normal;
-//   font-weight: 400;
-//   src: local('Pacifico Regular'), local('Pacifico-Regular'),
-//     url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
-//       format('woff2');
-//   font-display: swap;
-// }
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"),
+    url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2)
+      format("woff2");
+  font-display: swap;
+}
 
 html,
 body {
