@@ -14,9 +14,12 @@ import { httpInterceptorProviders } from './core/interceptors';
 import { ChildComponent } from './child/child.component';
 import { ParantComponent } from './parant/parant.component';
 import { ThankYouComponent } from './modules/thank-you/thank-you.component';
+import { LongformComponent } from './modules/longform/longform.component';
+import { ActionsComponent } from './modules/actions/actions.component';
+import { TodoDetailsComponent } from './modules/todo-details/todo-details.component';
 
 @NgModule({
-  declarations: [AppComponent, ParantComponent, ChildComponent, ThankYouComponent],
+  declarations: [AppComponent, ParantComponent, ChildComponent, ThankYouComponent, LongformComponent, ActionsComponent, TodoDetailsComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

@@ -1,0 +1,21 @@
+<main class="py-16">
+  <div class="max-w-6xl mx-auto border-y py-4">
+    <h2 class="text-lg font-bold mb-8">Actionable Todos list</h2>
+
+    <section class="w-full flex">
+      <aside class="w-3/12 border-x">
+        <ul *ngIf="todos$ | async as todos">
+          <li *ngFor="let todo of todos" class="border-y py-1 px-2">
+            <div class="cursor-pointer" (click)="handleTodoId(todo.id)">
+              {{ todo.title }}
+            </div>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="flex-1 border-r px-6">
+        <app-todo-details></app-todo-details>
+      </div>
+    </section>
+  </div>
+</main>

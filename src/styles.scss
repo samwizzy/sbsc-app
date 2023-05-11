@@ -3,6 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-rgb: rgb(255, 255, 208);
+  --foreground-rgb: rgb(0, 0, 0);
+
+  --dark-bg-rgb: rgb(0, 0, 0);
+  --dark-forecolor-rgb: rgb(255, 255, 255);
+}
+
+.dark {
+  --background-color: rgb(180, 57, 211);
+  --color: rgb(255, 255, 255);
+}
+
 html,
 body {
   height: 100%;

@@ -1,0 +1,10 @@
+<div>
+  <dl *ngIf="todo$ | async as todo">
+    <dt class="font-bold text-sm">ID</dt>
+    <dd>{{ todo.id }}</dd>
+    <dt class="font-bold text-sm">Title</dt>
+    <dd>{{ todo.title }}</dd>
+    <dt class="font-bold text-sm">Completed</dt>
+    <dd>{{ todo.completed }}</dd>
+  </dl>
+</div>

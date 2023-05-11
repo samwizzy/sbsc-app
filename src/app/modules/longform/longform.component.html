@@ -1,0 +1,48 @@
+<section class="h-screen grid place-items-center form-bg">
+  <div>
+    <button (click)="switchTheme()">Switch theme</button>
+
+    <form [formGroup]="ownerForm" (ngSubmit)="submitForm()">
+      <input
+        type="text"
+        class="input"
+        placeholder="First Name"
+        formControlName="firstName"
+      />
+      <input
+        type="text"
+        class="input"
+        placeholder="Last Name"
+        formControlName="firstName"
+      />
+
+      <ng-container formArrayName="address">
+        <div
+          [formGroupName]="i"
+          *ngFor="let item of getAddresses.controls; let i = index"
+        >
+          <input
+            type="text"
+            class="input"
+            placeholder="City"
+            formControlName="city"
+          />
+          <input
+            type="text"
+            class="input"
+            placeholder="State"
+            formControlName="state"
+          />
+          <input
+            type="text"
+            class="input"
+            placeholder="Name"
+            formControlName="name"
+          />
+        </div>
+      </ng-container>
+
+      <button class="btn">Submit</button>
+    </form>
+  </div>
+</section>

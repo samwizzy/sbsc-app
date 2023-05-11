@@ -5,6 +5,8 @@ import { ProtectedGuard } from 'src/app/core/guards/protected.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ParantComponent } from './parant/parant.component';
 import { ThankYouComponent } from './modules/thank-you/thank-you.component';
+import { LongformComponent } from './modules/longform/longform.component';
+import { ActionsComponent } from './modules/actions/actions.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,8 @@ const routes: Routes = [
       import('./playground/playground.module').then((m) => m.PlaygroundModule),
   },
   { path: 'parant', component: ParantComponent },
+  { path: 'longform', component: LongformComponent },
+  { path: 'actions', component: ActionsComponent },
   { path: 'thankyou', component: ThankYouComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
@@ -35,8 +39,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking',
-}),
+      initialNavigation: 'enabledBlocking',
+    }),
   ],
   exports: [RouterModule],
 })
