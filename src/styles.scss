@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;800&family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 :root {
   --background-rgb: rgb(255, 255, 208);
   --foreground-rgb: rgb(0, 0, 0);
@@ -16,6 +19,16 @@
   --color: rgb(255, 255, 255);
 }
 
+// @font-face {
+//   font-family: 'Pacifico';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: local('Pacifico Regular'), local('Pacifico-Regular'),
+//     url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
+//       format('woff2');
+//   font-display: swap;
+// }
+
 html,
 body {
   height: 100%;
@@ -23,5 +36,4 @@ body {
 body {
   margin: 0;
   font-family: Manrope, Roboto, "Helvetica Neue", sans-serif;
-  font-display: swap;
 }
