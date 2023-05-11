@@ -9,6 +9,8 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+declare var gtag: Function;
+
 const domino = require('domino');
 const fs = require('fs');
 const template = fs
