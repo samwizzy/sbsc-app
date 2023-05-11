@@ -50,9 +50,11 @@
         >
           Users
         </a>
-        <a
+        <button
           [matMenuTriggerFor]="menu"
           (click)="moreMenu = !moreMenu"
+          aria-label="account"
+          role="button"
           class="ml-8 whitespace-nowrap cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 rounded-sm shadow-sm text-sm font-normal text-gray-500 hover:text-indigo-600 hover:border-indigo-400"
         >
           <img
@@ -61,7 +63,7 @@
             alt=""
           />
           Account
-        </a>
+        </button>
         <mat-menu #menu="matMenu">
           <button
             mat-menu-item
@@ -159,6 +161,7 @@
               [routerLink]="['/account']"
               routerLinkActive="active"
               class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+              aria-label="Account"
             >
               <!-- Heroicon name: outline/cursor-click -->
               <svg
