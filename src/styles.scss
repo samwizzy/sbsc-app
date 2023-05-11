@@ -5,6 +5,7 @@
 
 // @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;800&family=Roboto:wght@300;400;500;700;900&display=swap");
 // @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2
 
 :root {
   --background-rgb: rgb(255, 255, 208);
@@ -20,12 +21,11 @@
 }
 
 @font-face {
-  font-family: "Material Icons";
+  font-family: "Manrope";
   font-style: normal;
   font-weight: 400;
-  src: local("Material Icons"),
-    url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2)
-      format("woff2");
+  src: local("Manrope"), local("Manrope-Regular"),
+    url(assets/fonts/Manrope/static/Manrope-Regular.ttf) format("ttf");
   font-display: swap;
 }
 
