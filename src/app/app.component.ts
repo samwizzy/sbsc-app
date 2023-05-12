@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { FooterService } from './core/services/footer.service';
 
-declare var gtag: Function;
+// declare var gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
     router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        gtag('config', 'G-EXC72BX6RP', {
-          path_path: event.urlAfterRedirects,
-        });
+        // gtag('config', 'G-EXC72BX6RP', {
+        //   path_path: event.urlAfterRedirects,
+        // });
       });
   }
 
