@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { FooterService } from './core/services/footer.service';
 
 // declare var gtag: Function;
 
@@ -13,7 +12,7 @@ import { FooterService } from './core/services/footer.service';
 export class AppComponent implements OnInit {
   title = 'sbsc-app';
 
-  constructor(router: Router, private footerService: FooterService) {
+  constructor(router: Router) {
     // router.events
     //   .pipe(filter((event: any) => event instanceof NavigationEnd))
     //   .subscribe((event: NavigationEnd) => {
@@ -23,7 +22,5 @@ export class AppComponent implements OnInit {
     //   });
   }
 
-  ngOnInit(): void {
-    this.footerService.footerState$.subscribe(console.log);
-  }
+  ngOnInit(): void {}
 }
