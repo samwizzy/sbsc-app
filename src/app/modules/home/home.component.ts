@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FooterService } from 'src/app/core/services/footer.service';
 import { SeoService } from 'src/app/core/services/seo.service';
 
 const meta = {
@@ -12,9 +13,10 @@ const meta = {
 })
 export class HomeComponent implements OnInit {
   text: string = 'SAMUEL';
-  constructor(private seo: SeoService) {}
+  constructor(private seo: SeoService, private footerService: FooterService) {}
 
   ngOnInit(): void {
     this.seo.setMetaTags(meta);
+    this.footerService.onLoad();
   }
 }

@@ -24,6 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.footerService.onLoad();
+    this.footerService.footerState$.subscribe(console.log);
   }
 }

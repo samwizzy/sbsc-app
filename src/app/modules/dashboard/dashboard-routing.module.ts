@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
-import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
@@ -22,10 +21,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
-      {
-        path: 'contactus',
-        component: ContactusComponent,
-      },
+
       { path: '', redirectTo: '', pathMatch: 'full' },
     ],
   },
