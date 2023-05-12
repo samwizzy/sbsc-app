@@ -1,5 +1,7 @@
-<!-- [ngClass]="{ hidden: !(show$ | async) }" -->
-<div class="slanted relative bg-gray-50 border">
+<div
+  class="slanted relative bg-gray-50 border"
+  [ngClass]="{ hidden: !(show$ | async) }"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-12 py-8">
     <div
       class="grid grid-cols-12 gap-8 pt-4 pb-8 md:justify-start md:space-x-10 text-sm"
