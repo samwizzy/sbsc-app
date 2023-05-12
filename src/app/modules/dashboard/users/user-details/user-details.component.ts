@@ -18,6 +18,7 @@ const meta = {
 export class UserDetailsComponent implements OnInit {
   user: UserData = userData;
   showMore: boolean = false;
+  tempImg = '/assets/images/avatar.jpeg'; //https://i.pravatar.cc/300
 
   constructor(
     private dialog: MatDialog,

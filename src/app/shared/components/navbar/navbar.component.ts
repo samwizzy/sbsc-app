@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
   showMobile: boolean = false;
   moreMenu: boolean = false;
   userId: string = '';
+  tempImg = '/assets/images/avatar.jpeg'; //https://i.pravatar.cc/300
 
   constructor(private authService: AuthService) {}
 

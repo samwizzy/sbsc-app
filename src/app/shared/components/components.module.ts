@@ -4,7 +4,11 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { MaterialModule } from '../material/material.module';
+// import { MaterialModule } from '../material/material.module';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AccountDialogComponent } from './account-dialog/account-dialog.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
@@ -17,7 +21,15 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
     SnackbarComponent,
     UserDialogComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterialModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+  ],
   exports: [NavbarComponent, FooterComponent],
 })
 export class ComponentsModule {}

@@ -19,6 +19,7 @@ export class AccountComponent implements OnInit {
   showMore: boolean = false;
   countDown: string = '0';
   account: UserData = userData;
+  tempImg = '/assets/images/avatar.jpeg'; //https://i.pravatar.cc/300
 
   constructor(
     private activatedRoute: ActivatedRoute,

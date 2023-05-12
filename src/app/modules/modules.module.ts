@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-// import { MatIconModule } from '@angular/material/icon';
 import { ModulesRoutingModule } from './modules-routing.module';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 
@@ -32,7 +31,6 @@ const comps = [
     ModulesRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    // MatIconModule,
     ComponentsModule,
   ],
 })
