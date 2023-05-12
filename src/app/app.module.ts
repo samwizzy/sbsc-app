@@ -7,19 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { ModulesModule } from './modules/modules.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-
 import { httpInterceptorProviders } from './core/interceptors';
-import { ChildComponent } from './child/child.component';
-import { ParantComponent } from './parant/parant.component';
-import { ThankYouComponent } from './modules/thank-you/thank-you.component';
-import { LongformComponent } from './modules/longform/longform.component';
-import { ActionsComponent } from './modules/actions/actions.component';
-import { TodoDetailsComponent } from './modules/todo-details/todo-details.component';
 
 @NgModule({
-  declarations: [AppComponent, ParantComponent, ChildComponent, ThankYouComponent, LongformComponent, ActionsComponent, TodoDetailsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
@@ -27,7 +20,7 @@ import { TodoDetailsComponent } from './modules/todo-details/todo-details.compon
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ComponentsModule,
+    ModulesModule,
   ],
   providers: [...httpInterceptorProviders],
   bootstrap: [AppComponent],

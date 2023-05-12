@@ -3,14 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { DashboardComponent } from './dashboard.component';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: 'home', component: HomeComponent },
       {
         path: 'account',
         component: AccountComponent,
@@ -28,7 +26,7 @@ const routes: Routes = [
         path: 'contactus',
         component: ContactusComponent,
       },
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '', redirectTo: '', pathMatch: 'full' },
     ],
   },
 ];
