@@ -9,6 +9,7 @@ import { ComponentsModule } from '../shared/components/components.module';
 import { HomeComponent } from './home/home.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { ActionsComponent } from './actions/actions.component';
+import { LongformComponent } from './longform/longform.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ActionsComponent } from './actions/actions.component';
     HomeComponent,
     ActionsComponent,
     TodoDetailsComponent,
+    LongformComponent,
   ],
   imports: [
     CommonModule,
