@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FooterService } from 'src/app/core/services/footer.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   startDate: number = new Date().getFullYear();
+  show$!: Observable<boolean>;
 
-  constructor() {}
+  constructor(private footerService: FooterService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.show$ = this.footerService.footerState$;
+  }
 }

@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./playground/playground.module').then((m) => m.PlaygroundModule),
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 

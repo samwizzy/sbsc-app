@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { FooterService } from './core/services/footer.service';
 
 declare var gtag: Function;
 
@@ -9,10 +10,10 @@ declare var gtag: Function;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'sbsc-app';
 
-  constructor(router: Router) {
+  constructor(router: Router, private footerService: FooterService) {
     router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -20,5 +21,9 @@ export class AppComponent {
           path_path: event.urlAfterRedirects,
         });
       });
+  }
+
+  ngOnInit(): void {
+    this.footerService.onLoad();
   }
 }
