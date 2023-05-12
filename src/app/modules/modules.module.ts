@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+// import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MatIconModule } from '@angular/material/icon';
 import { ModulesRoutingModule } from './modules-routing.module';
-import { ModulesComponent } from './modules.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+
+import { ModulesComponent } from './modules.component';
 import { ParantComponent } from '../parant/parant.component';
 import { ChildComponent } from '../child/child.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
@@ -29,9 +31,9 @@ const comps = [
     CommonModule,
     ModulesRoutingModule,
     ReactiveFormsModule,
-    MaterialModule,
+    // MaterialModule,
+    MatIconModule,
     ComponentsModule,
   ],
-  exports: [...comps],
 })
 export class ModulesModule {}
