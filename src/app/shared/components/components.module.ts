@@ -9,15 +9,17 @@ import { AccountDialogComponent } from './account-dialog/account-dialog.componen
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
+const comps = [
+  NavbarComponent,
+  FooterComponent,
+  AccountDialogComponent,
+  SnackbarComponent,
+  UserDialogComponent,
+];
+
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    FooterComponent,
-    AccountDialogComponent,
-    SnackbarComponent,
-    UserDialogComponent,
-  ],
+  declarations: [...comps],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterialModule],
-  exports: [NavbarComponent, FooterComponent],
+  exports: [...comps],
 })
 export class ComponentsModule {}

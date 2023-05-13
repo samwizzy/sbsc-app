@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { SnackbarService } from '../services/snackbar.service';
+// import { SnackbarService } from '../services/snackbar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +16,9 @@ import { SnackbarService } from '../services/snackbar.service';
 export class ProtectedGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authService: AuthService,
-    private snackbarService: SnackbarService
-  ) {}
+    private authService: AuthService
+  ) // private snackbarService: SnackbarService
+  {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -30,7 +30,7 @@ export class ProtectedGuard implements CanActivate {
     const token = this.authService.getAuthToken || 'QpwL5tke4Pnpja7X4';
 
     if (!token) {
-      this.snackbarService.openSnackBar('Session expired, kindly login');
+      // this.snackbarService.openSnackBar('Session expired, kindly login');
       this.router.navigate(['auth/login']);
       return false;
     }
