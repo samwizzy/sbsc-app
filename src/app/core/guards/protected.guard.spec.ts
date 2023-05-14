@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ProtectedGuard } from './protected.guard';
 
 describe('ProtectedGuard', () => {
-  let guard: ProtectedGuard;
+  let guard: typeof ProtectedGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
