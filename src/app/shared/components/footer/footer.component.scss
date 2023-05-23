@@ -4,11 +4,12 @@
 .slanted::after {
   position: absolute;
   content: "";
-  background: #f9fafb;
+  background: #333;
   height: 100%;
   width: 100%;
   transform: skewY(-1.5deg);
   right: 0;
   top: -30px;
   z-index: -1;
+  color: #eee;
 }

@@ -5,7 +5,6 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -15,7 +14,6 @@ const matModules = [
   MatInputModule,
   MatIconModule,
   MatDialogModule,
-  MatSnackBarModule,
   MatMenuModule,
   MatProgressSpinnerModule,
 ];

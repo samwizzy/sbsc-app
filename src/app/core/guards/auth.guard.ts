@@ -11,7 +11,7 @@ export const AuthGuard = () => {
 
   if (token) {
     snackbarService.openSnackBar('You are already logged in');
-    router.navigate(['home']);
+    router.navigate(['/']);
     return false;
   }
   return true;
