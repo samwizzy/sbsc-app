@@ -10,11 +10,14 @@ import { HomeComponent } from './home/home.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { ActionsComponent } from './actions/actions.component';
 import { LongformComponent } from './longform/longform.component';
+import { FontawesomeIconsModule } from '../shared/fontawesome-icons/fontawesome-icons.module';
+import { ContactusComponent } from './contactus/contactus.component';
 
 @NgModule({
   declarations: [
     ModulesComponent,
     HomeComponent,
+    ContactusComponent,
     ActionsComponent,
     TodoDetailsComponent,
     LongformComponent,
@@ -25,6 +28,7 @@ import { LongformComponent } from './longform/longform.component';
     ReactiveFormsModule,
     MaterialModule,
     ComponentsModule,
+    FontawesomeIconsModule,
   ],
 })
 export class ModulesModule {}

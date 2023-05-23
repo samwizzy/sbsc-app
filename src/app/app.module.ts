@@ -4,10 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { httpInterceptorProviders } from './core/interceptors';
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,8 +13,6 @@ import { httpInterceptorProviders } from './core/interceptors';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
-    // BrowserAnimationsModule,
-    // MatSnackBarModule,
   ],
   providers: [...httpInterceptorProviders],
   bootstrap: [AppComponent],
