@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from 'src/app/core/services/seo.service';
+
+declare var gtag: Function;
 declare var dataLayer: any[];
 
 const meta = {

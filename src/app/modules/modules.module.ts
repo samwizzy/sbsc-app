@@ -12,6 +12,7 @@ import { ActionsComponent } from './actions/actions.component';
 import { LongformComponent } from './longform/longform.component';
 import { FontawesomeIconsModule } from '../shared/fontawesome-icons/fontawesome-icons.module';
 import { ContactusComponent } from './contactus/contactus.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ContactusComponent } from './contactus/contactus.component';
     ActionsComponent,
     TodoDetailsComponent,
     LongformComponent,
+    ThankYouComponent,
   ],
   imports: [
     CommonModule,
