@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+  max-width: 100%;
+}
+
+thead th {
+  text-transform: capitalize;
+}
+
+thead tr {
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:not(:last-of-type) {
+  border-bottom: 1px solid #eee;
+}
+
+td,
+th {
+  text-align: left;
+  border-collapse: collapse;
+  padding: 12px;
+  border: none;
+}

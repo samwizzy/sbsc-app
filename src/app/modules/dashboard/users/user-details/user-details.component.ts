@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UserData, userData } from 'src/app/core/models/user';
 import { SeoService } from 'src/app/core/services/seo.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -20,6 +21,8 @@ export class UserDetailsComponent implements OnInit {
   showMore: boolean = false;
   tempImg = '/assets/images/avatar.jpeg'; //https://i.pravatar.cc/300
 
+  subscriptions!: Subscription;
+
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -31,9 +34,11 @@ export class UserDetailsComponent implements OnInit {
     this.seo.setMetaTags(meta);
 
     this.route.params.subscribe((param: any) => {
-      this.userService
-        .getUserById(param.id)
-        .subscribe((response) => (this.user = response.data));
+      this.subscriptions.add(
+        this.userService
+          .getUserById(param.id)
+          .subscribe((response) => (this.user = response.data))
+      );
     });
   }
 
@@ -51,5 +56,9 @@ export class UserDetailsComponent implements OnInit {
     this.userService
       .deleteUser(user.id)
       .subscribe((response) => console.log(response, 'response delete'));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions?.unsubscribe();
   }
 }

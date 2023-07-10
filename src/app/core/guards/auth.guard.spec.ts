@@ -1,16 +1,34 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthGuard } from './auth.guard';
+import { authGuard } from './auth.guard';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 describe('AuthGuard', () => {
-  let guard: typeof AuthGuard;
+  const routerSpy = jasmine.createSpyObj<Router>(['navigate']);
+  routerSpy.navigate.and.resolveTo(true);
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(AuthGuard);
-  });
+  const setup = (mockService: unknown, mockService2: unknown) => {
+    TestBed.configureTestingModule({
+      providers: [
+        authGuard,
+        { provide: Router, useValue: routerSpy },
+        { provide: AuthService, useValue: mockService },
+        { provide: SnackbarService, useValue: mockService2 },
+      ],
+    });
+
+    return TestBed.runInInjectionContext(authGuard);
+  };
 
   it('should be created', () => {
-    expect(guard).toBeTruthy();
+    const authServiceSpy = jasmine.createSpyObj<AuthService>(['getAuthToken']);
+
+    const snackbarServiceSpy = jasmine.createSpyObj<SnackbarService>([
+      'openSnackBar',
+    ]);
+    const guard = setup(authServiceSpy, snackbarServiceSpy);
+    expect(guard).toBeFalsy();
   });
 });

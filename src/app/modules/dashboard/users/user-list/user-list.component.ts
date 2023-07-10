@@ -19,7 +19,7 @@ const meta = {
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  users$!: Observable<UserData[]>;
+  users$: Observable<UserData[]> = this.userService.getAllUsers();
 
   constructor(
     private userService: UserService,
@@ -31,8 +31,6 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setMetaTags(meta);
-
-    this.users$ = this.userService.getAllUsers().pipe();
   }
 
   openDialog(user: UserData): void {

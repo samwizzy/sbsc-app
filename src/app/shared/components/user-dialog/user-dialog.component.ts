@@ -25,16 +25,18 @@ export class UserDialogComponent implements OnInit {
     private userService: UserService,
     public dialogRef: MatDialogRef<UserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserData
-  ) {}
+  ) {
+    this.initialForm();
+  }
 
   ngOnInit(): void {
-    this.initialForm();
-
-    this.ngForm.setValue({
-      email: this.data.email,
-      first_name: this.data.first_name,
-      last_name: this.data.last_name,
-    });
+    if (this.data) {
+      this.ngForm.patchValue({
+        email: this.data.email,
+        first_name: this.data.first_name,
+        last_name: this.data.last_name,
+      });
+    }
   }
 
   get f(): { [key: string]: AbstractControl } {

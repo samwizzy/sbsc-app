@@ -1,0 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <ng-container
+        *ngTemplateOutlet="
+          header || defaultHeader;
+          context: { $implicit: data }
+        "
+      ></ng-container>
+      <!-- <ng-template
+        [ngTemplateOutlet]="header || defaultHeader"
+        [ngTemplateOutletContext]="{ $implicit: data }"
+      ></ng-template> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of data">
+      <ng-container
+        *ngTemplateOutlet="rows || defaultRows; context: { $implicit: row }"
+      ></ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #defaultHeader let-data>
+  <th *ngFor="let item of data?.[0] | keyvalue">{{ item.key }}</th>
+</ng-template>
+
+<ng-template #defaultRows let-row>
+  <td *ngFor="let item of row | keyvalue">{{ item.value }}</td>
+</ng-template>

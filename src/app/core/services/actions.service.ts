@@ -22,7 +22,7 @@ export class ActionsService {
 
   constructor(private http: HttpClient) {}
 
-  onTodoSubjectChanged(item: number): void {
-    this.TodoSubject.next(item);
+  onTodoSubjectChanged(id: number): void {
+    this.TodoSubject.next(id);
   }
 }

@@ -8,6 +8,8 @@ import { MaterialModule } from '../material/material.module';
 import { AccountDialogComponent } from './account-dialog/account-dialog.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
+import { TableComponent } from './table/table.component';
+import { CardComponent } from './card/card.component';
 
 const comps = [
   NavbarComponent,
@@ -15,6 +17,8 @@ const comps = [
   AccountDialogComponent,
   SnackbarComponent,
   UserDialogComponent,
+  TableComponent,
+  CardComponent,
 ];
 
 @NgModule({

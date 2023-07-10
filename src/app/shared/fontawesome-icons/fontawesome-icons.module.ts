@@ -6,6 +6,9 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import {
   faCamera,
+  faCheck,
+  faCircleArrowRight,
+  faCircleChevronRight,
   faCoffee,
   faFilm,
   faRocket,
@@ -18,6 +21,14 @@ import {
 })
 export class FontawesomeIconsModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faFilm, faCoffee, faCamera, faRocket);
+    library.addIcons(
+      faFilm,
+      faCoffee,
+      faCamera,
+      faRocket,
+      faCheck,
+      faCircleArrowRight,
+      faCircleChevronRight
+    );
   }
 }
