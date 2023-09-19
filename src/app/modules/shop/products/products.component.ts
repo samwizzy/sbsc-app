@@ -21,12 +21,12 @@ export class ProductsComponent {
   ) {}
 
   selectItem(product: Prod) {
-    gtag('event', 'select_item', {
+    gtag('event', 'view_item', {
       items: [
         {
           item_id: product.id,
           item_name: product.title,
-          price: product.price.toFixed(2),
+          price: product.price,
           quantity: 1,
         },
       ],

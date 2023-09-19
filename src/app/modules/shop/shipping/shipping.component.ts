@@ -84,4 +84,8 @@ export class ShippingComponent {
       })
     );
   }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
+  }
 }
