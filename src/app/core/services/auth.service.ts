@@ -1,14 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  catchError,
-  Observable,
-  of,
-  retry,
-  shareReplay,
-  switchMap,
-} from 'rxjs';
+import { catchError, Observable, of, retry, shareReplay, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthPayload } from '../models/auth-payload';
 import { AuthResponse, ErrorResponse } from '../models/auth-response';
@@ -20,7 +13,7 @@ const headers = new HttpHeaders().set('content-type', 'application/json');
   providedIn: 'root',
 })
 export class AuthService {
-  offsetTime = 60000 * 10;
+  offsetTime = 860000 * 10;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -46,7 +39,7 @@ export class AuthService {
 
   public logout(): void {
     this.clearStorage();
-    this.router.navigateByUrl('/auth/login');
+    this.router.navigateByUrl('/login');
   }
 
   public refreshToken() {

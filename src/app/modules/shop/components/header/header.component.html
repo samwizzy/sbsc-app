@@ -1,0 +1,27 @@
+<header class="pt-4 mb-4">
+  <div class="max-w-3xl mx-auto px-4 py-3 border-t border-blue-600 shadow">
+    <div class="flex justify-between items-center gap-x-4">
+      <a routerLink="/shop" class="text-sm font-bold border rounded-lg text-blue-600 p-1">SHOP</a>
+
+      <nav>
+        <ul class="flex items-center gap-x-3">
+          <li>
+            <a
+              routerLink="/shop"
+              class="px-4 py-1 rounded-md border text-sm text-blue-600 border-blue-600"
+            >
+              Continue shopping
+            </a>
+          </li>
+          <li>
+            <a (click)="viewCart()">
+              <mat-icon [matBadge]="cartCount | async" matBadgeColor="warn">
+                shopping_cart
+              </mat-icon>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ModulesRoutingModule } from './modules-routing.module';
@@ -15,6 +15,11 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ClickAwayDirective } from '../core/directives/click-away.directive';
 import { StickyComponent } from './sticky/sticky.component';
+import { DragdropComponent } from './dragdrop/dragdrop.component';
+import { TextComponent } from './text/text.component';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @NgModule({
   declarations: [
@@ -27,6 +32,8 @@ import { StickyComponent } from './sticky/sticky.component';
     ThankYouComponent,
     ClickAwayDirective,
     StickyComponent,
+    DragdropComponent,
+    TextComponent,
   ],
   imports: [
     CommonModule,
@@ -37,5 +44,6 @@ import { StickyComponent } from './sticky/sticky.component';
     ComponentsModule,
     FontawesomeIconsModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class ModulesModule {}

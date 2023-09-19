@@ -16,11 +16,13 @@ export class AppComponent implements OnInit {
     router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // gtag('config', 'G-EXC72BX6RP', {
-        //   path_path: event.urlAfterRedirects,
-        // });
+        gtag('config', 'G-EXC72BX6RP', {
+          path_path: event.urlAfterRedirects,
+        });
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    console.log('ngOnIniting');
+  }
 }

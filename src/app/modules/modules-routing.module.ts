@@ -7,6 +7,7 @@ import { ContactusComponent } from 'src/app/modules/contactus/contactus.componen
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ActionsComponent } from './actions/actions.component';
 import { StickyComponent } from './sticky/sticky.component';
+import { DragdropComponent } from './dragdrop/dragdrop.component';
 
 const routes: Routes = [
   {
@@ -17,8 +18,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         canActivate: [protectedGuard],
-        loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
         path: 'contactus',
@@ -28,12 +28,17 @@ const routes: Routes = [
         path: 'sticky',
         component: StickyComponent,
       },
+      {
+        path: 'dragdrop',
+        component: DragdropComponent,
+      },
       // { path: 'parant', component: ParantComponent },
       // { path: 'longform', component: LongformComponent },
       { path: 'actions', component: ActionsComponent },
       { path: 'thankyou', component: ThankYouComponent },
     ],
   },
+  { path: 'shop', loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule) },
 ];
 
 @NgModule({

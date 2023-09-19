@@ -1,0 +1,122 @@
+<section>
+  <div class="max-w-3xl mx-auto">
+    <div class="grid grid-cols-12 gap-8">
+      <div class="col-span-8">
+        <div class="mb-4">
+          <h2 class="font-bold">Billing / Shipping details</h2>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="flex gap-x-3">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>First name</mat-label>
+              <input matInput placeholder="Ex. No 6" formControlName="firstName" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Last name</mat-label>
+              <input matInput placeholder="Ex. Eti-osa" formControlName="lastName" />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Street Address</mat-label>
+            <input matInput placeholder="Ex. No 6" formControlName="street" />
+          </mat-form-field>
+
+          <div class="flex gap-x-3">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Town / City</mat-label>
+              <input matInput placeholder="Ex. Eti-osa" formControlName="city" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Zip Code</mat-label>
+              <input matInput placeholder="Ex. No 6" formControlName="zipCode" />
+            </mat-form-field>
+          </div>
+
+          <div class="flex gap-x-3">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ex. Eti-osa" formControlName="email" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Phone number</mat-label>
+              <input matInput placeholder="Ex. Eti-osa" formControlName="phone" />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="Ex. Lagos" formControlName="state" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Country / Region</mat-label>
+            <mat-select formControlName="country">
+              <ng-container *ngIf="countries">
+                <mat-option *ngFor="let country of countries | async" [value]="country.name.common">
+                  {{ country.name.common }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-3 py-1 rounded-sm shadow-sm disabled:cursor-not-allowed disabled:bg-gray-400"
+            [disabled]="form.invalid"
+          >
+            Place order
+          </button>
+        </form>
+      </div>
+
+      <div class="col-span-4">
+        <div class="mb-4">
+          <h2 class="font-bold">Preview</h2>
+        </div>
+
+        <section class="space-y-2" *ngIf="form.dirty">
+          <div *ngIf="controls['firstName'].dirty">
+            <h4 class="text-xs">First name</h4>
+            <p class="font-medium">{{ controls['firstName'].value }}</p>
+          </div>
+          <div *ngIf="controls['lastName'].dirty">
+            <h4 class="text-xs">Last name</h4>
+            <p class="font-medium">{{ controls['lastName'].value }}</p>
+          </div>
+          <div *ngIf="controls['email'].dirty">
+            <h4 class="text-xs">Email address</h4>
+            <p class="font-medium">{{ controls['email'].value }}</p>
+          </div>
+          <div *ngIf="controls['phone'].dirty">
+            <h4 class="text-xs">Phone number</h4>
+            <p class="font-medium">{{ controls['phone'].value }}</p>
+          </div>
+          <div *ngIf="controls['street'].dirty">
+            <h4 class="text-xs">Street</h4>
+            <p class="font-medium">{{ controls['street'].value }}</p>
+          </div>
+          <div *ngIf="controls['zipCode'].dirty">
+            <h4 class="text-xs">Zip code</h4>
+            <p class="font-medium">{{ controls['zipCode'].value }}</p>
+          </div>
+          <div *ngIf="controls['city'].dirty">
+            <h4 class="text-xs">City</h4>
+            <p class="font-medium">{{ controls['city'].value }}</p>
+          </div>
+          <div *ngIf="controls['state'].dirty">
+            <h4 class="text-xs">State</h4>
+            <p class="font-medium">{{ controls['state'].value }}</p>
+          </div>
+          <div *ngIf="controls['country'].dirty">
+            <h4 class="text-xs">Country</h4>
+            <p class="font-medium">{{ controls['country'].value }}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

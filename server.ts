@@ -9,13 +9,9 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
-declare var gtag: Function;
-
 const domino = require('domino');
 const fs = require('fs');
-const template = fs
-  .readFileSync(join('dist/sbsc-app/browser', 'index.html'))
-  .toString();
+const template = fs.readFileSync(join('dist/sbsc-app/browser', 'index.html')).toString();
 const win = domino.createWindow(template);
 win.Object = Object;
 win.Math = Math;

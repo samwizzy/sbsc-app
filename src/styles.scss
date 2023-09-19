@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons&display=swap");
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
 
 :root {
   --background-rgb: rgb(255, 255, 208);
@@ -19,11 +19,11 @@
 }
 
 @font-face {
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-style: normal;
   font-weight: inherit;
-  src: local("Manrope"), local("Manrope-Regular"),
-    url(assets/fonts/Manrope/Manrope-VariableFont_wght.ttf) format("truetype");
+  src: local('Manrope'), local('Manrope-Regular'),
+    url(assets/fonts/Manrope/Manrope-VariableFont_wght.ttf) format('truetype');
   font-display: swap;
 }
 
@@ -33,5 +33,22 @@ body {
 }
 body {
   margin: 0;
-  font-family: Manrope, Roboto, "Helvetica Neue", sans-serif;
+  font-family: Manrope, Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field
+  .mdc-notched-outline__notch {
+  border-right-style: hidden;
+}
+
+.mySwiper {
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: red !important;
+    opacity: 1;
+  }
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: red !important;
+  opacity: 1;
 }

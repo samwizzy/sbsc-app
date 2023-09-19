@@ -6,11 +6,7 @@
       <div class="flex justify-start lg:w-0 lg:flex-1">
         <a [routerLink]="['/']">
           <span class="sr-only">Avalon</span>
-          <img
-            class="h-8 w-8 sm:h-10 sm:w-10"
-            src="/assets/images/logo.svg"
-            alt="logo"
-          />
+          <img class="h-8 w-8 sm:h-10 sm:w-10" src="/assets/images/logo.svg" alt="logo" />
         </a>
       </div>
       <div class="-mr-2 -my-2 md:hidden">
@@ -31,18 +27,22 @@
             stroke="currentColor"
             aria-hidden="true"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
       <nav
         class="hidden md:flex items-center justify-end md:flex-1 lg:w-0 sm:space-x-3 space-x-0"
+        aria-label="nav"
       >
+        <a
+          [routerLink]="['shop']"
+          routerLinkActive="active"
+          class="whitespace-nowrap text-sm font-normal text-gray-500 hover:text-gray-900 rounded-sm shadow-sm px-4 py-2 border border-gray-300"
+        >
+          Shop
+        </a>
         <a
           [routerLink]="['/dashboard/users']"
           routerLinkActive="active"
@@ -66,11 +66,7 @@
           Account
         </button>
         <mat-menu #menu="matMenu">
-          <button
-            mat-menu-item
-            [routerLink]="['/dashboard/account']"
-            routerLinkActive="btn-active"
-          >
+          <button mat-menu-item [routerLink]="['/dashboard/account']" routerLinkActive="btn-active">
             My account
           </button>
           <button
@@ -99,11 +95,7 @@
       <div class="pt-5 pb-6 px-5">
         <div class="flex items-center justify-between">
           <div>
-            <img
-              class="h-8 w-auto"
-              src="/assets/images/logo.svg"
-              alt="Workflow"
-            />
+            <img class="h-8 w-auto" src="/assets/images/logo.svg" alt="Workflow" />
           </div>
           <div class="-mr-2">
             <button
@@ -122,11 +114,7 @@
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
@@ -153,9 +141,7 @@
                   d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span class="ml-3 text-sm font-normal text-gray-900">
-                Users
-              </span>
+              <span class="ml-3 text-sm font-normal text-gray-900"> Users </span>
             </a>
 
             <a
@@ -180,9 +166,7 @@
                   d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                 />
               </svg>
-              <span class="ml-3 text-sm font-normal text-gray-900">
-                Account
-              </span>
+              <span class="ml-3 text-sm font-normal text-gray-900"> Account </span>
             </a>
           </nav>
         </div>
@@ -190,7 +174,7 @@
       <div class="py-6 px-5 space-y-6">
         <div *ngIf="!userId">
           <a
-            [routerLink]="['/auth/register']"
+            [routerLink]="['/register']"
             routerLinkActive="active"
             class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
           >
@@ -199,7 +183,7 @@
           <p class="mt-6 text-center text-sm font-medium text-gray-500">
             Existing customer?
             <a
-              [routerLink]="['/auth/login']"
+              [routerLink]="['/login']"
               routerLinkActive="active"
               class="text-indigo-600 hover:text-indigo-500"
             >

@@ -9,4 +9,8 @@ export class ModulesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onRouteActivated(comp: any) {
+    // console.log(comp);
+  }
 }

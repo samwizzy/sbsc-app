@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { SnackbarService } from '../services/snackbar.service';
 
+// preventing access to auth related routes when authenticated
 export const authGuard = () => {
   const router = inject(Router);
   const authService = inject(AuthService);

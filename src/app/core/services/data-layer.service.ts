@@ -1,38 +1,40 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
+
+declare var gtag: Function;
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataLayerService {
-  // private window = <any>window;
-  // constructor() {
-  //   this.window = [];
-  // }
-  // private pingHome(obj: {}) {
-  //   if (obj) this.window.dataLayer.push(obj);
-  // }
-  // //list of all our dataLayer methods
-  // logPageView(url: string) {
-  //   const hit = {
-  //     event: 'content-view',
-  //     pageName: url,
-  //   };
-  //   this.pingHome(hit);
-  // }
-  // logEvent(event: string, category: string, action: string, label: string) {
-  //   const hit = {
-  //     event: event,
-  //     category: category,
-  //     action: action,
-  //     label: label,
-  //   };
-  //   this.pingHome(hit);
-  // }
-  // logCustomDimensionTest(value: string) {
-  //   const hit = {
-  //     event: 'custom-dimension',
-  //     value: value,
-  //   };
-  //   this.pingHome(hit);
-  // }
+  private window = <any>window;
+
+  constructor() {
+    this.window = [];
+  }
+
+  private triggerEvent(eventName: string, obj: {}) {
+    if (obj) gtag('event', eventName, obj);
+  }
+
+  logEvent(item: Product) {
+    const ecommerce = {
+      transaction_id: 'T_12345_3',
+      value: item.price,
+      tax: 4.9,
+      shipping: 5.99,
+      currency: 'USD',
+      items: [
+        {
+          item_id: 'SKU_12345',
+          item_name: 'Stan and Friends Tee',
+          affiliation: 'Google Merchandise Store',
+          price: 9.99,
+          quantity: 1,
+        },
+      ],
+    };
+
+    this.triggerEvent('purchase', ecommerce);
+  }
 }

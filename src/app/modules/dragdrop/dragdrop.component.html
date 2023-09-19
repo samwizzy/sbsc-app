@@ -1,0 +1,53 @@
+<main class="my-40">
+  <div class="max-w-3xl mx-auto">
+    <div class="grid grid-cols-12 gap-x-4">
+      <div class="col-span-6 border-2 border-dashed" #first>
+        <div
+          [id]="item"
+          draggable="true"
+          (dragstart)="onDragStart($event)"
+          class="bg-red-500 p-4 m-4 text-white"
+          *ngFor="let item of list"
+        >
+          <p>{{ item }}</p>
+        </div>
+      </div>
+      <div
+        class="col-span-6 border-2 border-dashed"
+        (dragover)="onDragOver($event)"
+        #second
+        (drop)="onDrop($event)"
+      ></div>
+    </div>
+  </div>
+
+  <div *ngIf="loading">I am Samuel</div>
+
+  <div class="voltron">I am Samuel</div>
+
+  <div class="w-5/12 my-8 border-2 border-indigo-600">
+    <swiper-container
+      class="mySwiper"
+      pagination="true"
+      pagination-clickable="true"
+      slides-per-view="1"
+      centered-slides="true"
+      autoplay-delay="4000"
+      autoplay-disable-on-interaction="false"
+      space-between="50"
+      autoplay="true"
+      [ngStyle]="{
+        '--swiper-pagination-color': 'orange'
+      }"
+    >
+      <swiper-slide *ngFor="let slide of slides" class="border-2 border-orange-600">
+        <img loading="lazy" [src]="slide.url" class="w-100 h-96 object-cover" />
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <ng-container #viewContainer></ng-container>
+  <ng-template #tmp>
+    <h2>Hi there!</h2>
+  </ng-template>
+</main>

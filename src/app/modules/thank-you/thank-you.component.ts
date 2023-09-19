@@ -18,29 +18,8 @@ export class ThankYouComponent implements OnInit {
 
   context = {
     name: 'Samuel',
+    person: { age: 90 },
   };
 
-  ngOnInit(): void {
-    // (<any>window)['dataLayer'] = (<any>window)['dataLayer'] || [];
-    // (<any>window)['dataLayer'].push({ event: 'purchase', ecommerce: null });
-    // (<any>window)['dataLayer'].push({
-    //   event: 'purchase',
-    //   ecommerce: {
-    //     transaction_id: 'T_12345_3',
-    //     value: 25.42,
-    //     tax: 4.9,
-    //     shipping: 5.99,
-    //     currency: 'USD',
-    //     items: [
-    //       {
-    //         item_id: 'SKU_12345',
-    //         item_name: 'Stan and Friends Tee',
-    //         affiliation: 'Google Merchandise Store',
-    //         price: 9.99,
-    //         quantity: 1,
-    //       },
-    //     ],
-    //   },
-    // });
-  }
+  ngOnInit(): void {}
 }
