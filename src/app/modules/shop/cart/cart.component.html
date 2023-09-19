@@ -1,40 +1,42 @@
 <section>
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-3xl mx-auto px-3 sm:px-0 pb-4">
     <div>
-      <table class="min-w-full w-full mb-12 cart-table">
-        <caption class="text-left">
-          <h2 class="text-2xl font-bold mb-4">Carts</h2>
-        </caption>
+      <div class="overflow-auto">
+        <table class="sm:min-w-full w-[580px] mb-12 cart-table">
+          <caption class="text-left">
+            <h2 class="text-2xl font-bold mb-4">Carts</h2>
+          </caption>
 
-        <thead>
-          <tr>
-            <th class="text-left">SN</th>
-            <th class="text-left"></th>
-            <th class="text-left">Product</th>
-            <th class="text-left">Price</th>
-            <th class="text-left">Quantity</th>
-            <th class="text-left">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of cartList | async">
-            <td>{{ item.id }}</td>
-            <td><img [src]="item.image" alt="" class="w-16" /></td>
-            <td>{{ item.title | ellipsis : 30 }}</td>
-            <td>{{ item.price | currency : 'USD' }}</td>
-            <td>1</td>
-            <td>0</td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <button class="bg-gray-50 text-sm border px-3 py-1 rounded-sm">Apply coupon</button>
-            </td>
-            <td colspan="3">
-              <button class="bg-gray-50 text-sm border px-3 py-1 rounded-sm">Update cart</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <thead>
+            <tr>
+              <th class="text-left">SN</th>
+              <th class="text-left"></th>
+              <th class="text-left">Product</th>
+              <th class="text-left">Price</th>
+              <th class="text-left">Quantity</th>
+              <th class="text-left">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartList | async">
+              <td>{{ item.id }}</td>
+              <td><img [src]="item.image" alt="" class="w-16" /></td>
+              <td>{{ item.title | ellipsis : 30 }}</td>
+              <td>{{ item.price | currency : 'USD' }}</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <button class="bg-gray-50 text-sm border px-3 py-1 rounded-sm">Apply coupon</button>
+              </td>
+              <td colspan="3">
+                <button class="bg-gray-50 text-sm border px-3 py-1 rounded-sm">Update cart</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="w-fit ml-auto">
         <table class="total-table text-sm mb-8">

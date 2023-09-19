@@ -1,16 +1,16 @@
 <section class="bg-gray-50">
-  <div class="max-w-3xl mx-auto pb-8">
+  <div class="max-w-3xl mx-auto pb-8 px-3 sm:px-0">
     <ng-container *ngIf="(products | async)?.length; else loading">
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-4 sm:gap-4 gap-2">
         <div
-          class="w-full bg-white border shadow-sm rounded-md"
+          class="w-full col-span-2 sm:col-span-1 bg-white border shadow-sm rounded-md"
           *ngFor="let product of products | async"
         >
           <div class="mb-0 rounded-sm p-2 border-b">
             <img [src]="product.image" alt="" class="max-w-full h-48 object-contain" />
           </div>
 
-          <div class="flex justify-between items-center rounded-sm gap-x-2 p-2">
+          <div class="flex justify-between items-start rounded-sm gap-x-2 p-2">
             <div class="space-y-1">
               <p class="text-xs font-medium">{{ product.title | ellipsis : 40 }}</p>
               <p class="text-sm">{{ product.price | currency : 'USD' }}</p>
