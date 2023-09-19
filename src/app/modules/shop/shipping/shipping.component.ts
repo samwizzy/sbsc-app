@@ -37,15 +37,15 @@ export class ShippingComponent {
 
   createForm() {
     this.form = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      street: this.fb.control('', Validators.required),
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      country: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      phone: ['', Validators.required],
+      firstName: ['John', Validators.required],
+      lastName: ['Doe', Validators.required],
+      email: ['test@gmail.com', Validators.required],
+      street: this.fb.control('No 1 Lawal', Validators.required),
+      city: ['Eti-osa', Validators.required],
+      state: ['Lagos', Validators.required],
+      country: ['Nigeria', Validators.required],
+      zipCode: ['12345', Validators.required],
+      phone: ['09080008000', Validators.required],
     });
   }
 

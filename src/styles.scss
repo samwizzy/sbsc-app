@@ -34,6 +34,7 @@ body {
 body {
   margin: 0;
   font-family: Manrope, Roboto, 'Helvetica Neue', sans-serif;
+  @apply bg-gray-50;
 }
 
 .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field

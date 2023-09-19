@@ -1,36 +1,51 @@
 <div class="relative bg-white">
-  <div class="bg-gray-200 sm:pt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-32 py-16">
-      <div class="flex items-center space-x-2 mb-8 border">
-        <h2 class="font-black text-4xl">Thank You</h2>
-        <fa-icon icon="rocket" size="2xl" class="text-indigo-600"></fa-icon>
-      </div>
+  <div class="bg-gray-100 sm:pt-8">
+    <div class="max-w-4xl mx-auto bg-white px-4 sm:px-6 sm:py-32 py-16">
+      <div class="flex flex-col items-center justify-center">
+        <div class="flex items-center space-x-2 mb-8">
+          <h2 class="font-black text-4xl">Thank you</h2>
+          <fa-icon icon="rocket" size="2xl" class="text-blue-600"></fa-icon>
+        </div>
 
-      <div class="mb-8">
-        <p>
-          @ngrx allows us to break our application into smaller reducers with a
-          single area of concern. We can combine these reducers by creating an
-          object that mirrors the application's AppState, where each property
-          will point to one of those smaller reducers.
-        </p>
-      </div>
+        <div class="mb-8">
+          <div class="text-center">
+            <h2 class="font-bold text-blue-600 mb-4">Your Order has been created</h2>
+            <p class="text-sm text-gray-700 mb-2">You will get your items in 3 working days.</p>
+          </div>
 
-      <div>
-        <p appClickAway>I hope you had a greatt experience shopping with us.</p>
+          <table class="w-full sm:w-96">
+            <caption class="mb-4">
+              <h2 class="font-bold text-lg">Your Orders</h2>
+            </caption>
+
+            <thead>
+              <tr>
+                <th class="text-left">Product</th>
+                <th class="text-left">Price</th>
+                <th class="text-left">Quantity</th>
+                <th class="text-left">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of [1, 2, 3]">
+                <td>Product</td>
+                <td>{{ 50000 | currency : 'USD' }}</td>
+                <td>2</td>
+                <td>{{ 100000 | currency : 'USD' }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="text-sm text-gray-600 text-center">We hope that you keep shopping with us</p>
+        </div>
 
         <hr />
 
-        <ng-container class="border-2 border-red-700">
-          <div class="border-2 border-indigo-700">Hey friends</div>
-        </ng-container>
-
-        <ng-template #heybuddie [ngOutletContext]="context">
-          Come in friends {{ context.name }}
-        </ng-template>
-
-        <ng-template [ngTemplateOutlet]="heybuddie"> </ng-template>
-
-        <ng-container *ngTemplateOutlet="heybuddie"></ng-container>
+        <img
+          src="https://img.freepik.com/free-vector/thank-you-lettering_1262-6963.jpg?w=2000&t=st=1695114023~exp=1695114623~hmac=305dd06bfe20c836c4db77e62fd4d2617465a013a6a067cb6332ff4f22e83ed6"
+          alt=""
+          class="w-1/2"
+        />
       </div>
     </div>
   </div>
