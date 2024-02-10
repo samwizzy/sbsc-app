@@ -22,6 +22,10 @@ export class StickyComponent {
     // two ways to get selectors
     let p1 = this.store.select(productsSelector);
     this.items$ = this.store.pipe(select(productsSelector));
+
+    this.store.pipe(select(productsSelector)).subscribe(() => {
+      console.log('Products has been fetched');
+    });
   }
 
   constructor(private store: Store<AppState>) {}

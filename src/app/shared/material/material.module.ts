@@ -9,6 +9,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { MatRadioModule } from '@angular/material/radio';
 
 const matModules = [
   MatButtonModule,
@@ -20,6 +22,9 @@ const matModules = [
   MatMenuModule,
   MatProgressSpinnerModule,
   MatSelectModule,
+  MatRadioModule,
+  CdkDropList,
+  CdkDrag,
 ];
 
 @NgModule({

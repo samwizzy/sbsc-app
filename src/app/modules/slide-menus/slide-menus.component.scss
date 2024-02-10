@@ -1,0 +1,66 @@
+.navigation {
+  $linkWidth: 7.5rem;
+  $linkHeight: 3rem;
+
+  margin-top: 1rem;
+
+  ul {
+    display: flex;
+    list-style: none;
+    background-color: rgb(36, 44, 74);
+    height: $linkHeight;
+    position: relative;
+
+    li {
+      width: $linkWidth;
+      height: $linkHeight;
+      text-align: center;
+      padding-inline: 1rem;
+      line-height: $linkHeight;
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+
+      &:first-child:is(:hover, .active) ~ .indicator {
+        left: 0;
+      }
+
+      &:nth-child(2):is(:hover, .active) ~ .indicator {
+        left: $linkWidth;
+      }
+
+      &:nth-child(3):is(:hover, .active) ~ .indicator {
+        left: calc($linkWidth * 2);
+      }
+
+      &:nth-child(4):is(:hover, .active) ~ .indicator {
+        left: calc($linkWidth * 3);
+      }
+
+      &:nth-child(5):is(:hover, .active) ~ .indicator {
+        left: calc($linkWidth * 4);
+      }
+
+      &:last-child:is(:hover, .active) ~ .indicator {
+        left: calc($linkWidth * 4);
+      }
+    }
+
+    .indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      height: 100%; // 0.25rem;
+      width: $linkWidth;
+      z-index: 0;
+      background-color: #5a88f3;
+      padding-inline: 1.5rem;
+      transition: left 0.25s ease-in-out;
+    }
+  }
+}

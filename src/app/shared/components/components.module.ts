@@ -10,6 +10,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { TableComponent } from './table/table.component';
 import { CardComponent } from './card/card.component';
+import { BillingFormComponent } from './forms/billing-form/billing-form.component';
+import { RatingComponent } from './rating/rating.component';
 
 const comps = [
   NavbarComponent,
@@ -19,6 +21,8 @@ const comps = [
   UserDialogComponent,
   TableComponent,
   CardComponent,
+  BillingFormComponent,
+  RatingComponent,
 ];
 
 @NgModule({

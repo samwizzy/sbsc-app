@@ -1,10 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserData } from 'src/app/core/models/user';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
@@ -53,14 +48,10 @@ export class UserDialogComponent implements OnInit {
 
   onSubmit(): void {
     if (this.data.id) {
-      this.userService
-        .updateUser(this.data.id, this.ngForm.value)
-        .subscribe((response: any) => {
-          this.snackbarService.openSnackBar(
-            `User ${response?.first_name} was updated.`
-          );
-          this.onClose();
-        });
+      this.userService.updateUser(this.data.id, this.ngForm.value).subscribe((response: any) => {
+        this.snackbarService.openSnackBar(`User ${response?.first_name} was updated.`);
+        this.onClose();
+      });
     }
   }
 

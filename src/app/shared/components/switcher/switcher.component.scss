@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  gap: 0.5rem;
+  margin-block: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  border: 0.0625rem solid #ccc;
+
+  &.selected {
+    background-color: #222;
+    color: #fff;
+  }
+}

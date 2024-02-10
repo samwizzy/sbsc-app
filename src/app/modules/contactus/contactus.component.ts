@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SeoService } from 'src/app/core/services/seo.service';
 import { ContactUsStore } from './contactus.store';
+
+interface User {
+  title: string;
+  description: string;
+}
 
 const meta = {
   title: 'SBSC | My Contact Us',
@@ -22,7 +27,12 @@ export class ContactusComponent implements OnInit {
     fullName: this.fb.control(''),
     email: this.fb.control(''),
     address: this.fb.control(''),
+    clauses: this.fb.group({
+      start: ['Samuel'],
+    }),
   });
+
+  @Input() data!: User[];
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +42,10 @@ export class ContactusComponent implements OnInit {
 
   ngOnInit(): void {
     this.seo.setMetaTags(meta);
+  }
+
+  get clauseStart() {
+    return this.contactForm.get('clauses.start') as FormControl;
   }
 
   employees = [

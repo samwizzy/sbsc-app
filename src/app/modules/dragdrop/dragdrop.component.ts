@@ -2,12 +2,20 @@ import {
   Component,
   ComponentRef,
   ElementRef,
+  Injector,
   Input,
+  NgModuleRef,
+  Renderer2,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
+  createNgModule,
 } from '@angular/core';
 import { TextComponent } from '../text/text.component';
+import { EmailComponent } from '../email/email.component';
+import { EmailModule } from '../email/email.module';
+import { ManageCalendarComponent } from '../manage-calendar/manage-calendar.component';
+import { ManageCalendarModule } from '../manage-calendar/manage-calendar.module';
 
 @Component({
   selector: 'app-dragdrop',
@@ -18,8 +26,10 @@ export class DragdropComponent {
   @Input() value: string = '';
   @ViewChild('viewContainer', { read: ViewContainerRef }) viewContainerRef!: ViewContainerRef;
   @ViewChild('tmp', { read: TemplateRef }) template!: TemplateRef<any>;
+  @ViewChild('container', { read: ViewContainerRef }) containerRef!: ViewContainerRef;
 
   @ViewChild('second') rightEl!: ElementRef;
+
   list = ['one', 'two', 'three', 'four'];
   loading: boolean = false;
   slides = [
@@ -45,7 +55,7 @@ export class DragdropComponent {
     },
   ];
 
-  constructor() {}
+  constructor(private renderer: Renderer2, private injector: Injector) {}
 
   ngOnInit() {
     console.log('ngOnInit');
@@ -79,6 +89,7 @@ export class DragdropComponent {
 
   onDrop(event: DragEvent) {
     const id = event.dataTransfer?.getData('control');
+
     if (id) {
       const el = document.getElementById(id);
       this.rightEl.nativeElement?.appendChild(el);
@@ -92,5 +103,27 @@ export class DragdropComponent {
   getData() {
     return 'SAMUEL';
     // console.log('i am checking...');
+  }
+
+  getComponentRef(component: any, module: any) {
+    const moduleRef: NgModuleRef<any> = createNgModule(module, this.injector);
+
+    return this.containerRef.createComponent(component, {
+      ngModuleRef: moduleRef,
+    });
+  }
+
+  openModal(data?: any) {
+    this.containerRef.clear();
+
+    this.renderer.addClass(this.containerRef.element.nativeElement, 'open');
+
+    const componentRef = this.getComponentRef(ManageCalendarComponent, ManageCalendarModule);
+
+    const typedComponentRef = componentRef as ComponentRef<ManageCalendarComponent>;
+
+    typedComponentRef.instance.data = data;
+
+    componentRef.changeDetectorRef.detectChanges();
   }
 }

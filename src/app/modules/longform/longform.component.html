@@ -3,46 +3,33 @@
     <button (click)="switchTheme()">Switch theme</button>
 
     <form [formGroup]="ownerForm" (ngSubmit)="submitForm()">
-      <input
-        type="text"
-        class="input"
-        placeholder="First Name"
-        formControlName="firstName"
-      />
-      <input
-        type="text"
-        class="input"
-        placeholder="Last Name"
-        formControlName="firstName"
-      />
+      <input type="text" class="input mb-4" placeholder="First Name" formControlName="firstName" />
+      <input type="text" class="input mb-4" placeholder="Last Name" formControlName="lastName" />
 
       <ng-container formArrayName="address">
         <div
+          class="address-row"
           [formGroupName]="i"
           *ngFor="let item of getAddresses.controls; let i = index"
+          @fadeIn
         >
-          <input
-            type="text"
-            class="input"
-            placeholder="City"
-            formControlName="city"
-          />
-          <input
-            type="text"
-            class="input"
-            placeholder="State"
-            formControlName="state"
-          />
-          <input
-            type="text"
-            class="input"
-            placeholder="Name"
-            formControlName="name"
-          />
+          <input type="text" class="input" placeholder="City" formControlName="city" />
+          <input type="text" class="input" placeholder="State" formControlName="state" />
+          <input type="text" class="input" placeholder="Name" formControlName="name" />
+
+          <ng-container *ngIf="i !== 0">
+            <mat-icon (click)="remove(i)">close</mat-icon>
+          </ng-container>
         </div>
       </ng-container>
+
+      <button class="btn btn-primary" (click)="addAddress()">Add address</button>
 
       <button class="btn">Submit</button>
     </form>
   </div>
+
+  <button class="btn btn-modal" (click)="openModal()">Open</button>
 </section>
+
+<div #sidepaneOutlet></div>

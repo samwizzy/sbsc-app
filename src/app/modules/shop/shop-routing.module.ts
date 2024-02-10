@@ -11,17 +11,21 @@ import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
+    path: 'test',
+    loadChildren: () => import('./test/test.module').then((m) => m.TestModule),
+  },
+  {
     path: '',
     component: ShopComponent,
     children: [
-      { path: '', component: ProductsComponent },
-
       // { path: 'checkout', component: CheckoutComponent },
       { path: 'shipping', component: ShippingComponent },
       { path: 'cart', component: CartComponent },
       // { path: 'billing', component: BillingComponent },
       // { path: 'thank-you', component: ThankYouComponent },
+
       { path: ':id', component: ProductViewComponent },
+      { path: '', component: ProductsComponent },
     ],
   },
 ];

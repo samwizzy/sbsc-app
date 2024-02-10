@@ -1,0 +1,14 @@
+<!-- Form array loop example -->
+<form class="py-24" [formGroup]="form">
+  <div formArrayName="conditions">
+    <div class="form-control" *ngFor="let control of conditionsCtrl.controls; let i = index">
+      <input type="text" [formControlName]="i" placeholder="Type" />
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button (click)="addCondition()">Add condition</button>
+  </div>
+</form>
+
+{{ conditionsCtrl.value | json }}

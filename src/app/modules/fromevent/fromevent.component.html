@@ -1,0 +1,14 @@
+<div class="h-screenn grid place-content-center">
+  <input type="text" class="input" placeholder="Text" #inputEl />
+</div>
+
+<mat-radio-group aria-label="Select an option" color="primary" [formControl]="colorControl">
+  <mat-radio-button value="fixed">Option 1</mat-radio-button>
+  <mat-radio-button value="relative">Option 2</mat-radio-button>
+</mat-radio-group>
+
+<hr />
+
+<pre>
+  {{ colorControl.value | json }}
+</pre>

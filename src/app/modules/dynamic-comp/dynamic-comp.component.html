@@ -1,0 +1,23 @@
+<section class="py-24">
+  <p>dynamic-comp works!</p>
+
+  <div #container></div>
+
+  <button (click)="createComp()">Create</button>
+
+  <p>{{ 'pattern' | titlecase }}</p>
+
+  <div class="resizable" #resizable [style.width]="width" [style.height]="height"></div>
+</section>
+
+<ng-template #tmp>
+  <div>
+    <h2>Header</h2>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus doloremque, culpa
+      reiciendis quisquam officiis iure mollitia molestiae consequuntur ut exercitationem quod
+      beatae deserunt facere quidem sint praesentium? Laboriosam, ex officia?
+    </p>
+  </div>
+</ng-template>

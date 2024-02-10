@@ -1,0 +1,42 @@
+<form
+  class="my-12"
+  (ngSubmit)="onSubmit(form)"
+  #form="ngForm"
+  [ngFormOptions]="{ updateOn: 'change' }"
+>
+  <input type="text" name="name" ngModel />
+
+  <input
+    type="email"
+    name="email"
+    ngModel
+    #email="ngModel"
+    [ngModelOptions]="{ updateOn: 'change' }"
+  />
+
+  <div ngModelGroup="address" #myGroup="ngModelGroup">
+    <input type="text" name="state" ngModel />
+
+    <input type="text" name="country" ngModel />
+  </div>
+
+  <div ngModelGroup="account" #accGroup="ngModelGroup" password-matcher>
+    <input type="password" name="password" placeholder="Password" ngModel />
+
+    <input type="password" name="confirm" placeholder="Confirm" ngModel />
+  </div>
+
+  <app-switcher name="newsletter" ngModel></app-switcher>
+
+  <button type="submit">Submit</button>
+</form>
+
+<pre class="mb-12">
+	{{ form.value | json }}
+
+	Status: {{ form.control.status }}
+
+	Email Status: {{ email.control.status }}
+
+	Account Status: {{ accGroup.errors | json }}
+</pre>

@@ -18,6 +18,20 @@ import { StickyComponent } from './sticky/sticky.component';
 import { DragdropComponent } from './dragdrop/dragdrop.component';
 import { TextComponent } from './text/text.component';
 import { register } from 'swiper/element/bundle';
+import { RepositionComponent } from './reposition/reposition.component';
+import { ArrayFormComponent } from './array-form/array-form.component';
+import { NgformTestComponent, PasswordCheckDirective } from './ngform-test/ngform-test.component';
+import { SwitcherModule } from '../shared/components/switcher/switcher.module';
+import { RecursionFormComponent } from './recursion-form/recursion-form.component';
+import { ConditionsTemplateComponent } from './conditions-template/conditions-template.component';
+import { DynamicCompComponent } from './dynamic-comp/dynamic-comp.component';
+import { SideModalComponent } from './side-modal/side-modal.component';
+import { IntersectionComponent } from './intersection/intersection.component';
+import { FromeventComponent } from './fromevent/fromevent.component';
+import { GridComponent } from './grid/grid.component';
+import { DirectivesModule } from '../core/directives/directives.module';
+import { ContentPlaceComponent } from './content-place/content-place.component';
+import { SlideMenusComponent } from './slide-menus/slide-menus.component';
 
 register();
 
@@ -34,6 +48,19 @@ register();
     StickyComponent,
     DragdropComponent,
     TextComponent,
+    RepositionComponent,
+    ArrayFormComponent,
+    NgformTestComponent,
+    PasswordCheckDirective,
+    RecursionFormComponent,
+    ConditionsTemplateComponent,
+    DynamicCompComponent,
+    SideModalComponent,
+    IntersectionComponent,
+    FromeventComponent,
+    GridComponent,
+    ContentPlaceComponent,
+    SlideMenusComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +70,8 @@ register();
     MaterialModule,
     ComponentsModule,
     FontawesomeIconsModule,
+    SwitcherModule,
+    DirectivesModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

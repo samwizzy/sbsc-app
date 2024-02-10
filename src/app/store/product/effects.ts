@@ -12,6 +12,7 @@ export class ProductEffects {
       mergeMap(() => {
         return this.productService.fetchProducts().pipe(
           map((products) => {
+            console.log(products, 'products');
             return {
               type: '[Product] Get products success',
               payload: products,

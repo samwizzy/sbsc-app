@@ -1,0 +1,23 @@
+<ng-container [formGroup]="conditionForm">
+  <div formArrayName="conditions">
+    <div class="condition-item" [formGroupName]="groupIndex">
+      <div class="form-row">
+        <input type="text" formControlName="type" placeholder="Type" />
+
+        <input type="text" formControlName="merge" placeholder="Merge" />
+
+        <input type="text" formControlName="with" placeholder="With" />
+
+        <button (click)="addCondition(control)">Add condition</button>
+      </div>
+
+      <ng-container *ngIf="getInnerConditions(control)!.controls.length > 0">
+        <ng-container formArrayName="conditions">
+          <div *ngFor="let nextControl of getInnerConditions(control)!.controls; let j = index">
+            <app-condition-group [control]="nextControl" [groupIndex]="j" />
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

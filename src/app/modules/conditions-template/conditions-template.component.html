@@ -1,0 +1,48 @@
+<section class="form-container">
+  <!-- recursive conditions form -->
+  <form class="py-24" [formGroup]="conditionForm">
+    <div formArrayName="conditions" *ngFor="let control of conditionsArray.controls; let i = index">
+      <!-- form template used here -->
+      <ng-container
+        [ngTemplateOutlet]="formTemplate"
+        [ngTemplateOutletContext]="{ i: i, control: control }"
+      ></ng-container>
+
+      <!-- reusable form template -->
+      <ng-template #formTemplate let-i="i" let-control="control">
+        <div class="border p-4 rounded mb-4" [formGroupName]="i">
+          <div class="form-row">
+            <input type="text" formControlName="type" placeholder="Type" />
+
+            <input type="text" formControlName="merge" placeholder="Merge" />
+
+            <input type="text" formControlName="with" placeholder="With" />
+
+            <button (click)="addCondition(control)">Add condition</button>
+          </div>
+
+          <ng-container *ngIf="control.get('conditions')?.controls.length > 0">
+            <ng-container formArrayName="conditions">
+              <div *ngFor="let nextControl of control.get('conditions')?.controls; let j = index">
+                <ng-container
+                  [ngTemplateOutlet]="formTemplate"
+                  [ngTemplateOutletContext]="{
+                    i: j,
+                    control: nextControl
+                  }"
+                ></ng-container>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </ng-template>
+    </div>
+
+    <button class="mt-4" (click)="addCondition()">Add condition</button>
+  </form>
+</section>
+
+<!-- form condition raw preview -->
+<pre class="mb-9">
+  {{ conditionsArray.value | json }}
+</pre>

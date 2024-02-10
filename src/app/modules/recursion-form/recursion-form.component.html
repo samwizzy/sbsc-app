@@ -1,0 +1,17 @@
+<form [formGroup]="myForm" class="py-12">
+  <div formArrayName="items">
+    <div class="row" *ngFor="let item of items.controls; let i = index">
+      <div [formGroupName]="i">
+        <input formControlName="name" placeholder="Name" />
+        <div formArrayName="children" *ngIf="item.get('children')?.value?.length > 0">
+          <!-- <app-recursion-form [myForm]="item.get('children')"></app-recursion-form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <pre>
+		{{ myForm.value | json }}
+	</pre
+  >
+</form>

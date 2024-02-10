@@ -1,0 +1,8 @@
+.input {
+  padding: 0.75rem 1.5rem;
+  border: 0.0625rem solid #ccc;
+
+  &:focus {
+    outline: 0.0625rem solid rgb(14, 60, 195);
+  }
+}

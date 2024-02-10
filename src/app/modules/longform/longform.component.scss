@@ -1,19 +1,40 @@
 .input {
-  @apply w-full border border-gray-400 rounded px-3 py-2 mb-4;
+  @apply w-full border border-gray-400 rounded px-3 py-2;
 }
 
 .btn {
   @apply w-full bg-orange-800 text-white font-semibold text-lg p-3 rounded;
+
+  &-primary {
+    @apply w-fit bg-stone-900 mb-4;
+  }
+
+  &-modal {
+    @apply absolute top-4 left-4 w-fit bg-stone-900 mb-4;
+  }
 }
 
 .form-bg {
   background-color: var(--background-rgb);
   color: var(--foreground-rgb);
+  position: relative;
 }
 
 .dark {
   .form-bg {
     background-color: var(--dark-bg-rgb);
     color: var(--dark-forecolor-rgb);
+  }
+}
+
+.address-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  & mat-icon {
+    cursor: pointer;
+    flex-shrink: 0;
   }
 }

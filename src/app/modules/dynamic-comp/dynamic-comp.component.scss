@@ -1,0 +1,11 @@
+.resizable {
+  width: 10rem;
+  height: 10rem;
+  border: 0.0625rem solid #666;
+  background-color: rgb(190, 10, 88);
+  color: #fff;
+  resize: horizontal;
+  overflow: auto;
+  //   max-width: 100%;
+  cursor: col-resize;
+}

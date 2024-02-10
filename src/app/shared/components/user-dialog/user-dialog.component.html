@@ -10,12 +10,8 @@
         <input matInput type="email" formControlName="email" />
         <mat-hint *ngIf="true">Email should be valid</mat-hint>
         <mat-error *ngIf="submitted && f['email'].errors">
-          <p *ngIf="f['email'].errors['required']">
-            Email is <strong>required</strong>
-          </p>
-          <p *ngIf="f['email'].errors['email']">
-            Please enter a valid email address
-          </p>
+          <p *ngIf="f['email'].errors['required']">Email is <strong>required</strong></p>
+          <p *ngIf="f['email'].errors['email']">Please enter a valid email address</p>
         </mat-error>
       </mat-form-field>
     </div>
@@ -26,9 +22,7 @@
         <input matInput formControlName="first_name" />
 
         <mat-error *ngIf="f['first_name'].errors">
-          <p *ngIf="f['first_name'].errors['required']">
-            First name is <strong>required</strong>
-          </p>
+          <p *ngIf="f['first_name'].errors['required']">First name is <strong>required</strong></p>
         </mat-error>
       </mat-form-field>
     </div>
@@ -39,9 +33,7 @@
         <input matInput formControlName="last_name" />
 
         <mat-error *ngIf="f['last_name'].errors">
-          <p *ngIf="f['last_name'].errors['required']">
-            Last name is <strong>required</strong>
-          </p>
+          <p *ngIf="f['last_name'].errors['required']">Last name is <strong>required</strong></p>
         </mat-error>
       </mat-form-field>
     </div>
@@ -50,12 +42,7 @@
   <mat-dialog-actions>
     <button mat-stroked-button matDialogClose (click)="onClose()">Close</button>
 
-    <button
-      mat-flat-button
-      type="submit"
-      color="primary"
-      [disabled]="ngForm.status == 'INVALID'"
-    >
+    <button mat-flat-button type="submit" color="primary" [disabled]="ngForm.status == 'INVALID'">
       Save
     </button>
   </mat-dialog-actions>

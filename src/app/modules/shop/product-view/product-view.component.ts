@@ -33,7 +33,7 @@ export class ProductViewComponent {
 
   addToCart(product: Prod) {
     gtag('event', 'add_to_cart', {
-      currency: 'NGN',
+      currency: 'USD',
       value: 5.8,
       items: [
         {

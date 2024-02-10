@@ -1,0 +1,16 @@
+<section class="form-container">
+  <!-- recursive conditions form -->
+  <form class="py-24" [formGroup]="conditionForm">
+    <div formArrayName="conditions" *ngFor="let control of conditionsArray.controls; let i = index">
+      <!-- form component used here -->
+      <app-condition-group [control]="control" [groupIndex]="i" />
+    </div>
+
+    <button class="mt-4" (click)="addCondition()">Add condition</button>
+  </form>
+
+  <!-- form condition raw preview -->
+  <pre class="mb-9"
+    >{{ conditionsArray.value | json }}
+  </pre>
+</section>

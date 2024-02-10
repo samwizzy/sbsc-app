@@ -14,6 +14,7 @@
             type="email"
             [ngModel]="email"
             placeholder="Email address"
+            data-testid="email"
             [ngModelOptions]="{ standalone: true }"
           />
           <input class="w-full py-2 px-3 border rounded" type="text" placeholder="Phone contact" />
@@ -33,7 +34,7 @@
 
   <app-card>
     <div header>THE HEADER</div>
-    <img src="https://placehold.co/400" image />
+    <img src="https://placehold.co/400" alt="" />
 
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto explicabo optio molestiae
@@ -113,3 +114,12 @@
     </div>
   </div>
 </div>
+
+{{ clauseStart.value | json }}
+
+<ul>
+  <li *ngFor="let item of data">
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.description }}</p>
+  </li>
+</ul>

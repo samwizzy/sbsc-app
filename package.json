@@ -11,7 +11,8 @@
     "serve:ssr": "node dist/sbsc-app/server/main.js",
     "build:ssr": "ng build && ng run sbsc-app:server",
     "prerender": "ng run sbsc-app:prerender",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "coverage": "ng test --code-coverage --watch=false"
   },
   "private": true,
   "dependencies": {

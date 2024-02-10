@@ -1,0 +1,31 @@
+<main class="min-h-screen py-16">
+  <div class="max-w-md mx-auto">
+    <ul #container class="space-y-2 border border-blue-600 p-2">
+      <li
+        [id]="'li-' + index"
+        *ngFor="let item of list; let index = index"
+        #item
+        class="bg-blue-600 text-white p-2 cursor-move"
+        draggable="true"
+        (dragstart)="onDragStart($event)"
+        (dragenter)="onDragEnter(index)"
+        (dragover)="onDragOver($event)"
+      >
+        <!-- (drop)="onDrop($event)" -->
+        <span>{{ item }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea impedit incidunt beatae suscipit
+        architecto. Non dolorum odio corporis ducimus, eligendi, possimus sit inventore expedita
+        voluptatem maiores, eos quibusdam fugit quam!
+      </p>
+
+      <span class="content"></span>
+    </div>
+  </div>
+</main>
