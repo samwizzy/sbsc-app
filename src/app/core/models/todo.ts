@@ -8,3 +8,7 @@ export interface Todo {
 export interface Todo {
   todos: Todo[];
 }
+
+export interface TodoItem extends Todo {
+  status: boolean;
+}
