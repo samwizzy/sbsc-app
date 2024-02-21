@@ -32,6 +32,7 @@ import { GridComponent } from './grid/grid.component';
 import { DirectivesModule } from '../core/directives/directives.module';
 import { ContentPlaceComponent } from './content-place/content-place.component';
 import { SlideMenusComponent } from './slide-menus/slide-menus.component';
+import { ScrollableTagsComponent } from './scrollable-tags/scrollable-tags.component';
 
 register();
 
@@ -61,6 +62,7 @@ register();
     GridComponent,
     ContentPlaceComponent,
     SlideMenusComponent,
+    ScrollableTagsComponent,
   ],
   imports: [
     CommonModule,

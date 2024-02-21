@@ -19,6 +19,7 @@ import { FromeventComponent } from './fromevent/fromevent.component';
 import { GridComponent } from './grid/grid.component';
 import { ContentPlaceComponent } from './content-place/content-place.component';
 import { SlideMenusComponent } from './slide-menus/slide-menus.component';
+import { ScrollableTagsComponent } from './scrollable-tags/scrollable-tags.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,11 @@ const routes: Routes = [
       {
         path: 'arrayform',
         component: ArrayFormComponent,
+      },
+
+      {
+        path: 'scrollable-tags',
+        component: ScrollableTagsComponent,
       },
 
       {
