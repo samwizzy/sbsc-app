@@ -5,12 +5,12 @@
 
 .form-row {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   margin-block: 0.5rem;
 }
 
 .condition-item {
-  @apply border-2 border-gray-500 p-4 rounded mb-4;
+  @apply border-2 border-gray-500 p-4 rounded mb-4 ml-8;
 }
 
 input {

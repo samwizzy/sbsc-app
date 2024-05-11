@@ -1,13 +1,17 @@
 <section class="form-container">
   <!-- recursive conditions form -->
   <form class="py-24" [formGroup]="conditionForm">
-    <div formArrayName="conditions" *ngFor="let control of conditionsArray.controls; let i = index">
+    <div formArrayName="conditions" *ngFor="let group of conditionsArray.controls; let i = index">
       <!-- form component used here -->
-      <app-condition-group [control]="control" [groupIndex]="i" />
+      <app-condition-group [group]="group" />
     </div>
 
     <button class="mt-4" (click)="addCondition()">Add condition</button>
   </form>
+
+  <pre class="text-green-700"
+    >{{ schema | json }}
+  </pre>
 
   <!-- form condition raw preview -->
   <pre class="mb-9"

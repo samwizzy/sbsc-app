@@ -12,6 +12,9 @@ const meta = {
   styleUrls: ['./thank-you.component.scss'],
 })
 export class ThankYouComponent implements OnInit {
+  title: string | null = null;
+  active = false;
+
   constructor(private seo: SeoService) {
     this.seo.setMetaTags(meta);
   }
@@ -22,4 +25,8 @@ export class ThankYouComponent implements OnInit {
   };
 
   ngOnInit(): void {}
+
+  btnClick() {
+    this.title = 'Hello world';
+  }
 }

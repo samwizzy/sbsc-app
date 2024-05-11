@@ -12,3 +12,29 @@
 </form>
 
 {{ conditionsCtrl.value | json }}
+
+<button (click)="clickEvent()">Click Event</button>
+
+<div>
+  <a routerLink="." fragment="samuel" [class.active]="(activeFragment | async) === 'samuel'">
+    To go Samuel fragment
+  </a>
+  <br />
+
+  <a routerLink="." fragment="david" [class.active]="(activeFragment | async) === 'david'">
+    To go David fragment
+  </a>
+  <br />
+
+  <a routerLink="." fragment="michael" [class.active]="(activeFragment | async) === 'michael'">
+    To go Michael fragment
+  </a>
+</div>
+
+<mat-selection-list #shoes [multiple]="false" (selectionChange)="onSelectChange($event)">
+  <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe" [selected]="selected === shoe">
+    {{ shoe }}
+  </mat-list-option>
+</mat-selection-list>
+
+https://ReventTech@dev.azure.com/ReventTech/Project%20OnyxDoc/_git/OnyxDoc.WebUI

@@ -33,6 +33,10 @@ export class ProductService {
     return this.http.get<Prod[]>(`https://fakestoreapi.com/products`, { headers });
   }
 
+  createProduct(data: Prod): Observable<Prod> {
+    return this.http.post<Prod>(`https://fakestoreapi.com/products`, data, { headers });
+  }
+
   getProductById(id: number): Observable<Prod> {
     return this.http.get<Prod>(`https://fakestoreapi.com/products/${id}`, { headers });
   }

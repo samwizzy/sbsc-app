@@ -1,5 +1,204 @@
-<aside class="flwmn-sidepane flwmn-sidepane-lg">
-  <h1>Calendar</h1>
+<div class="manage-condition">
+  <header class="manage-condition-header mb-4">
+    <div class="flex items-center gap-2">
+      <button (click)="onClose()" class="close-btn">
+        <img src="assets/images/calendar.svg" />
+      </button>
 
-  <p>manage-calendar works!</p>
-</aside>
+      <h1 class="font-bold">Manage calendar</h1>
+    </div>
+
+    <div class="flex gap-2">
+      <button mat-flat-button>Back</button>
+
+      <button mat-flat-button color="primary">Save</button>
+    </div>
+  </header>
+
+  <ng-container>
+    <form @fadeIn [formGroup]="calendarForm" (ngSubmit)="onSubmit()">
+      <div class="flex gap-4" mb-4>
+        <div class="input-style1 w-full">
+          <label for="name" class="input-label">Calendar name</label>
+
+          <mat-form-field appearance="outline" [style.width.%]="100">
+            <input
+              id="name"
+              type="text"
+              matInput
+              formControlName="name"
+              placeholder="e.g. my work calendar"
+            />
+
+            <mat-error *ngIf="f['name'].errors">
+              {{ getErrorMessage('name') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="input-style1 w-full">
+          <label for="timezone" class="input-label">Timezone</label>
+
+          <mat-form-field appearance="outline" [style.width.%]="100">
+            <mat-select id="timezone" placeholder="Select timezone" formControlName="timeZone">
+              <mat-option *ngFor="let timezone of timezones" [value]="timezone">
+                {{ timezone.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <p class="flwmn-para-1 font-semibold mb-1">Work week</p>
+        <p class="text-sm">Select the date of the week this calendar will use</p>
+      </div>
+
+      <ul class="work-week-list mb-4" formArrayName="calendarWorkdays">
+        <li *ngFor="let control of workdaysArray.controls; let i = index" [formGroupName]="i">
+          <mat-checkbox
+            color="primary"
+            (click)="$event.stopPropagation()"
+            (change)="onWeekdayToggle(i)"
+            [checked]="!calendarWorkingHoursArray(i).disabled"
+            aria-label="day of week"
+            class="text-sm"
+          >
+            {{ weekdays[control.get('dayOfWeek')?.value] | titlecase }}
+          </mat-checkbox>
+
+          <ul formArrayName="calendarWorkingHours">
+            <li
+              class="flex items-start gap-2"
+              *ngFor="let item of calendarWorkingHoursArray(i)!.controls; let j = index"
+              [formGroupName]="j"
+            >
+              <div class="input-style1">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                  <mat-select placeholder="Select start time" formControlName="startTime">
+                    <mat-option *ngFor="let hour of hours" [value]="hour">
+                      {{ hour }}
+                    </mat-option>
+                  </mat-select>
+
+                  <mat-error *ngIf="item.get('startTime')?.errors">
+                    <p *ngIf="item.get('startTime')?.errors?.['equalTime']">
+                      Start time can't be same
+                    </p>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <p class="flwmn-para-1 mb-0 mt-4">to</p>
+
+              <div class="input-style1">
+                <mat-form-field appearance="outline" [style.width.%]="100">
+                  <mat-select placeholder="Select end time" formControlName="endTime">
+                    <mat-option *ngFor="let hour of hours" [value]="hour">
+                      {{ hour }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <button mat-flat-button type="button" (click)="addWorkHour(i)" *ngIf="j === 0">
+                <img src="assets/images/add.svg" />
+              </button>
+
+              <button mat-flat-button type="button" (click)="removeWorkHour(i, j)" *ngIf="j !== 0">
+                <img src="assets/images/close.svg" />
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="flex items-start">
+        <div class="flex-grow-1">
+          <h3 class="flwmn-para-1 font-semibold mb-1">Holidays</h3>
+          <p class="text-sm">Add holiday dates to pause your SLAs</p>
+        </div>
+
+        <mat-slide-toggle
+          matTooltipPosition="above"
+          matTooltipClass="custom-tooltip"
+          [matTooltip]="shouldAddHolidayCtrl.value === true ? 'Deactivate' : 'Activate'"
+          [checked]="shouldAddHolidayCtrl.value ? true : false"
+          (toggleChange)="onToggle()"
+        >
+        </mat-slide-toggle>
+      </div>
+
+      <!-- holidays -->
+      <ul *ngIf="shouldAddHolidayCtrl.value" formArrayName="calendarHolidays">
+        <li
+          class="flex gap-2"
+          *ngFor="let item of holidaysArray.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="input-style1">
+            <label for="name" class="input-label">Holiday name</label>
+
+            <mat-form-field appearance="outline">
+              <input
+                id="name"
+                type="text"
+                matInput
+                formControlName="name"
+                placeholder="e.g Independence day"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="input-style1">
+            <label for="date" class="input-label">Date</label>
+
+            <mat-form-field appearance="outline">
+              <input
+                id="date"
+                matInput
+                [matDatepicker]="date"
+                placeholder="DD/MM/YYYY"
+                formControlName="date"
+              />
+
+              <mat-datepicker-toggle matPrefix [for]="date">
+                <img
+                  matDatepickerToggleIcon
+                  src="/assets/images/calendar.svg"
+                  alt="Calendar Icon"
+                  class="calendar"
+                />
+              </mat-datepicker-toggle>
+
+              <mat-datepicker #date></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="input-style1">
+            <label for="frequency" class="input-label">Frequency</label>
+
+            <mat-form-field appearance="outline">
+              <mat-select id="frequency" placeholder="Select frequency" formControlName="frequency">
+                <mat-option *ngFor="let frequency of frequencies" [value]="frequency">
+                  {{ frequency }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <button type="button" (click)="addHoliday()" *ngIf="i === 0">
+            <img src="assets/images/add.svg" />
+          </button>
+
+          <button type="button" (click)="removeHoliday(i)" *ngIf="i !== 0">
+            <img src="assets/images/close.svg" />
+          </button>
+        </li>
+      </ul>
+      <!-- holidays ends -->
+    </form>
+  </ng-container>
+
+  <pre>{{ calendarForm.value | json }}</pre>
+</div>

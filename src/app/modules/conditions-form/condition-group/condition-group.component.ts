@@ -1,11 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  FormGroupDirective,
-} from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-condition-group',
@@ -13,31 +7,32 @@ import {
   styleUrls: ['./condition-group.component.scss'],
 })
 export class ConditionGroupComponent {
-  conditionForm!: FormGroup;
+  // conditionForm!: FormGroup;
 
-  @Input() control!: AbstractControl;
-  @Input() groupIndex!: number;
+  @Input() group!: FormGroup;
 
-  constructor(private fb: FormBuilder, private fgd: FormGroupDirective) {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-    this.conditionForm = this.fgd.control;
-  }
+  ngOnInit() {}
 
   addCondition(control?: AbstractControl) {
     if (control == undefined) {
       this.conditionsArray.push(this.createGroup());
     } else {
-      (control.get('conditions') as FormArray)!.push(this.createGroup());
+      (control.get('conditions') as FormArray).push(this.createGroup());
     }
   }
 
   get conditionsArray() {
-    return this.conditionForm.get('conditions') as FormArray;
+    return this.group.get('conditions') as FormArray;
+  }
+
+  subConditionsArray(group: FormGroup) {
+    return group.get('conditions') as FormArray;
   }
 
   getInnerConditions(control: AbstractControl) {
-    return control.get('conditions') as FormArray;
+    return control.get('conditions') as FormArray<FormGroup>;
   }
 
   createGroup() {

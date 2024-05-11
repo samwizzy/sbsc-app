@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="form" class="mb-4">
+    <mat-form-field appearance="outline" [style.width.%]="100">
+      <input matInput type="text" formControlName="title" placeholder="Title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.%]="100">
+      <input matInput type="text" formControlName="description" placeholder="Description" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.%]="100">
+      <input matInput type="text" formControlName="image" placeholder="Image" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.%]="100">
+      <mat-select matInput formControlName="category" placeholder="Category">
+        <mat-option [value]="category" *ngFor="let category of categories">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [style.width.%]="100">
+      <input matInput type="text" formControlName="price" placeholder="Price" inputmode="numeric" />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="createProduct()" [disabled]="!form.valid">
+      Press me
+    </button>
+  </form>
+
+  <ng-container [ngSwitch]="displayState">
+    <ng-container *ngSwitchCase="1">
+      <ng-container [ngTemplateOutlet]="productList"></ng-container>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #productList>
+    <ul class="list">
+      <li *ngFor="let todo of products$ | async">
+        {{ todo.title }}
+      </li>
+    </ul>
+  </ng-template>
+</div>

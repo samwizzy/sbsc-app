@@ -1,0 +1,126 @@
+.manage-condition {
+  width: 75rem;
+  margin: 2rem auto 2rem;
+
+  &-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+
+    & .close-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  }
+
+  & .btn-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 1.5rem;
+
+    & button {
+      padding-inline: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .calendar-list {
+    & li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border-radius: 0.25rem;
+      padding: 0.25rem 1rem;
+      border: 0.0625rem solid var(--flwmn-neutral-100);
+      cursor: pointer;
+
+      & * + * {
+        margin-left: 0.25rem;
+      }
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+
+      svg {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    & .btn-group {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  .work-week-list {
+    & > li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+
+      &:not(:first-child) {
+        margin-top: 0.75rem;
+      }
+
+      & .mat-checkbox {
+        margin-top: 0.25rem;
+      }
+
+      svg {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+      }
+
+      ul {
+        li {
+          &:not(:first-child) {
+            margin-top: 0.5rem;
+          }
+        }
+
+        button.btn {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+  .holiday-list {
+    &.close {
+      height: 0;
+      overflow: hidden;
+    }
+  }
+}

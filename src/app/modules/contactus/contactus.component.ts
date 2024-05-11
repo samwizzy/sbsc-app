@@ -48,6 +48,10 @@ export class ContactusComponent implements OnInit {
     return this.contactForm.get('clauses.start') as FormControl;
   }
 
+  getIt(event: any) {
+    console.log(event);
+  }
+
   employees = [
     { fullName: 'Samuel', email: 'samwize@gmail.com' },
     { fullName: 'David', email: 'david@gmail.com' },

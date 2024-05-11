@@ -23,8 +23,8 @@ export class StickyComponent {
     let p1 = this.store.select(productsSelector);
     this.items$ = this.store.pipe(select(productsSelector));
 
-    this.store.pipe(select(productsSelector)).subscribe(() => {
-      console.log('Products has been fetched');
+    this.store.pipe(select(productsSelector)).subscribe((products) => {
+      console.log('Products has been fetched', products);
     });
   }
 

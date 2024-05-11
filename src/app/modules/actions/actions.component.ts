@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, from, merge, of, reduce, scan } from 'rxjs';
+import { BehaviorSubject, Observable, from, merge, of, reduce, scan } from 'rxjs';
 import { Todo } from 'src/app/core/models/todo';
 import { ActionsService } from 'src/app/core/services/actions.service';
 

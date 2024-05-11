@@ -1,4 +1,13 @@
-import { Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { animate, style, transition, trigger } from '@angular/animations';
@@ -18,8 +27,13 @@ import { SideModalComponent } from '../side-modal/side-modal.component';
     ]),
   ],
 })
-export class LongformComponent implements OnInit {
+export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
   ownerForm: FormGroup;
+  currentOwner = {
+    firstName: 'Samuel',
+    lastName: 'Webber',
+  };
+  isActive = false;
 
   @ViewChild('sidepaneOutlet', { read: ViewContainerRef }) sidepaneOutlet!: ViewContainerRef;
 
@@ -30,15 +44,36 @@ export class LongformComponent implements OnInit {
       address: this.fb.array([this.createAddrGroup()]),
     });
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.isActive = !this.isActive;
+  }
+
+  ngAfterViewInit(): void {
+    setInterval(() => {
+      this.isActive = !this.isActive;
+    }, 3000);
+  }
 
   ngOnInit(): void {
+    console.log(this.ownerForm.value);
     this.ownerForm.get('firstName')?.valueChanges.subscribe((value) => {
       console.log('first name ha changed to ' + value);
+    });
+
+    this.ownerForm.valueChanges.subscribe((value) => {
+      console.log(value, 'form values');
     });
   }
 
   get getAddresses() {
     return this.ownerForm.get('address') as FormArray;
+  }
+
+  patchForm() {
+    this.ownerForm.patchValue({
+      firstName: this.currentOwner.firstName,
+      lastName: this.currentOwner.lastName,
+    });
   }
 
   addAddress() {

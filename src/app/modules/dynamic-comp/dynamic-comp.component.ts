@@ -53,9 +53,10 @@ export class DynamicCompComponent implements AfterViewInit {
   ngOnInit() {}
 
   createComp() {
-    this.container.clear();
-
-    const templateRef = this.template.createEmbeddedView(null);
+    // To insert template into a container
+    // this.container.clear();
+    // const templateRef = this.template.createEmbeddedView(null);
+    // this.container.insert(templateRef);
 
     // 1: factory resolver way
     // const factory = this.resolver.resolveComponentFactory(TextComponent);
@@ -63,11 +64,11 @@ export class DynamicCompComponent implements AfterViewInit {
     // this.container.insert(compRef.hostView);
 
     // 2: view container for module/component
-    const moduleRef = createNgModule(EmailModule, this.container.injector);
-    this.container.createComponent(EmailComponent, {
-      ngModuleRef: moduleRef,
-      projectableNodes: [templateRef.rootNodes],
-    });
+    // const moduleRef = createNgModule(EmailModule, this.container.injector);
+    // this.container.createComponent(EmailComponent, {
+    //   ngModuleRef: moduleRef,
+    //   projectableNodes: [templateRef.rootNodes],
+    // });
 
     // 3: view container for module/component
     const compoRef = this.getComponentRef(EmailComponent, EmailModule);
@@ -80,6 +81,8 @@ export class DynamicCompComponent implements AfterViewInit {
   }
 
   getComponentRef<T>(component: Type<T>, module: any): ComponentRef<T> {
+    this.viewContainerRef.clear();
+
     const moduleRef: NgModuleRef<any> = createNgModule(module, this.injector);
 
     return this.viewContainerRef.createComponent(component, {

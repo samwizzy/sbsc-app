@@ -9,6 +9,17 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/for
 export class ConditionsFormComponent {
   conditionForm!: FormGroup;
 
+  schema = {
+    id: 'string', // guid i.e nanoid/uuid
+    objectName: 'RequestObject', // Process
+    objectId: 'RequestObjectId', // ProcessId
+    type: 'string', // query type || left-operand,
+    value: 'string', // query value || right-operand,
+    comparison_operator: 'string', // AND / OR
+    isGroup: 'boolean',
+    conditions: [],
+  };
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -26,7 +37,11 @@ export class ConditionsFormComponent {
   }
 
   get conditionsArray() {
-    return this.conditionForm.get('conditions') as FormArray;
+    return this.conditionForm.get('conditions') as FormArray<FormGroup>;
+  }
+
+  subConditionsArray(group: AbstractControl) {
+    return (group.get('conditions') as FormArray).controls;
   }
 
   createGroup() {
@@ -47,7 +62,23 @@ export class ConditionsFormComponent {
     this.conditionsArray.push(this.createGroup());
   }
 
+  /**
+   * AbstractControl represent FormGroup
+   * in this instance
+   * @param item: FormGroup
+   */
+  addSubCondition(item: AbstractControl) {
+    const conditions = item.get('conditions') as FormArray;
+
+    conditions.push(this.createGroup());
+  }
+
   removeCondition(index: number) {
     this.conditionsArray.removeAt(index);
+  }
+
+  removeSubCondition(index: number, subIndex: number) {
+    const conditions = this.conditionsArray.at(index).get('conditions') as FormArray;
+    conditions.removeAt(subIndex);
   }
 }
