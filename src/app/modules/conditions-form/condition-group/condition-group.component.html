@@ -6,13 +6,17 @@
 
     <input type="text" formControlName="with" placeholder="With" />
 
-    <button (click)="addCondition(group)">Add inner condition</button>
+    <button mat-stroked-button (click)="addCondition(group)">Add inner condition</button>
+
+    <button class="trash-icon" (click)="removeRootCondition(nextIndex)">
+      <img src="assets/images/close.svg" alt="" />
+    </button>
   </div>
 
   <ng-container formArrayName="conditions">
     <div
       class="condition-item"
-      *ngFor="let item of subConditionsArray(group).controls; let i = index"
+      *ngFor="let item of getInnerConditions(group).controls; let i = index"
       [formGroupName]="i"
     >
       <div class="form-row">
@@ -22,7 +26,9 @@
 
         <input type="text" formControlName="with" placeholder="With" />
 
-        <button (click)="addCondition(item)">Add sub condition</button>
+        <button class="trash-icon" (click)="removeCondition(i)">
+          <img src="assets/images/close.svg" alt="" />
+        </button>
       </div>
 
       <ng-container *ngIf="getInnerConditions(item)!.controls.length > 0">
@@ -31,10 +37,16 @@
             class="condition-item"
             *ngFor="let nextGroup of getInnerConditions(item)!.controls; let j = index"
           >
-            <app-condition-group [group]="nextGroup" />
+            <app-condition-group
+              [parentArray]="getInnerConditions(item)"
+              [group]="nextGroup"
+              [nextIndex]="j"
+            />
           </div>
         </ng-container>
       </ng-container>
+
+      <button (click)="addCondition(item)">Add condition</button>
     </div>
   </ng-container>
 </ng-container>

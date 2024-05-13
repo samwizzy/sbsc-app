@@ -1,17 +1,26 @@
-.form-container {
-  max-width: 75%;
-  margin-inline: auto;
-}
+.condition-container {
+  max-width: 85%;
+  margin: 4rem auto 2rem;
 
-.form-row {
-  display: flex;
-  gap: 2rem;
-  margin-block: 0.5rem;
-  padding: 0.25rem;
+  .condition-layout {
+    display: flex;
+
+    .form-section {
+      flex: 1;
+      padding-right: 1rem;
+      border-right: 0.0625rem solid #ccc;
+    }
+
+    .preview-section {
+      width: 25rem;
+      padding: 1rem;
+      flex-shrink: 0;
+    }
+  }
 }
 
 .condition-item {
-  @apply border-2 border-gray-500 p-4 rounded mb-4;
+  @apply border border-gray-300 p-4 rounded mb-4;
 }
 
 input {
@@ -19,7 +28,7 @@ input {
   padding: 0.5rem 0.75rem;
 }
 
-button {
+button:not([mat-icon-button], [mat-flat-button], [mat-stroked-button]) {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   background-color: rgb(3, 34, 128);

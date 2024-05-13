@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  padding-bottom: 2rem;
+}
+
 .manage-condition {
   width: 75rem;
   margin: 2rem auto 2rem;
@@ -123,4 +128,8 @@
       overflow: hidden;
     }
   }
+}
+
+.input-label {
+  display: block;
 }

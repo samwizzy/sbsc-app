@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -15,19 +15,17 @@ export class ConditionsFormComponent {
     objectId: 'RequestObjectId', // ProcessId
     type: 'string', // query type || left-operand,
     value: 'string', // query value || right-operand,
-    comparison_operator: 'string', // AND / OR
+    comparison_operator: 'string', // AND || OR
     isGroup: 'boolean',
     conditions: [],
   };
+
+  @Output() clearEvent = new EventEmitter();
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.createForms();
-
-    this.conditionForm.valueChanges.subscribe(() => {
-      console.log(this.conditionForm.value);
-    });
   }
 
   createForms() {
@@ -79,6 +77,14 @@ export class ConditionsFormComponent {
 
   removeSubCondition(index: number, subIndex: number) {
     const conditions = this.conditionsArray.at(index).get('conditions') as FormArray;
+
     conditions.removeAt(subIndex);
+  }
+
+  clear() {
+    this.conditionForm.reset(null);
+    this.conditionsArray.reset();
+
+    this.clearEvent.emit();
   }
 }

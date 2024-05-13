@@ -1,24 +1,24 @@
 <div class="manage-condition">
-  <header class="manage-condition-header mb-4">
+  <header class="manage-condition-header mb-8">
     <div class="flex items-center gap-2">
       <button (click)="onClose()" class="close-btn">
         <img src="assets/images/calendar.svg" />
       </button>
 
-      <h1 class="font-bold">Manage calendar</h1>
+      <h1 class="text-3xl font-bold">Manage calendar</h1>
     </div>
 
     <div class="flex gap-2">
-      <button mat-flat-button>Back</button>
+      <button mat-stroked-button>Back</button>
 
-      <button mat-flat-button color="primary">Save</button>
+      <button [disabled]="!calendarForm.valid" mat-flat-button color="primary">Save</button>
     </div>
   </header>
 
   <ng-container>
     <form @fadeIn [formGroup]="calendarForm" (ngSubmit)="onSubmit()">
       <div class="flex gap-4" mb-4>
-        <div class="input-style1 w-full">
+        <div class="w-full">
           <label for="name" class="input-label">Calendar name</label>
 
           <mat-form-field appearance="outline" [style.width.%]="100">
@@ -36,7 +36,7 @@
           </mat-form-field>
         </div>
 
-        <div class="input-style1 w-full">
+        <div class="w-full">
           <label for="timezone" class="input-label">Timezone</label>
 
           <mat-form-field appearance="outline" [style.width.%]="100">
@@ -49,8 +49,8 @@
         </div>
       </div>
 
-      <div>
-        <p class="flwmn-para-1 font-semibold mb-1">Work week</p>
+      <div class="mb-4">
+        <p class="font-semibold mb-1">Work week</p>
         <p class="text-sm">Select the date of the week this calendar will use</p>
       </div>
 
@@ -73,7 +73,7 @@
               *ngFor="let item of calendarWorkingHoursArray(i)!.controls; let j = index"
               [formGroupName]="j"
             >
-              <div class="input-style1">
+              <div>
                 <mat-form-field appearance="outline" [style.width.%]="100">
                   <mat-select placeholder="Select start time" formControlName="startTime">
                     <mat-option *ngFor="let hour of hours" [value]="hour">
@@ -89,9 +89,9 @@
                 </mat-form-field>
               </div>
 
-              <p class="flwmn-para-1 mb-0 mt-4">to</p>
+              <p class="mb-0 mt-4">to</p>
 
-              <div class="input-style1">
+              <div>
                 <mat-form-field appearance="outline" [style.width.%]="100">
                   <mat-select placeholder="Select end time" formControlName="endTime">
                     <mat-option *ngFor="let hour of hours" [value]="hour">
@@ -101,21 +101,34 @@
                 </mat-form-field>
               </div>
 
-              <button mat-flat-button type="button" (click)="addWorkHour(i)" *ngIf="j === 0">
-                <img src="assets/images/add.svg" />
-              </button>
+              <div class="mt-1">
+                <button
+                  [disabled]="calendarWorkingHoursArray(i).disabled"
+                  mat-icon-button
+                  type="button"
+                  (click)="addWorkHour(i)"
+                  *ngIf="j === 0"
+                >
+                  <img src="assets/images/add.svg" />
+                </button>
 
-              <button mat-flat-button type="button" (click)="removeWorkHour(i, j)" *ngIf="j !== 0">
-                <img src="assets/images/close.svg" />
-              </button>
+                <button
+                  mat-icon-button
+                  type="button"
+                  (click)="removeWorkHour(i, j)"
+                  *ngIf="j !== 0"
+                >
+                  <img src="assets/images/close.svg" />
+                </button>
+              </div>
             </li>
           </ul>
         </li>
       </ul>
 
-      <div class="flex items-start">
-        <div class="flex-grow-1">
-          <h3 class="flwmn-para-1 font-semibold mb-1">Holidays</h3>
+      <div class="flex items-start mb-6">
+        <div class="flex-grow">
+          <h3 class="font-semibold mb-1">Holidays</h3>
           <p class="text-sm">Add holiday dates to pause your SLAs</p>
         </div>
 
@@ -132,11 +145,11 @@
       <!-- holidays -->
       <ul *ngIf="shouldAddHolidayCtrl.value" formArrayName="calendarHolidays">
         <li
-          class="flex gap-2"
-          *ngFor="let item of holidaysArray.controls; let i = index"
+          class="flex items-start gap-4"
+          *ngFor="let control of holidaysArray.controls; let i = index"
           [formGroupName]="i"
         >
-          <div class="input-style1">
+          <div>
             <label for="name" class="input-label">Holiday name</label>
 
             <mat-form-field appearance="outline">
@@ -150,7 +163,7 @@
             </mat-form-field>
           </div>
 
-          <div class="input-style1">
+          <div>
             <label for="date" class="input-label">Date</label>
 
             <mat-form-field appearance="outline">
@@ -175,7 +188,7 @@
             </mat-form-field>
           </div>
 
-          <div class="input-style1">
+          <div>
             <label for="frequency" class="input-label">Frequency</label>
 
             <mat-form-field appearance="outline">
@@ -187,18 +200,18 @@
             </mat-form-field>
           </div>
 
-          <button type="button" (click)="addHoliday()" *ngIf="i === 0">
-            <img src="assets/images/add.svg" />
-          </button>
+          <div class="mt-7">
+            <button mat-icon-button type="button" (click)="addHoliday()" *ngIf="i === 0">
+              <img src="assets/images/add.svg" />
+            </button>
 
-          <button type="button" (click)="removeHoliday(i)" *ngIf="i !== 0">
-            <img src="assets/images/close.svg" />
-          </button>
+            <button mat-icon-button type="button" (click)="removeHoliday(i)" *ngIf="i !== 0">
+              <img src="assets/images/close.svg" />
+            </button>
+          </div>
         </li>
       </ul>
       <!-- holidays ends -->
     </form>
   </ng-container>
-
-  <pre>{{ calendarForm.value | json }}</pre>
 </div>

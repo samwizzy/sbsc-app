@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   AbstractControl,
+  AbstractControlOptions,
   // AbstractControlOptions,
   FormArray,
   FormBuilder,
@@ -137,29 +138,20 @@ export class ManageCalendarComponent implements OnInit {
   buildWorkingHoursGroup() {
     return this.fb.group(
       {
-        startTime: null,
-        endTime: null,
-        // startTime: [{ value: null, disabled: true }],
-        // endTime: [{ value: null, disabled: true }],
-      }
-      // { validators: this.validator } as AbstractControlOptions
+        startTime: [{ value: null, disabled: true }],
+        endTime: [{ value: null, disabled: true }],
+      },
+      { validators: this.validator } as AbstractControlOptions
     );
   }
 
-  validator(control: AbstractControl) /*: ValidationErrors | null*/ {
-    // eslint-disable-next-line no-console
-    console.log(control, 'controlll');
-
+  validator(control: AbstractControl) {
     if (control.value.startTime >= control.value.endTime) {
       control.get('startTime')?.setErrors({ equalTime: true });
       control.get('endTime')?.setErrors({ equalTime: true });
-
-      // return { noMatch: true };
     } else {
       control.get('startTime')?.setErrors(null);
       control.get('endTime')?.setErrors(null);
-
-      // return null;
     }
   }
 

@@ -7,13 +7,11 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/for
   styleUrls: ['./condition-group.component.scss'],
 })
 export class ConditionGroupComponent {
-  // conditionForm!: FormGroup;
-
+  @Input() parentArray!: FormArray;
   @Input() group!: FormGroup;
+  @Input() nextIndex!: number;
 
   constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {}
 
   addCondition(control?: AbstractControl) {
     if (control == undefined) {
@@ -25,10 +23,6 @@ export class ConditionGroupComponent {
 
   get conditionsArray() {
     return this.group.get('conditions') as FormArray;
-  }
-
-  subConditionsArray(group: FormGroup) {
-    return group.get('conditions') as FormArray;
   }
 
   getInnerConditions(control: AbstractControl) {
@@ -43,5 +37,13 @@ export class ConditionGroupComponent {
       isGroup: false,
       conditions: this.fb.array([]),
     });
+  }
+
+  removeRootCondition(index: number) {
+    this.parentArray.removeAt(index);
+  }
+
+  removeCondition(index: number) {
+    this.getInnerConditions(this.group).removeAt(index);
   }
 }
