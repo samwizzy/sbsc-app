@@ -25,6 +25,7 @@ export class ConditionsFormComponent {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    console.log('parent initialized');
     this.createForms();
   }
 
@@ -42,7 +43,7 @@ export class ConditionsFormComponent {
     return (group.get('conditions') as FormArray).controls;
   }
 
-  createGroup() {
+  createGroup = () => {
     return this.fb.group({
       type: [null],
       merge: [null],
@@ -50,35 +51,10 @@ export class ConditionsFormComponent {
       isGroup: false,
       conditions: this.fb.array([]),
     });
-  }
-
-  trackByIndex(index: number, item: any): any {
-    return item + index;
-  }
+  };
 
   addCondition() {
     this.conditionsArray.push(this.createGroup());
-  }
-
-  /**
-   * AbstractControl represent FormGroup
-   * in this instance
-   * @param item: FormGroup
-   */
-  addSubCondition(item: AbstractControl) {
-    const conditions = item.get('conditions') as FormArray;
-
-    conditions.push(this.createGroup());
-  }
-
-  removeCondition(index: number) {
-    this.conditionsArray.removeAt(index);
-  }
-
-  removeSubCondition(index: number, subIndex: number) {
-    const conditions = this.conditionsArray.at(index).get('conditions') as FormArray;
-
-    conditions.removeAt(subIndex);
   }
 
   clear() {

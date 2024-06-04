@@ -34,6 +34,7 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
     lastName: 'Webber',
   };
   isActive = false;
+  boolValue = false;
 
   @ViewChild('sidepaneOutlet', { read: ViewContainerRef }) sidepaneOutlet!: ViewContainerRef;
 
@@ -44,6 +45,7 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
       address: this.fb.array([this.createAddrGroup()]),
     });
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.isActive = !this.isActive;
   }
@@ -63,6 +65,10 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
     this.ownerForm.valueChanges.subscribe((value) => {
       console.log(value, 'form values');
     });
+  }
+
+  updateBoolVariable(event: Event) {
+    console.log(event, 'event');
   }
 
   get getAddresses() {
@@ -89,6 +95,7 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
       state: this.fb.control(''),
       city: this.fb.control(''),
       name: this.fb.control(''),
+      active: false,
     });
   }
 

@@ -5213,6 +5213,11 @@
   "resolved" "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz"
   "version" "4.2.11"
 
+"gsap@^3.12.5":
+  "integrity" "sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ=="
+  "resolved" "https://registry.npmjs.org/gsap/-/gsap-3.12.5.tgz"
+  "version" "3.12.5"
+
 "guess-parser@^0.4.22":
   "integrity" "sha512-KcUWZ5ACGaBM69SbqwVIuWGoSAgD+9iJnchR9j/IarVI1jHVeXv+bUXBIMeqVMSKt3zrn0Dgf9UpcOEpPBLbSg=="
   "resolved" "https://registry.npmjs.org/guess-parser/-/guess-parser-0.4.22.tgz"

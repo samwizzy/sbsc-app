@@ -26,10 +26,21 @@ export class DomPracticeComponent implements OnInit, AfterViewInit {
       )
       .subscribe((event) => {
         const target = event.target as HTMLElement;
+        /**
+         * get the width and height of the circle,
+         * and divide the width and height by 2,
+         * this is because the clientX and the clientY,
+         * will give the x / y position of the cursor
+         */
 
         const width = this.circleEl.nativeElement.offsetWidth / 2;
         const height = this.circleEl.nativeElement.offsetHeight / 2;
 
+        /**
+         * instead of translating the postion of the circle,
+         * to the coordinate of clientX & clientY, 
+         * which is where the cursor click happened
+         */
         const x = event.clientX - width + 'px';
         const y = event.clientY - height + 'px';
 

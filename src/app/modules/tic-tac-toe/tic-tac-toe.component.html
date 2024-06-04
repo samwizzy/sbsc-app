@@ -1,0 +1,19 @@
+<section class="tic-tac-container">
+  <header class="space-y-4 mb-6">
+    <h1 class="text-2xl font-bold mb-2">
+      Current Player: <span>{{ player }}</span>
+    </h1>
+
+    <button mat-flat-button color="primary" (click)="startGame()">Start new Game</button>
+
+    <h2 class="text-2xl font-semibold" *ngIf="winner">Winner: {{ winner }}</h2>
+  </header>
+
+  <div class="board">
+    <app-square
+      [value]="square"
+      *ngFor="let square of squares; let i = index"
+      (click)="makeMove(i)"
+    />
+  </div>
+</section>

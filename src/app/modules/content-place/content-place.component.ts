@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ComponentRef,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { TextComponent } from '../text/text.component';
 
 @Component({
@@ -18,8 +25,13 @@ export class ContentPlaceComponent implements AfterViewInit {
   create() {
     const template = this.placeTemp.createEmbeddedView(null);
 
-    this.viewContainerRef.createComponent(TextComponent, {
-      projectableNodes: [template.rootNodes],
-    });
+    const compRef: ComponentRef<TextComponent> = this.viewContainerRef.createComponent(
+      TextComponent,
+      {
+        projectableNodes: [template.rootNodes],
+      }
+    );
+
+    console.log(compRef.location.nativeElement);
   }
 }

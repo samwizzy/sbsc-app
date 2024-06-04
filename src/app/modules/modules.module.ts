@@ -37,6 +37,7 @@ import { MutationComponent } from './mutation/mutation.component';
 import { RefreshOnSaveComponent } from './refresh-on-save/refresh-on-save.component';
 import { SideMainComponent } from './side-main/side-main.component';
 import { DomPracticeComponent } from './dom-practice/dom-practice.component';
+import { QuickstyleComponent } from './quickstyle/quickstyle.component';
 
 register();
 
@@ -71,6 +72,7 @@ register();
     RefreshOnSaveComponent,
     SideMainComponent,
     DomPracticeComponent,
+    QuickstyleComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-condition-group',
@@ -10,8 +10,11 @@ export class ConditionGroupComponent {
   @Input() parentArray!: FormArray;
   @Input() group!: FormGroup;
   @Input() nextIndex!: number;
+  @Input() createGroup!: () => void;
 
-  constructor(private fb: FormBuilder) {}
+  ngOnInit() {
+    console.log('child initialized');
+  }
 
   addCondition(control?: AbstractControl) {
     if (control == undefined) {
@@ -27,16 +30,6 @@ export class ConditionGroupComponent {
 
   getInnerConditions(control: AbstractControl) {
     return control.get('conditions') as FormArray<FormGroup>;
-  }
-
-  createGroup() {
-    return this.fb.group({
-      type: [null],
-      merge: [null],
-      with: [null],
-      isGroup: false,
-      conditions: this.fb.array([]),
-    });
   }
 
   removeRootCondition(index: number) {

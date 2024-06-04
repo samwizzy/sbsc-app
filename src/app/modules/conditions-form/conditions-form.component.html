@@ -19,7 +19,12 @@
           class="condition-item mb-4"
         >
           <!-- form component recursively used here -->
-          <app-condition-group [parentArray]="conditionsArray" [group]="group" [nextIndex]="i" />
+          <app-condition-group
+            [createGroup]="createGroup"
+            [parentArray]="conditionsArray"
+            [group]="group"
+            [nextIndex]="i"
+          />
         </div>
 
         <div class="flex gap-4">
