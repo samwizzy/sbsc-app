@@ -32,9 +32,28 @@
 
       <button class="btn">Submit</button>
     </form>
+
+    <table class="text-left">
+      <tr>
+        <th>VALID</th>
+        <th>INVALID</th>
+        <th>STATUS</th>
+      </tr>
+      <tr>
+        <td>{{ getAddresses.valid | json }}</td>
+        <td>{{ getAddresses.invalid | json }}</td>
+        <td>{{ getAddresses.status }}</td>
+      </tr>
+    </table>
   </div>
 
   <button class="btn btn-modal" (click)="openModal()">Open</button>
 </section>
 
 <div #sidepaneOutlet></div>
+
+<ul>
+  <li *ngFor="let control of contacts(2).controls">
+    {{ control.get('name')?.value }}
+  </li>
+</ul>

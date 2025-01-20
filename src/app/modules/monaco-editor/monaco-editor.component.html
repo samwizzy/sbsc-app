@@ -1,0 +1,9 @@
+<ngx-monaco-editor
+  class="h-96"
+  (onInit)="onInit($event)"
+  (modelChange)="onEditorChange($event)"
+  [options]="editorOptions"
+  [model]="editorModel"
+  ></ngx-monaco-editor>
+  
+  <!-- [(ngModel)]="jsonCode" -->

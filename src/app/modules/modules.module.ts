@@ -38,8 +38,13 @@ import { RefreshOnSaveComponent } from './refresh-on-save/refresh-on-save.compon
 import { SideMainComponent } from './side-main/side-main.component';
 import { DomPracticeComponent } from './dom-practice/dom-practice.component';
 import { QuickstyleComponent } from './quickstyle/quickstyle.component';
+import { RhombusShapeComponent } from './rhombus-shape/rhombus-shape.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ScrollInViewComponent } from './scroll-in-view/scroll-in-view.component';
 
 register();
+
+// declare const gapi: any;
 
 @NgModule({
   declarations: [
@@ -73,6 +78,9 @@ register();
     SideMainComponent,
     DomPracticeComponent,
     QuickstyleComponent,
+    RhombusShapeComponent,
+    FileUploadComponent,
+    ScrollInViewComponent,
   ],
   imports: [
     CommonModule,

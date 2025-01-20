@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-@use './theme';
+@use 'theme';
+
+@use 'codemirror/lib/codemirror';
+@use 'codemirror/theme/material';
+@use 'codemirror/theme/dracula';
+@use 'codemirror/theme/idea';
+@use 'codemirror/theme/twilight';
+@use 'codemirror/theme/night';
+
 @include mat.core();
 
 @tailwind base;
@@ -49,7 +57,9 @@
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   font-family: Manrope, Roboto, 'Helvetica Neue', sans-serif;

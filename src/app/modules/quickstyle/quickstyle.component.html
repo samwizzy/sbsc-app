@@ -6,9 +6,6 @@
       [ngClass]="{ active: collection.id === selectedCollection.id }"
       (click)="selectCollection(collection)"
     >
-      <app-svg class="toggler" src="assets/icons/drive/arrow-right2.svg"></app-svg>
-
-      <app-svg src="assets/icons/drive/folder.svg"></app-svg>
       <p class="flwmn-para-1 mb-0">
         {{ collection.name }}
       </p>
@@ -18,7 +15,7 @@
 
 <button mat-flat-button color="primary" (click)="updateIcon()">Update Icon</button>
 
-<div class="icon">
+<div class="icon" data-testid="icon">
   <img src="/" alt="" />
 </div>
 
@@ -27,13 +24,21 @@
 <section class="max-w-6xl mx-auto">
   <div class="input-group">
     <mat-form-field appearance="outline" [style.width.%]="100">
-      <input matInput placeholder="Enter an address" />
+      <input matInput [formControl]="address" placeholder="Enter an address" data-testid="input" />
     </mat-form-field>
 
-    <button mat-flat-button color="primary">
+    <mat-form-field appearance="outline" [style.width.%]="100">
+      <input matInput [(ngModel)]="city" placeholder="Enter a city" data-testid="city" />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="submit()">
       <mat-icon>search</mat-icon>
     </button>
   </div>
 </section>
 
-<button class="btn-resizable">Click me</button>
+<p class="city">{{ city }}</p>
+
+<button class="btn-resizable" [routerLink]="[]" [queryParams]="{ mode: 5 }">Click me</button>
+
+<button class="btn-async" (click)="getTitle()">Test async</button>

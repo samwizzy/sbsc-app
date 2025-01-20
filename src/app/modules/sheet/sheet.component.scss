@@ -1,0 +1,24 @@
+button {
+  border: 0.0625rem solid #ccc;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+.kgl-dropcl {
+  filter: drop-shadow(2px 2px 0 #2222221a);
+}
+
+.example-list {
+  background-color: #fff;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+
+  li {
+    padding: 0.25rem 0.875rem;
+
+    & + * {
+      border-top: 0.0625rem solid #ccc;
+    }
+  }
+}

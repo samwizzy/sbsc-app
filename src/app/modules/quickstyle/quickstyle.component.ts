@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { from } from 'rxjs';
 
 interface Collection {
   id: number;
@@ -12,7 +14,7 @@ interface Collection {
   templateUrl: './quickstyle.component.html',
   styleUrls: ['./quickstyle.component.scss'],
 })
-export class QuickstyleComponent {
+export class QuickstyleComponent implements OnInit {
   selectedCollection: Partial<Collection> = { id: 2 };
   apiCollections = [
     {
@@ -26,10 +28,27 @@ export class QuickstyleComponent {
       ],
     },
   ];
+  address = new FormControl('');
+  city = '';
   show = false;
+  title: any;
+
+  ngOnInit(): void {
+    from(this.getServerData()).subscribe((data) => {
+      // console.log(data);
+    });
+  }
 
   selectCollection(collection: any): void {
     this.selectedCollection = collection;
+  }
+
+  getServerData() {
+    return new Promise((resolve) => setTimeout(() => resolve('Samuel'), 3000));
+  }
+
+  getTitle() {
+    from(this.getServerData()).subscribe((value) => (this.title = value));
   }
 
   updateIcon() {
@@ -40,11 +59,10 @@ export class QuickstyleComponent {
 
     if (iconEl) {
       iconEl.setAttribute('src', icon);
-
-      // eslint-disable-next-line no-console
-      console.log(icon, 'icon');
-      // eslint-disable-next-line no-console
-      console.log(iconEl, 'httpIcon');
     }
+  }
+
+  submit() {
+    return this.address.value;
   }
 }

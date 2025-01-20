@@ -1,0 +1,17 @@
+<div class="h-screen flex flex-col justify-center items-center gap-4">
+  <app-child-way [counter]="counterValue" (counterChange)="counterValue = $event" />
+
+  <!-- shorthand banana in the box -->
+  <app-child-way [(counter)]="counterValue" />
+
+  <div class="min-w-[96px] bg-slate-200 text-slate-800 rounded p-6">
+    <h1 class="text-lg font-bold text-center">{{ counterValue }}</h1>
+  </div>
+</div>
+
+<!-- <app-sibling></app-sibling> -->
+
+<router-outlet
+  (activate)="routerActivated($event)"
+  (deactivate)="routeDeactivate($event)"
+></router-outlet>

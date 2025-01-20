@@ -1,5 +1,39 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { patchFormArray } from './helper';
+
+interface Condition {
+  type: string;
+  merge: string;
+  with: string;
+  isGroup: boolean;
+  conditions: Condition[];
+}
+
+const data = [
+  {
+    type: 'String',
+    merge: 'Equal',
+    with: 'Nothing',
+    isGroup: false,
+    conditions: [],
+  },
+  {
+    type: 'E-sign',
+    merge: 'Equal',
+    with: 'Nothing',
+    isGroup: true,
+    conditions: [
+      {
+        type: 'Process',
+        merge: 'Equal',
+        with: 'Nothing',
+        isGroup: true,
+        conditions: [],
+      },
+    ],
+  },
+];
 
 @Component({
   selector: 'app-conditions-form',
@@ -8,17 +42,6 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/for
 })
 export class ConditionsFormComponent {
   conditionForm!: FormGroup;
-
-  schema = {
-    id: 'string', // guid i.e nanoid/uuid
-    objectName: 'RequestObject', // Process
-    objectId: 'RequestObjectId', // ProcessId
-    type: 'string', // query type || left-operand,
-    value: 'string', // query value || right-operand,
-    comparison_operator: 'string', // AND || OR
-    isGroup: 'boolean',
-    conditions: [],
-  };
 
   @Output() clearEvent = new EventEmitter();
 
@@ -57,8 +80,56 @@ export class ConditionsFormComponent {
     this.conditionsArray.push(this.createGroup());
   }
 
+  patchForm() {
+    patchFormArray(this.conditionsArray, data, this.fb);
+  }
+
+  /**
+   *
+   * @param formArray
+   * @param conditions
+   * recursive form mutation
+   */
+  patchArray(formArray: FormArray, conditions: Condition[]) {
+    conditions.forEach((condition, i: number) => {
+      const groupItem = this.patchConditionWithData(condition);
+
+      formArray.push(groupItem);
+
+      if (condition.conditions?.length) {
+        this.patchGroup(formArray.at(i) as FormGroup, condition);
+      }
+    });
+  }
+
+  /**
+   *
+   * @param formGroup
+   * @param condition
+   */
+  patchGroup(formGroup: FormGroup, condition: Condition) {
+    condition.conditions.forEach((nextCondition) => {
+      const groupItem = this.patchConditionWithData(nextCondition);
+
+      (formGroup.get('childConditions') as FormArray).push(groupItem);
+
+      if (nextCondition.conditions?.length) {
+        this.patchGroup(groupItem, nextCondition);
+      }
+    });
+  }
+
+  patchConditionWithData(condition: Condition): FormGroup {
+    return this.fb.group({
+      type: [condition.type],
+      merge: [condition.merge],
+      with: [condition.with],
+      isGroup: [condition.isGroup],
+      conditions: [condition.conditions],
+    });
+  }
+
   clear() {
-    this.conditionForm.reset(null);
     this.conditionsArray.reset();
 
     this.clearEvent.emit();

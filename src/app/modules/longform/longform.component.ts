@@ -9,7 +9,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SideModalComponent } from '../side-modal/side-modal.component';
 
@@ -43,7 +43,28 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
       firstName: this.fb.control(''),
       lastName: this.fb.control(''),
       address: this.fb.array([this.createAddrGroup()]),
+      escalations: this.fb.array([
+        this.fb.group({
+          name: [],
+          desscription: [null],
+          contacts: this.fb.array([
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+          ]),
+        }),
+      ]),
     });
+  }
+
+  get escalations() {
+    return this.ownerForm.get('escalations') as FormArray;
+  }
+
+  contacts(index: number) {
+    return this.escalations.controls[index].get('contacts') as FormArray;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -59,12 +80,14 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit(): void {
     console.log(this.ownerForm.value);
     this.ownerForm.get('firstName')?.valueChanges.subscribe((value) => {
-      console.log('first name ha changed to ' + value);
+      // console.log('first name ha changed to ' + value);
     });
 
     this.ownerForm.valueChanges.subscribe((value) => {
-      console.log(value, 'form values');
+      // console.log(value, 'form values');
     });
+
+    this.contacts(1).push(this.fb.group({ id: 8, name: '' }));
   }
 
   updateBoolVariable(event: Event) {
@@ -92,8 +115,8 @@ export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
 
   createAddrGroup() {
     return this.fb.group({
-      state: this.fb.control(''),
-      city: this.fb.control(''),
+      state: this.fb.control('', Validators.required),
+      city: this.fb.control('', Validators.required),
       name: this.fb.control(''),
       active: false,
     });

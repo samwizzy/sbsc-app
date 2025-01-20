@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -9,6 +9,9 @@ export class BoardComponent {
   xIsNext!: boolean;
   winner: string | null = null;
   squares!: any[];
+
+  @Output() winnerEvent = new EventEmitter();
+  @Output() isNextEvent = new EventEmitter();
 
   ngOnInit(): void {
     this.startGame();

@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 declare var gtag: Function;
+declare var gapi: any;
 
 @Component({
   selector: 'app-root',

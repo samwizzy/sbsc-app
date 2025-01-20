@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-condition-group',
   templateUrl: './condition-group.component.html',
   styleUrls: ['./condition-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ConditionGroupComponent {
   @Input() parentArray!: FormArray;

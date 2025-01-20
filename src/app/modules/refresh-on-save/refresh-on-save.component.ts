@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { Prod } from 'src/app/core/models/product';
@@ -15,8 +15,11 @@ export class RefreshOnSaveComponent {
   update$ = new BehaviorSubject(false);
 
   products$: Observable<Prod[]> = this.getProducts();
+  categories = ['Men', 'Women', 'Boys', 'Girls', 'Toys', 'Electronics', 'Shoes'];
 
-  categories = ['Men', 'Women', 'Boys', 'Girls', 'Toys', 'Electronics'];
+  @HostListener('window:scroll', ['$event']) onScroll(event: Event) {
+    console.log(event);
+  }
 
   constructor(private fb: FormBuilder, private productService: ProductService) {
     this.form = this.fb.group({

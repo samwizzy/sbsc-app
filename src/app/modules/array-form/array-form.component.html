@@ -11,6 +11,10 @@
   </div>
 </form>
 
+<div *ngFor="let user of { name: 'Sam', email: 'sam@gmail.com' } | keyvalue">
+  <p>{{ user.key }}: {{ user.value }}</p>
+</div>
+
 {{ conditionsCtrl.value | json }}
 
 <button (click)="clickEvent()">Click Event</button>

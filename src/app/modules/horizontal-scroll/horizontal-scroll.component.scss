@@ -1,0 +1,20 @@
+.horizontal-section {
+	background-color: #ffeeddaa;
+  padding: 3rem 1.25rem;
+  margin-bottom: 3.5rem;
+  overflow: hidden;
+
+  .horizontal-row {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .horizontal-item {
+      flex: 0 0 auto;
+      width: 400px;
+      height: 300px;
+      background-color: rgb(16, 157, 244);
+    }
+  }
+}

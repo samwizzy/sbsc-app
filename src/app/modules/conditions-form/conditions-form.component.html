@@ -36,12 +36,11 @@
     </div>
 
     <div class="preview-section">
-      <pre class="text-green-700 font-mono">{{ schema | json }}</pre>
-
-      <div class="my-4"><mat-divider /></div>
-
       <!-- form condition raw preview -->
       <pre class="mb-9 font-mono text-gray-600">{{ conditionsArray.value | json }}</pre>
+      <div class="my-4"><mat-divider /></div>
+
+      <button mat-flat-button (click)="patchForm()">Patch Form</button>
     </div>
   </div>
 </section>

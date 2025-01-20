@@ -24,7 +24,13 @@
       <input matInput type="text" formControlName="price" placeholder="Price" inputmode="numeric" />
     </mat-form-field>
 
-    <button mat-flat-button color="primary" (click)="createProduct()" [disabled]="!form.valid">
+    <button
+      data-testid="submit-btn"
+      mat-flat-button
+      color="primary"
+      (click)="createProduct()"
+      [disabled]="!form.valid"
+    >
       Press me
     </button>
   </form>

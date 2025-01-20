@@ -1,11 +1,27 @@
+:host {
+  position: absolute;
+  background-color: var(--theme-color);
+  inset: 0;
+  border: 1px solid;
+}
+
+// .container-bg {
+//   background-color: var(--theme-color);
+// }
+
 .resizable {
   width: 10rem;
   height: 10rem;
   border: 0.0625rem solid #666;
   background-color: rgb(190, 10, 88);
   color: #fff;
-  resize: horizontal;
+  resize: both;
   overflow: auto;
-  //   max-width: 100%;
-  cursor: col-resize;
+  cursor: se-resize;
+}
+
+.canvasPanel {
+  width: 500px;
+  height: 500px;
+  border: 0.125rem solid #666;
 }
