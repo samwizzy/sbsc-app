@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, NgZone, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { exhaustMap, fromEvent, takeUntil } from 'rxjs';
 
@@ -8,7 +8,9 @@ import { exhaustMap, fromEvent, takeUntil } from 'rxjs';
   styleUrls: ['./fromevent.component.scss'],
 })
 export class FromeventComponent implements AfterViewInit {
+  ngZone = inject(NgZone);
   colorControl = new FormControl();
+
   @ViewChild('inputEl') inputEl!: ElementRef<HTMLInputElement>;
 
   ngOnInit() {}

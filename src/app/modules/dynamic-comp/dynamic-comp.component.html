@@ -1,18 +1,47 @@
-<section class="py-24">
+<ng-container *ngIf="isLoading | async">
+  <div>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut ipsa inventore maiores
+      voluptatum voluptates nemo omnis aliquid! Neque sequi animi reprehenderit totam similique,
+      reiciendis provident nihil qui, dolore numquam nemo?
+    </p>
+  </div>
+</ng-container>
+
+<section class="container-bg py-24">
   <p>dynamic-comp works!</p>
 
   <div #container></div>
 
-  <button (click)="createComp()">Create</button>
+  <div id="forViewRef"></div>
+
+  <div class="flex gap-2">
+    <button mat-flat-button color="primary" (click)="createComp()">Create</button>
+    <button mat-flat-button color="primary" (click)="insertComp()">Insert</button>
+    <button mat-flat-button color="warn" (click)="detachComp()">Detach</button>
+  </div>
 
   <p>{{ 'pattern' | titlecase }}</p>
 
   <div class="resizable" #resizable [style.width]="width" [style.height]="height"></div>
 </section>
 
-<ng-template #tmp>
+<ng-container
+  [ngTemplateOutlet]="tmp"
+  [ngTemplateOutletContext]="{ $implicit: 'subtitle slug' }"
+></ng-container>
+
+<h3 class="h3" data-el>I am to be deleted</h3>
+<h3 class="h3" data-el>I am to be deleted</h3>
+<h3 class="h3" data-el>I am to be deleted</h3>
+<button mat-flat-button (click)="deleteElement()">Delete element</button>
+
+<ng-template #tmp let-data>
   <div>
     <h2>Header</h2>
+    <h3>{{ data }}</h3>
+
+    <button [disabled]="readOnly">Press me</button>
 
     <p>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus doloremque, culpa
@@ -21,3 +50,11 @@
     </p>
   </div>
 </ng-template>
+
+<div #canvasPanel class="canvasPanel"></div>
+
+<ng-container *ngIf="title === 'None'">
+  <p>{{ title }}</p>
+</ng-container>
+
+<a routerLink="/app/fromevent">From event</a>

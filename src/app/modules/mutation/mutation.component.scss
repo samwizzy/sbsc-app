@@ -1,0 +1,49 @@
+.main-container {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background-color: #1b2a2a;
+
+  .icons-list {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    li.icon-item {
+      background-image: linear-gradient(to left top, #1b2a2a, #3d055f);
+      border-radius: 0.25rem;
+      padding: 0.25rem 1rem;
+      color: #e0dede;
+      cursor: move;
+      box-shadow: 2px 0 10px 0 #333;
+    }
+  }
+
+  .mutation-container {
+    width: 37.5rem;
+    min-height: 11.5rem;
+    border-radius: 0.25rem;
+    border: 0.125rem dashed #c8bebe;
+
+    display: grid;
+    place-content: center;
+
+    p {
+      color: #b3aeae;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.btn {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 0.25rem;
+  background-image: linear-gradient(45deg, #161293, #0a35b6);
+  font-size: 0.875rem;
+  text-align: center;
+  color: #fff;
+  cursor: move;
+}

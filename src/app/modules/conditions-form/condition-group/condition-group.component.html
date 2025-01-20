@@ -1,6 +1,24 @@
-<ng-container [formGroup]="conditionForm">
-  <div formArrayName="conditions">
-    <div class="condition-item" [formGroupName]="groupIndex">
+<ng-container [formGroup]="group">
+  <div class="form-row">
+    <input type="text" formControlName="type" placeholder="Type" />
+
+    <input type="text" formControlName="merge" placeholder="Merge" />
+
+    <input type="text" formControlName="with" placeholder="With" />
+
+    <button mat-stroked-button (click)="addCondition(group)">Add inner condition</button>
+
+    <button class="trash-icon" (click)="removeRootCondition(nextIndex)">
+      <img src="assets/images/close.svg" alt="" />
+    </button>
+  </div>
+
+  <ng-container formArrayName="conditions">
+    <div
+      class="condition-item"
+      *ngFor="let item of getInnerConditions(group).controls; let i = index"
+      [formGroupName]="i"
+    >
       <div class="form-row">
         <input type="text" formControlName="type" placeholder="Type" />
 
@@ -8,16 +26,27 @@
 
         <input type="text" formControlName="with" placeholder="With" />
 
-        <button (click)="addCondition(control)">Add condition</button>
+        <button class="trash-icon" (click)="removeCondition(i)">
+          <img src="assets/images/close.svg" alt="" />
+        </button>
       </div>
 
-      <ng-container *ngIf="getInnerConditions(control)!.controls.length > 0">
+      <ng-container *ngIf="getInnerConditions(item)!.controls.length > 0">
         <ng-container formArrayName="conditions">
-          <div *ngFor="let nextControl of getInnerConditions(control)!.controls; let j = index">
-            <app-condition-group [control]="nextControl" [groupIndex]="j" />
+          <div
+            class="condition-item"
+            *ngFor="let nextGroup of getInnerConditions(item)!.controls; let j = index"
+          >
+            <app-condition-group
+              [parentArray]="getInnerConditions(item)"
+              [group]="nextGroup"
+              [nextIndex]="j"
+            />
           </div>
         </ng-container>
       </ng-container>
+
+      <button (click)="addCondition(item)">Add condition</button>
     </div>
-  </div>
+  </ng-container>
 </ng-container>

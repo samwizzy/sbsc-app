@@ -1,0 +1,14 @@
+.container {
+  width: 37.5rem;
+  height: 2000px;
+  margin: 1rem auto 3rem;
+}
+
+.list {
+  list-style: none;
+
+  li {
+    padding: 1rem;
+    border-bottom: 0.0625rem solid #ccc;
+  }
+}

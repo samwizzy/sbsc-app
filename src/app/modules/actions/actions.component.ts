@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, from, merge, of, reduce, scan } from 'rxjs';
+import { BehaviorSubject, Observable, from, merge, of, reduce, scan } from 'rxjs';
 import { Todo } from 'src/app/core/models/todo';
 import { ActionsService } from 'src/app/core/services/actions.service';
 
@@ -11,10 +11,15 @@ import { ActionsService } from 'src/app/core/services/actions.service';
 export class ActionsComponent implements OnInit {
   todos$!: Observable<Todo[]>;
   list: Observable<number[]> = of([1, 2, 3, 4, 5]);
+  count = 0;
 
   constructor(private actionsService: ActionsService) {}
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.count = this.count + 1;
+    }, 2000);
+
     this.todos$ = this.actionsService.todos;
 
     merge(of([1, 2, 3]), of([4, 5, 6]))

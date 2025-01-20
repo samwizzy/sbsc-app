@@ -1,0 +1,33 @@
+<div>
+  <div class="flex items-center gap-2 p-3 border-b">
+    <p>Enter a task</p>
+
+    <input
+      #inputRef
+      class="border border-[var(--primary)] hover:border-[var(--primary)] min-w-[20rem] rounded-sm py-1 px-2"
+      type="text"
+      data-testid="assembly-input"
+      (keydown.enter)="onEnter()"
+    />
+  </div>
+
+  <div class="assembly-columns" data-testid="assembly-stages">
+    <div
+      class="assembly-stage"
+      data-testid="assembly-stage"
+      *ngFor="let stage of stages; let i = index"
+    >
+      <h2 class="text-lg font-bold mb-2">{{ stage }}</h2>
+
+      <button
+        class="assembly-item"
+        data-testid="assembly-item"
+        *ngFor="let item of items[i]"
+        (click)="moveToNext(i, item)"
+        (contextmenu)="moveToPrevious($event, i, item)"
+      >
+        {{ item }}
+      </button>
+    </div>
+  </div>
+</div>

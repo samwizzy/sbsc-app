@@ -1,9 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
       fontFamily: {
-        rubik: ["Manrope", "sans-serif"],
+        rubik: ['Manrope', 'sans-serif'],
+        mono: ['monospace'],
       },
     },
   },

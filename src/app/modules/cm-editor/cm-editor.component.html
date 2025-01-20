@@ -1,0 +1,12 @@
+<div class="max-w-3xl mx-auto my-8">
+  <div class="mb-4">
+    <textarea
+      rows="8"
+      spellcheck="false"
+      class="w-full text-sm p-2 border border-gray-300 focus:outline-slate-400 rounded"
+      [(ngModel)]="content"
+    ></textarea>
+  </div>
+
+  <ngx-codemirror [(ngModel)]="content" [options]="codeMirrorOptions" />
+</div>

@@ -1,0 +1,36 @@
+<div class="main-layout">
+  <aside class="side-pane" #sidepane></aside>
+
+  <main class="content-pane" #maincontent>
+    <div class="max-w-lg mx-auto py-8">
+      <mat-form-field class="w-full" appearance="outline" subscriptSizing="fixed">
+        <label for="message">Message</label>
+
+        <input
+          #messageInput
+          type="text"
+          matInput
+          [formControl]="messageControl"
+          placeholder="Enter your message"
+        />
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="sendMessage()"
+        [disabled]="!messageControl.valid"
+      >
+        Send message
+      </button>
+
+      <div class="mt-6">
+        <ul>
+          <li *ngFor="let receivedMessage of receivedMessages">
+            {{ receivedMessage }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</div>

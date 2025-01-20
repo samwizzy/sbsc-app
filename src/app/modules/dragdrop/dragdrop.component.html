@@ -28,25 +28,29 @@
 
   <button mat-flat-button (click)="openModal()">Open</button>
 
-  <div class="w-5/12 my-8 border-2 border-indigo-600">
-    <swiper-container
-      class="mySwiper"
-      pagination="true"
-      pagination-clickable="true"
-      slides-per-view="1"
-      centered-slides="true"
-      autoplay-delay="4000"
-      autoplay-disable-on-interaction="false"
-      space-between="50"
-      autoplay="true"
-      [ngStyle]="{
-        '--swiper-pagination-color': 'orange'
-      }"
-    >
-      <swiper-slide *ngFor="let slide of slides" class="border-2 border-orange-600">
-        <img loading="lazy" [src]="slide.url" class="w-100 h-96 object-cover" alt="" />
-      </swiper-slide>
-    </swiper-container>
+  <div class="flex items-start gap-2 my-8 border-2 border-indigo-600">
+    <div class="w-8/12 h-96">
+      <swiper-container
+        class="mySwiper"
+        pagination="true"
+        pagination-clickable="true"
+        slides-per-view="1"
+        centered-slides="true"
+        autoplay-delay="4000"
+        autoplay-disable-on-interaction="false"
+        space-between="50"
+        autoplay="true"
+        [ngStyle]="{
+          '--swiper-pagination-color': 'orange'
+        }"
+      >
+        <swiper-slide *ngFor="let slide of slides" class="border-2 border-orange-600">
+          <img loading="lazy" [src]="slide.url" class="w-full h-96 object-cover" alt="" />
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <div class="flex-1 h-96 bg-slate-400"></div>
   </div>
 
   <ng-container #viewContainer></ng-container>
@@ -56,4 +60,4 @@
   </ng-template>
 </main>
 
-<ng-container aria-label="calendar" #container> </ng-container>
+<div aria-label="calendar" #container></div>

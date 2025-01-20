@@ -1,0 +1,69 @@
+.folder-list-wrapper {
+  margin: 1.25rem 0;
+  border: 0.0625rem solid red;
+  background: rgb(215, 215, 248);
+  // padding: 0.5rem 0 1.5rem;
+  border-radius: 0.3125rem;
+  max-height: 17rem;
+  overflow-y: scroll;
+
+  .folder {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.875rem 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    -webkit-transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    background: rgb(215, 215, 248);
+
+    &:not(:last-child) {
+      border-bottom: 0.0625rem solid #ccc;
+    }
+
+    .toggler {
+      -webkit-user-drag: none;
+      -webkit-transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+      -o-transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+      transition: all 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .flwmn-para-1 {
+      margin-right: auto;
+    }
+
+    &:hover,
+    &.active {
+      background: rgb(215, 215, 248);
+    }
+
+    &.active {
+      .toggler {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+.btn-resizable {
+  padding: 0.25rem 0.75rem;
+  background-color: #eee;
+  border-radius: 0.25rem;
+  border: none;
+  outline: 0.0625rem solid #ccc;
+  resize: both;
+}
+
+.btn-async {
+  all: unset;
+  padding: 0.25rem 0.75rem;
+  background-color: #eee;
+  border-radius: 0.25rem;
+  border: none;
+  outline: 0.0625rem solid #047085;
+}

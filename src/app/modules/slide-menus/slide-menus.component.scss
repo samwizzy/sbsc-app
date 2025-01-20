@@ -4,7 +4,7 @@
 
   margin-top: 1rem;
 
-  ul {
+  ul:not([class]) {
     display: flex;
     list-style: none;
     background-color: rgb(36, 44, 74);
@@ -62,5 +62,27 @@
       padding-inline: 1.5rem;
       transition: left 0.25s ease-in-out;
     }
+  }
+}
+
+@counter-style fruits {
+  system: fixed;
+  symbols: 🥭 🍊 🍋 🍓 🍏;
+  suffix: ' ';
+}
+
+.custom-ul {
+  margin-left: 2rem;
+  list-style: fruits;
+}
+
+:host {
+  counter-reset: section;
+}
+
+.block-list {
+  h2::before {
+    counter-increment: section;
+    content: 'Item ' counter(section) ': ';
   }
 }

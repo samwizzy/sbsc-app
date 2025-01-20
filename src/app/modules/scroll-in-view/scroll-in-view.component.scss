@@ -1,0 +1,62 @@
+.container {
+  position: relative;
+  max-width: 70%;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+  padding-block: 1.25srem;
+  border-radius: 0.25rem;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  align-items: flex-start;
+  gap: 1.5rem;
+
+  .main-content {
+    section + section {
+      margin-top: 2rem;
+    }
+
+    .section {
+      p {
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        position: relative;
+
+        &::before {
+          content: '\039e';
+          position: absolute;
+          left: -2.5rem;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 1rem;
+    border: 0.0625rem solid #dbdbd9;
+    border-radius: 0.25rem;
+
+    .menu-list {
+      padding: 0;
+
+      .menu-item {
+        a {
+          display: block;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+
+          &:is(:hover, .active) {
+            color: #e33003;
+          }
+        }
+
+        &:not(:last-child) {
+          border-bottom: 0.0625rem solid #dbdbd9;
+        }
+      }
+    }
+  }
+}

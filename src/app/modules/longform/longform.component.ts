@@ -1,6 +1,15 @@
-import { Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SideModalComponent } from '../side-modal/side-modal.component';
 
@@ -18,8 +27,14 @@ import { SideModalComponent } from '../side-modal/side-modal.component';
     ]),
   ],
 })
-export class LongformComponent implements OnInit {
+export class LongformComponent implements OnInit, AfterViewInit, OnChanges {
   ownerForm: FormGroup;
+  currentOwner = {
+    firstName: 'Samuel',
+    lastName: 'Webber',
+  };
+  isActive = false;
+  boolValue = false;
 
   @ViewChild('sidepaneOutlet', { read: ViewContainerRef }) sidepaneOutlet!: ViewContainerRef;
 
@@ -28,17 +43,66 @@ export class LongformComponent implements OnInit {
       firstName: this.fb.control(''),
       lastName: this.fb.control(''),
       address: this.fb.array([this.createAddrGroup()]),
+      escalations: this.fb.array([
+        this.fb.group({
+          name: [],
+          desscription: [null],
+          contacts: this.fb.array([
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+            this.fb.group({ id: [], name: [null] }),
+          ]),
+        }),
+      ]),
     });
   }
 
+  get escalations() {
+    return this.ownerForm.get('escalations') as FormArray;
+  }
+
+  contacts(index: number) {
+    return this.escalations.controls[index].get('contacts') as FormArray;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.isActive = !this.isActive;
+  }
+
+  ngAfterViewInit(): void {
+    setInterval(() => {
+      this.isActive = !this.isActive;
+    }, 3000);
+  }
+
   ngOnInit(): void {
+    console.log(this.ownerForm.value);
     this.ownerForm.get('firstName')?.valueChanges.subscribe((value) => {
-      console.log('first name ha changed to ' + value);
+      // console.log('first name ha changed to ' + value);
     });
+
+    this.ownerForm.valueChanges.subscribe((value) => {
+      // console.log(value, 'form values');
+    });
+
+    this.contacts(1).push(this.fb.group({ id: 8, name: '' }));
+  }
+
+  updateBoolVariable(event: Event) {
+    console.log(event, 'event');
   }
 
   get getAddresses() {
     return this.ownerForm.get('address') as FormArray;
+  }
+
+  patchForm() {
+    this.ownerForm.patchValue({
+      firstName: this.currentOwner.firstName,
+      lastName: this.currentOwner.lastName,
+    });
   }
 
   addAddress() {
@@ -51,9 +115,10 @@ export class LongformComponent implements OnInit {
 
   createAddrGroup() {
     return this.fb.group({
-      state: this.fb.control(''),
-      city: this.fb.control(''),
+      state: this.fb.control('', Validators.required),
+      city: this.fb.control('', Validators.required),
       name: this.fb.control(''),
+      active: false,
     });
   }
 

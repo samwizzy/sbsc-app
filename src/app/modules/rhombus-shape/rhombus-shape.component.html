@@ -1,0 +1,18 @@
+<div class="rhombus">
+  <div class="img-container top-arrow" [attr.data-then]="thenValue">
+    <img src="assets/icons/flowz/tasks/top-curved-arrow.svg" alt="top" />
+  </div>
+
+  <div
+    class="rhombus-shape"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasLogicDecision"
+    aria-controls="offcanvasLogicDecision"
+  >
+    <p class="shape-label">{{ decisionName }}</p>
+  </div>
+
+  <div class="img-container bottom-arrow" [attr.data-else]="elseValue">
+    <img src="assets/icons/flowz/tasks/bottom-curved-arrow.svg" alt="bottom" />
+  </div>
+</div>

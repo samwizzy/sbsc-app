@@ -18,5 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this.seo.setMetaTags(meta);
     this.footerService.onLoad();
+
+    console.log('Home');
   }
 }

@@ -1,0 +1,30 @@
+<!-- This button triggers the overlay and is it's origin -->
+<button (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  {{ isOpen ? 'Close' : 'Open' }}
+</button>
+
+<!-- This template displays the overlay content and is connected to the button -->
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <ul class="example-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+</ng-template>
+
+<div #domPortalContent>Some content here</div>
+<ng-template #templatePortalContent>Hello, this is a template portal</ng-template>
+
+<button class="float-right" (click)="openDropdown()">Select dropdown</button>
+
+<div class="my-8 flex gap-2">
+  <button (click)="selectedPortal = domPortal">Select DOM</button>
+  <button (click)="selectedPortal = componentPortal">Select Component</button>
+  <button (click)="selectedPortal = templatePortal">Select Template</button>
+</div>
+
+<ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>

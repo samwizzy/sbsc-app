@@ -1,0 +1,49 @@
+<form [formGroup]="form" class="max-w-lg mx-auto mt-24">
+  <mat-form-field appearance="outline" [style.width.%]="100">
+    <mat-label>Toppings</mat-label>
+
+    <mat-select formControlName="topping" multiple (selectionChange)="handleSelect($event)">
+      <mat-select-trigger>
+        {{toppings.value?.[0] || ''}}
+        <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+          (+{{ (toppings.value?.length || 0) - 1 }}
+          {{ toppings.value?.length === 2 ? 'other' : 'others' }})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [style.width.%]="100">
+    <mat-label>Favorite Fruits</mat-label>
+
+    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+      <mat-chip-row *ngFor="let fruit of fruitsList.controls" (removed)="removeControl(fruit)">
+        {{ fruit.value }}
+        <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </mat-chip-grid>
+
+    <input
+      placeholder="New Fruit..."
+      formControlName="fruit"
+      #fruitInput
+      [formControl]="fruitCtrl"
+      [matChipInputFor]="chipGrid"
+      [matAutocomplete]="auto"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+    />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+        {{ fruit }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<div class="max-w-lg mx-auto mt-24">
+  <pre>{{ form.value | json }}</pre>
+</div>

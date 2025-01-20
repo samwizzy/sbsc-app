@@ -3,6 +3,6 @@
 
 added_files=$(git diff --name-only --cached --diff-filter=d)
 
-git add ${added_files}
-# ng lint --fix
+# ng lint 
 # npm test
+git add ${added_files}

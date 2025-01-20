@@ -1,3 +1,11 @@
-<p>{{ name }} text works!</p>
+<p class="text">{{ name }} text works!</p>
 
-<ng-content></ng-content>
+<div class="flex flex-col gap-y-3 border">
+  <div class="border-b">
+    <ng-content></ng-content>
+  </div>
+
+  <div>
+    <ng-content select="question"></ng-content>
+  </div>
+</div>

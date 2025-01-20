@@ -1,0 +1,21 @@
+.main-layout {
+  --side-pane-width: 21rem;
+
+  // display: flex;
+
+  .side-pane {
+    position: fixed;
+    width: var(--side-pane-width);
+		height: 100vh;
+    border-right: 0.0625rem solid #ccc;
+    padding: 1.5rem;
+		resize: horizontal;
+		overflow: auto;
+  }
+
+  .content-pane {
+    width: calc(100% - var(--side-pane-width));
+    margin-left: var(--side-pane-width);
+    padding: 1.5rem;
+  }
+}

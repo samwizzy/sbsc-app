@@ -1,0 +1,45 @@
+.input-group {
+  display: flex;
+  gap: 0;
+  border-radius: 0.25rem;
+  overflow: hidden;
+
+  button {
+    &.mat-mdc-button-base {
+      height: unset !important;
+    }
+
+    &.mat-mdc-unelevated-button {
+      height: unset !important;
+    }
+
+    &.mat-mdc-unelevated-button,
+    &.mat-mdc-unelevated-button .mdc-button__ripple {
+      border-radius: 0;
+    }
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  mat-form-field:not(:first-child) {
+    .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+    }
+  }
+
+  mat-form-field:not(:last-child) {
+    .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: 0;
+    }
+  }
+
+  & input:only-child {
+    border-radius: 0.25rem;
+  }
+}

@@ -19,6 +19,16 @@ import { FromeventComponent } from './fromevent/fromevent.component';
 import { GridComponent } from './grid/grid.component';
 import { ContentPlaceComponent } from './content-place/content-place.component';
 import { SlideMenusComponent } from './slide-menus/slide-menus.component';
+import { ScrollableTagsComponent } from './scrollable-tags/scrollable-tags.component';
+import { MutationComponent } from './mutation/mutation.component';
+import { RefreshOnSaveComponent } from './refresh-on-save/refresh-on-save.component';
+import { SideMainComponent } from './side-main/side-main.component';
+import { DomPracticeComponent } from './dom-practice/dom-practice.component';
+import { QuickstyleComponent } from './quickstyle/quickstyle.component';
+import { AutocompleteInputComponent } from './autocomplete-input/autocomplete-input.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { AssemblyListModule } from './assembly-list/assembly-list.module';
+import { ScrollInViewComponent } from './scroll-in-view/scroll-in-view.component';
 
 const routes: Routes = [
   {
@@ -49,6 +59,11 @@ const routes: Routes = [
       },
 
       {
+        path: 'side-main',
+        component: SideMainComponent,
+      },
+
+      {
         path: 'slide-menus',
         component: SlideMenusComponent,
       },
@@ -69,8 +84,28 @@ const routes: Routes = [
       },
 
       {
+        path: 'mutation',
+        component: MutationComponent,
+      },
+
+      {
         path: 'arrayform',
         component: ArrayFormComponent,
+      },
+
+      {
+        path: 'dom-practice',
+        component: DomPracticeComponent,
+      },
+
+      {
+        path: 'scrollable-tags',
+        component: ScrollableTagsComponent,
+      },
+
+      {
+        path: 'refresh-on-save',
+        component: RefreshOnSaveComponent,
       },
 
       {
@@ -81,6 +116,11 @@ const routes: Routes = [
       {
         path: 'fromevent',
         component: FromeventComponent,
+      },
+
+      {
+        path: 'file-upload',
+        component: FileUploadComponent,
       },
 
       {
@@ -99,18 +139,99 @@ const routes: Routes = [
       },
 
       {
+        path: 'quickstyle',
+        component: QuickstyleComponent,
+      },
+
+      {
+        path: 'assembly-list',
+        loadChildren: async () =>
+          (await import('./assembly-list/assembly-list.module')).AssemblyListModule,
+      },
+
+      {
+        path: 'codemirror',
+        loadChildren: async () => (await import('./cm-editor/cm-editor.module')).CmEditorModule,
+      },
+
+      {
+        path: 'monaco-editor',
+        loadChildren: async () =>
+          (await import('./monaco-editor/monaco-editor.module')).MonacoEditorModule,
+      },
+
+      {
+        path: 'monaco-editor-cdn',
+        loadChildren: async () =>
+          (await import('./monaco-editor-cdn/monaco-editor-cdn.module')).MonacoEditorCdnModule,
+      },
+
+      {
+        path: 'websocket',
+        loadChildren: async () => (await import('./web-socket/web-socket.module')).WebSocketModule,
+      },
+
+      {
+        path: 'headless-ui',
+        loadChildren: async () =>
+          (await import('./headless-ui/headless-ui.module')).HeadlessUiModule,
+      },
+
+      {
+        path: 'two-way',
+        loadChildren: async () => (await import('./two-way/two-way.module')).TwoWayModule,
+      },
+
+      {
         path: 'conditions',
         loadChildren: async () =>
           (await import('./conditions-form/conditions-form.module')).ConditionsFormModule,
       },
 
       {
+        path: 'calendar',
+        loadChildren: async () =>
+          (await import('./manage-calendar/manage-calendar.module')).ManageCalendarModule,
+      },
+
+      {
+        path: 'tictactoe',
+        loadChildren: async () =>
+          (await import('./tic-tac-toe/tic-tac-toe.module')).TicTacToeModule,
+      },
+
+      {
         path: 'recursion-form',
         component: RecursionFormComponent,
       },
+
+      {
+        path: 'scroll-in-view',
+        component: ScrollInViewComponent,
+      },
+
+      {
+        path: 'sheet-slide',
+        loadChildren: async () => (await import('./sheet/sheet.module')).SheetModule,
+      },
+
+      {
+        path: 'tour-guide',
+        loadChildren: () => import('./tour-guide/tour-guide.module').then((m) => m.TourGuideModule),
+      },
+
+      {
+        path: 'horizontal-scroll',
+        loadChildren: () =>
+          import('./horizontal-scroll/horizontal-scroll.module').then(
+            (m) => m.HorizontalScrollModule
+          ),
+      },
+
       // { path: 'parant', component: ParantComponent },
       // { path: 'longform', component: LongformComponent },
       { path: 'actions', component: ActionsComponent },
+      { path: 'autocomplete', component: AutocompleteInputComponent },
       { path: 'thankyou', component: ThankYouComponent },
     ],
   },

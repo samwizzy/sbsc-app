@@ -1,0 +1,15 @@
+ul {
+  list-style: none;
+  border: 0.0625rem solid #ccc;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 4px 0 #2222221a;
+
+  li {
+    padding: 0.5rem 1rem;
+
+    & + * {
+      border-top: 0.0625rem solid #ccc;
+    }
+  }
+}

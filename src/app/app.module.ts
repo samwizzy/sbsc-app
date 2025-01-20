@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { appReducers } from './store/rootReducers';
 import { rootEffects } from './store/rootEffects';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { register } from 'swiper/element/bundle';
+import { TourMatMenuModule } from 'ngx-ui-tour-md-menu';
 
 register();
 
@@ -42,6 +44,8 @@ register();
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    MonacoEditorModule.forRoot(),
+    TourMatMenuModule,
   ],
   providers: [...httpInterceptorProviders],
   bootstrap: [AppComponent],

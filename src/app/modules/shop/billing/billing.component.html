@@ -19,6 +19,7 @@
                 <input matInput placeholder="Ex. Eti-osa" formControlName="number" />
               </mat-form-field>
             </div>
+
             <div class="flex gap-x-3">
               <mat-form-field appearance="outline" class="w-full">
                 <mat-label>Token </mat-label>
@@ -75,14 +76,17 @@
             <h4 class="text-xs">Street</h4>
             <p class="font-medium">{{ controls['street'].value }}</p>
           </div>
+
           <div *ngIf="controls['city'].dirty">
             <h4 class="text-xs">City</h4>
             <p class="font-medium">{{ controls['city'].value }}</p>
           </div>
+
           <div *ngIf="controls['state'].dirty">
             <h4 class="text-xs">State</h4>
             <p class="font-medium">{{ controls['state'].value }}</p>
           </div>
+
           <div *ngIf="controls['country'].dirty">
             <h4 class="text-xs">Country</h4>
             <p class="font-medium">{{ controls['country'].value }}</p>

@@ -10,6 +10,7 @@ export class SnackbarService {
 
   openSnackBar(message: string) {
     const snackConfig = new MatSnackBarConfig();
+    
     snackConfig.duration = 2000;
     snackConfig.verticalPosition = 'bottom';
     snackConfig.horizontalPosition = 'right';
