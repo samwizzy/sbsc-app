@@ -17,13 +17,18 @@
           <input type="text" class="input" placeholder="State" formControlName="state" />
           <input type="text" class="input" placeholder="Name" formControlName="name" />
 
+          <mat-slide-toggle formControlName="active"></mat-slide-toggle>
+
           <ng-container *ngIf="i !== 0">
             <mat-icon (click)="remove(i)">close</mat-icon>
           </ng-container>
         </div>
       </ng-container>
 
-      <button class="btn btn-primary" (click)="addAddress()">Add address</button>
+      <div class="flex gap-2">
+        <button class="btn btn-primary" (click)="addAddress()">Add address</button>
+        <button class="btn btn-primary" (click)="patchForm()">Patch Form</button>
+      </div>
 
       <button class="btn">Submit</button>
     </form>

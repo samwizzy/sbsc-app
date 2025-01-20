@@ -32,6 +32,12 @@ import { GridComponent } from './grid/grid.component';
 import { DirectivesModule } from '../core/directives/directives.module';
 import { ContentPlaceComponent } from './content-place/content-place.component';
 import { SlideMenusComponent } from './slide-menus/slide-menus.component';
+import { ScrollableTagsComponent } from './scrollable-tags/scrollable-tags.component';
+import { MutationComponent } from './mutation/mutation.component';
+import { RefreshOnSaveComponent } from './refresh-on-save/refresh-on-save.component';
+import { SideMainComponent } from './side-main/side-main.component';
+import { DomPracticeComponent } from './dom-practice/dom-practice.component';
+import { QuickstyleComponent } from './quickstyle/quickstyle.component';
 
 register();
 
@@ -61,6 +67,12 @@ register();
     GridComponent,
     ContentPlaceComponent,
     SlideMenusComponent,
+    ScrollableTagsComponent,
+    MutationComponent,
+    RefreshOnSaveComponent,
+    SideMainComponent,
+    DomPracticeComponent,
+    QuickstyleComponent,
   ],
   imports: [
     CommonModule,

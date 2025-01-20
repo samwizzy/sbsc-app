@@ -1,16 +1,47 @@
-<section class="form-container">
-  <!-- recursive conditions form -->
-  <form class="py-24" [formGroup]="conditionForm">
-    <div formArrayName="conditions" *ngFor="let control of conditionsArray.controls; let i = index">
-      <!-- form component used here -->
-      <app-condition-group [control]="control" [groupIndex]="i" />
+<section class="condition-container">
+  <header class="flex justify-between mb-8">
+    <h1 class="text-4xl font-bold">Condition Builder</h1>
+
+    <div class="flex gap-4">
+      <button mat-stroked-button color="warn">Cancel</button>
+
+      <button mat-flat-button color="accent">Save</button>
+    </div>
+  </header>
+
+  <div class="condition-layout">
+    <!-- form section -->
+    <div class="form-section">
+      <form [formGroup]="conditionForm">
+        <div
+          formArrayName="conditions"
+          *ngFor="let group of conditionsArray.controls; let i = index"
+          class="condition-item mb-4"
+        >
+          <!-- form component recursively used here -->
+          <app-condition-group
+            [createGroup]="createGroup"
+            [parentArray]="conditionsArray"
+            [group]="group"
+            [nextIndex]="i"
+          />
+        </div>
+
+        <div class="flex gap-4">
+          <button mat-flat-button color="primary" (click)="addCondition()">Add condition</button>
+
+          <button mat-flat-button color="warn" (click)="clear()">Reset</button>
+        </div>
+      </form>
     </div>
 
-    <button class="mt-4" (click)="addCondition()">Add condition</button>
-  </form>
+    <div class="preview-section">
+      <pre class="text-green-700 font-mono">{{ schema | json }}</pre>
 
-  <!-- form condition raw preview -->
-  <pre class="mb-9"
-    >{{ conditionsArray.value | json }}
-  </pre>
+      <div class="my-4"><mat-divider /></div>
+
+      <!-- form condition raw preview -->
+      <pre class="mb-9 font-mono text-gray-600">{{ conditionsArray.value | json }}</pre>
+    </div>
+  </div>
 </section>

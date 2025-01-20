@@ -1,0 +1,12 @@
+.square {
+  width: 80px;
+  aspect-ratio: 1;
+  background-color: #f9fafb;
+  display: grid;
+  place-content: center;
+  border: 0.0625rem solid #d1d5db;
+  border-radius: 0.125rem;
+  font-size: 2rem;
+  font-weight: 600;
+  transition: all 0.25s ease-in;
+}

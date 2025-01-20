@@ -13,3 +13,25 @@
 .article + .article {
   margin-top: 1rem;
 }
+
+.masonry {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+
+  /* 
+  /* there is no support for this on chrome yet,
+  /* only work on firefox and you'd need to enable it first 
+  **/
+  grid-template-rows: masonry;
+
+  .box {
+    border: 0.0625rem solid #555;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px 0 #2222221a;
+  }
+}

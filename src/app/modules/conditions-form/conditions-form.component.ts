@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,14 +9,24 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/for
 export class ConditionsFormComponent {
   conditionForm!: FormGroup;
 
+  schema = {
+    id: 'string', // guid i.e nanoid/uuid
+    objectName: 'RequestObject', // Process
+    objectId: 'RequestObjectId', // ProcessId
+    type: 'string', // query type || left-operand,
+    value: 'string', // query value || right-operand,
+    comparison_operator: 'string', // AND || OR
+    isGroup: 'boolean',
+    conditions: [],
+  };
+
+  @Output() clearEvent = new EventEmitter();
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    console.log('parent initialized');
     this.createForms();
-
-    this.conditionForm.valueChanges.subscribe(() => {
-      console.log(this.conditionForm.value);
-    });
   }
 
   createForms() {
@@ -26,10 +36,14 @@ export class ConditionsFormComponent {
   }
 
   get conditionsArray() {
-    return this.conditionForm.get('conditions') as FormArray;
+    return this.conditionForm.get('conditions') as FormArray<FormGroup>;
   }
 
-  createGroup() {
+  subConditionsArray(group: AbstractControl) {
+    return (group.get('conditions') as FormArray).controls;
+  }
+
+  createGroup = () => {
     return this.fb.group({
       type: [null],
       merge: [null],
@@ -37,17 +51,16 @@ export class ConditionsFormComponent {
       isGroup: false,
       conditions: this.fb.array([]),
     });
-  }
-
-  trackByIndex(index: number, item: any): any {
-    return item + index;
-  }
+  };
 
   addCondition() {
     this.conditionsArray.push(this.createGroup());
   }
 
-  removeCondition(index: number) {
-    this.conditionsArray.removeAt(index);
+  clear() {
+    this.conditionForm.reset(null);
+    this.conditionsArray.reset();
+
+    this.clearEvent.emit();
   }
 }

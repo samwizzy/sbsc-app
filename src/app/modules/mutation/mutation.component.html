@@ -1,0 +1,24 @@
+<section class="main-container">
+  <ul class="icons-list">
+    <li class="icon-item" draggable="true" (dragstart)="onDragstart($event)">Sharp</li>
+  </ul>
+
+  <div
+    #mutationsContainer
+    class="mutation-container"
+    (drop)="onDrop($event)"
+    (dragleave)="onDragleave($event)"
+    (dragover)="onDragover($event)"
+  >
+    <p>Drop element here</p>
+  </div>
+
+  <button
+    class="btn"
+    draggable="true"
+    (mousedown)="onMousedown($event)"
+    (mousemove)="onMousemove($event)"
+  >
+    View
+  </button>
+</section>
