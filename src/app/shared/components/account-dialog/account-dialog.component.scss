@@ -1,0 +1,15 @@
+.mat-dialog-actions {
+  justify-content: flex-end;
+  padding-inline: 1.5rem;
+  border-top: 0.0625rem solid #eee;
+
+  .mat-button {
+    &:not(:first-child) {
+      margin-left: 1em;
+    }
+  }
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}

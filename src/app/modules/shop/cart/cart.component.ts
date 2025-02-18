@@ -26,7 +26,7 @@ export class CartComponent {
           items: items,
         });
 
-        this.router.navigate(['shop/shipping']);
+        this.router.navigate(['/app/shop/shipping']);
       })
     );
   }

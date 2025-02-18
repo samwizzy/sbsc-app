@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="relative bg-white">
   <div class="bg-indigo-200 sm:pt-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-32 py-16">
@@ -7,8 +9,7 @@
             Modern online and offline payments for Africa
           </h1>
           <h2 class="text-xl font-normal text-gray-800 leading-relaxed">
-            Avalon helps businesses in Africa get paid by anyone, anywhere in
-            the world.
+            Avalon helps businesses in Africa get paid by anyone, anywhere in the world.
           </h2>
 
           <div class="sm:mt-12 mt-10">
@@ -27,9 +28,7 @@
 
   <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-28 py-8">
-      <h1
-        class="sm:text-6xl text-4xl font-bold text-gray-700 text-center sm:mb-24 mb-16"
-      >
+      <h1 class="sm:text-6xl text-4xl font-bold text-gray-700 text-center sm:mb-24 mb-16">
         4
         <span class="text-stone-400">Reasons</span> to choose
         <span class="text-gray-400">Avalon</span>
@@ -55,11 +54,10 @@
               </h3>
 
               <p class="text-gray-700 leading-8">
-                With every engagement, our qualified consultants implement best
-                practices and knowledge acquired from the years they spent
-                working in consulting and corporate environments. In fact, our
-                leadership team and consultants have worked in the financial
-                sector for most, if not all, of their careers.
+                With every engagement, our qualified consultants implement best practices and
+                knowledge acquired from the years they spent working in consulting and corporate
+                environments. In fact, our leadership team and consultants have worked in the
+                financial sector for most, if not all, of their careers.
               </p>
             </div>
           </div>
@@ -77,16 +75,13 @@
             </div>
             <div>
               <h2 class="text-2xl text-gray-700 font-bold mb-2">FLEXIBILITY</h2>
-              <h3 class="text-lg text-gray-500 font-light mb-4">
-                We are with you all the way
-              </h3>
+              <h3 class="text-lg text-gray-500 font-light mb-4">We are with you all the way</h3>
 
               <p class="text-gray-700 leading-8">
-                With every engagement, our qualified consultants implement best
-                practices and knowledge acquired from the years they spent
-                working in consulting and corporate environments. In fact, our
-                leadership team and consultants have worked in the financial
-                sector for most, if not all, of their careers.
+                With every engagement, our qualified consultants implement best practices and
+                knowledge acquired from the years they spent working in consulting and corporate
+                environments. In fact, our leadership team and consultants have worked in the
+                financial sector for most, if not all, of their careers.
               </p>
             </div>
           </div>
@@ -106,16 +101,13 @@
             </div>
             <div>
               <h2 class="text-2xl text-gray-700 font-bold mb-2">TRANSFER</h2>
-              <h3 class="text-lg text-gray-500 font-light mb-4">
-                Distance is no barrier with us
-              </h3>
+              <h3 class="text-lg text-gray-500 font-light mb-4">Distance is no barrier with us</h3>
 
               <p class="text-base text-gray-700 leading-8">
-                With every engagement, our qualified consultants implement best
-                practices and knowledge acquired from the years they spent
-                working in consulting and corporate environments. In fact, our
-                leadership team and consultants have worked in the financial
-                sector for most, if not all, of their careers.
+                With every engagement, our qualified consultants implement best practices and
+                knowledge acquired from the years they spent working in consulting and corporate
+                environments. In fact, our leadership team and consultants have worked in the
+                financial sector for most, if not all, of their careers.
               </p>
             </div>
           </div>
@@ -138,10 +130,9 @@
               </h3>
 
               <p class="text-gray-700 leading-8">
-                Developers love our thorough, well-documented APIs that let you
-                to build everything from simple weekend projects, to complex
-                financial products serving hundreds of thousands of customers.
-                If you can imagine it, you can build it with Paystack
+                Developers love our thorough, well-documented APIs that let you to build everything
+                from simple weekend projects, to complex financial products serving hundreds of
+                thousands of customers. If you can imagine it, you can build it with Paystack
               </p>
             </div>
           </div>
@@ -157,8 +148,8 @@
           Backed by strong global partners
         </h1>
         <h2 class="text-gray-600 text-lg leading-8">
-          Paystack is backed by notable investors as well as some of the best
-          payments companies on the planet.
+          Paystack is backed by notable investors as well as some of the best payments companies on
+          the planet.
         </h2>
       </div>
 
@@ -173,9 +164,8 @@
           </h3>
 
           <p class="text-gray-700 leading-7">
-            With every engagement, our qualified consultants implement best
-            practices and knowledge acquired from the years they spent working
-            in consulting and corporate environments.
+            With every engagement, our qualified consultants implement best practices and knowledge
+            acquired from the years they spent working in consulting and corporate environments.
           </p>
         </div>
       </div>
@@ -188,16 +178,18 @@
         <h1 class="text-indigo-300 text-5xl font-black leading-tight mb-4">
           Backed by strong global partners
         </h1>
+        
         <h2 class="text-gray-200 text-lg leading-8">
-          Paystack is backed by notable investors as well as some of the best
-          payments companies on the planet.
+          Paystack is backed by notable investors as well as some of the best payments companies on
+          the planet.
         </h2>
       </div>
 
-      <div class="grid grid-cols-12 sm:gap-x-8 gap-x-0 gap-y-8">
+      <div id="box-container" class="grid grid-cols-12 sm:gap-x-8 gap-x-0 gap-y-8">
         <div
+          #box
           *ngFor="let item of [1, 2, 3, 4, 5]"
-          class="sm:col-span-4 col-span-12 bg-white rounded-xl shadow-md px-8 py-12"
+          class="box sm:col-span-4 col-span-12 bg-white rounded-xl shadow-md px-8 py-12"
           [ngClass]="item !== 1 ? 'row-span-1' : 'row-span-2'"
         >
           <h2 class="text-gray-600 uppercase font-bold mb-2">EASY TO USE</h2>
@@ -206,12 +198,13 @@
           </h3>
 
           <p class="text-gray-600 leading-7">
-            With every engagement, our qualified consultants implement best
-            practices and knowledge acquired from the years they spent working
-            in consulting and corporate environments.
+            With every engagement, our qualified consultants implement best practices and knowledge
+            acquired from the years they spent working in consulting and corporate environments.
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

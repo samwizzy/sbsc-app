@@ -42,7 +42,8 @@
               "lodash.isplainobject",
               "lodash.isstring",
               "p-throttle",
-              "qs"
+              "qs",
+              "json-stringify-safe"
             ],
             "assets": [
               "src/favicon.ico",

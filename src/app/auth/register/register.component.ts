@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  AbstractControlOptions,
   FormBuilder,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,6 +25,7 @@ export class RegisterComponent implements OnInit {
   ngForm!: FormGroup;
   submitted: boolean = false;
   showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -42,10 +45,30 @@ export class RegisterComponent implements OnInit {
   }
 
   initForm(): void {
-    this.ngForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-    });
+    this.ngForm = this.fb.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(4)]],
+        confirm: ['', [Validators.required, Validators.minLength(4)]],
+      },
+      { validators: [this.validatePwd()] } as AbstractControlOptions
+    );
+  }
+
+  validatePwd(): ValidationErrors | null {
+    return (group: AbstractControl) => {
+      if (!group.value.password || !group.value.confirm) return null;
+
+      const errors = group.get('confirm')?.errors;
+
+      if (group.value.password !== group.value.confirm) {
+        group.get('confirm')?.setErrors({ ...errors, mismatch: true });
+
+        return { invalidPwd: true };
+      }
+
+      return null;
+    };
   }
 
   toggleShowPassword() {
