@@ -6,12 +6,16 @@ import { ActionsComponent } from './modules/actions/actions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+
   { path: 'actions', component: ActionsComponent },
+
   {
     path: 'app',
     loadChildren: () => import('./modules/modules.module').then((m) => m.ModulesModule),
   },
+
   { path: '', redirectTo: '/', pathMatch: 'full' },
+
   { path: '**', component: NotFoundComponent },
 ];
 

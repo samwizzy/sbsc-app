@@ -44,28 +44,15 @@ export class LoginComponent implements OnInit {
   }
 
   initForm(): void {
-    this.ngForm = this.fb.group(
-      {
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(4)]],
-        confirm: ['', [Validators.required, Validators.minLength(4)]],
-      },
-      { asyncValidators: [this.validatePwd()] } as AbstractControlOptions
-    );
-  }
-
-  validatePwd(): ValidationErrors | null {
-    return (group: AbstractControl) => {
-      if (group.value.password !== group.value.confirm) {
-        return { invaidPwd: true };
-      }
-      return null;
-    };
+    this.ngForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
+    });
   }
 
   validatePwd1(group: AbstractControl): ValidationErrors | null {
     if (group.value.password !== group.value.confirm) {
-      return { invaidPwd: true };
+      return { invalidPwd: true };
     }
     return null;
   }

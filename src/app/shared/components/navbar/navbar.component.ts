@@ -9,13 +9,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class NavbarComponent implements OnInit {
   showMobile: boolean = false;
   moreMenu: boolean = false;
-  userId: string = '';
+  userId: string | null = null;
   tempImg = '/assets/images/avatar.jpeg'; //https://i.pravatar.cc/300
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userId = this.authService.getAuthId ?? '';
+    this.userId = this.authService.getAuthId;
   }
 
   logout(): void {

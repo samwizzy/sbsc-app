@@ -65,7 +65,7 @@ export class ShippingComponent {
           items: items,
         });
 
-        this.router.navigate(['thankyou']);
+        this.router.navigate(['app/thankyou']);
       })
     );
   }

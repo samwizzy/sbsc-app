@@ -25,8 +25,4 @@ export class ThankYouComponent implements OnInit {
   };
 
   ngOnInit(): void {}
-
-  btnClick() {
-    this.title = 'Hello world';
-  }
 }

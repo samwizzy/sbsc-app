@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 const headers = new HttpHeaders().set('content-type', 'application/json');
 
@@ -13,6 +13,10 @@ export class ShippingService {
   constructor(private http: HttpClient) {}
 
   getCountries(): Observable<any[]> {
-    return this.http.get<any[]>(this.countryApi, { headers });
+    return this.http
+      .get<any[]>(this.countryApi, { headers })
+      .pipe(
+        map((countries) => countries.sort((a, b) => a.name.common.localeCompare(b.name.common)))
+      );
   }
 }
