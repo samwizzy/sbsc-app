@@ -11,7 +11,7 @@
       </div>
 
       <form [formGroup]="ngForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" class="w-full mb-4">
+        <mat-form-field appearance="outline" class="w-full dense-3 mb-4">
           <mat-label>Email address</mat-label>
           <input matInput type="email" formControlName="email" />
 
@@ -21,7 +21,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="w-full mb-4">
+        <mat-form-field appearance="outline" class="w-full dense-3 mb-4">
           <mat-label>Password</mat-label>
           <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" />
           <mat-icon matSuffix class="text-gray-600 cursor-pointer" (click)="toggleShowPassword()">
@@ -36,7 +36,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="w-full mb-4">
+        <mat-form-field appearance="outline" class="w-full dense-3 mb-4">
           <mat-label>Confirm password</mat-label>
           <input
             matInput
