@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": false,
-    "packageManager": "yarn",
+    "packageManager": "npm",
     "cache": {
       "enabled": true,
       "environment": "local"
