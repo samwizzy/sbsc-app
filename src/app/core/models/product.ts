@@ -20,5 +20,3 @@ export interface Prod {
 const CAPITALS = ['Tokyo', 'Italy', 'Vietnam', 'Canada', 'Brazil'] as const;
 
 type Captial = (typeof CAPITALS)[number];
-
-const cap: Captial = 'Tokyo';
