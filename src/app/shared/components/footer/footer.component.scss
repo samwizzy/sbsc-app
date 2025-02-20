@@ -3,20 +3,6 @@
   background-color: #111827;
 }
 
-// .slanted::after {
-//   position: absolute;
-//   content: '';
-//   background: #111827;
-//   height: 100%;
-//   width: 100%;
-//   transform: skewY(-1.5deg);
-//   right: 0;
-//   bottom: 0;
-//   // top: -30px;
-//   z-index: -1;
-//   color: #eee;
-// }
-
 .slanted::after {
   position: absolute;
   content: '';
@@ -30,4 +16,12 @@
   bottom: 0;
   z-index: -1;
   color: #eee;
+}
+
+.socials {
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #ffffff;
+  }
 }
