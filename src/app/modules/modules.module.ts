@@ -6,7 +6,6 @@ import { ModulesComponent } from './modules.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material/material.module';
 import { ComponentsModule } from '../shared/components/components.module';
-import { HomeComponent } from './home/home.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { ActionsComponent } from './actions/actions.component';
 import { LongformComponent } from './longform/longform.component';
@@ -41,6 +40,8 @@ import { QuickstyleComponent } from './quickstyle/quickstyle.component';
 import { RhombusShapeComponent } from './rhombus-shape/rhombus-shape.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { ScrollInViewComponent } from './scroll-in-view/scroll-in-view.component';
+import { NavbarModule } from '../shared/components/navbar/navbar.module';
+import { FooterModule } from '../shared/components/footer/footer.module';
 
 register();
 
@@ -49,7 +50,6 @@ register();
 @NgModule({
   declarations: [
     ModulesComponent,
-    HomeComponent,
     ContactusComponent,
     ActionsComponent,
     TodoDetailsComponent,
@@ -88,6 +88,8 @@ register();
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    NavbarModule,
+    FooterModule,
     ComponentsModule,
     FontawesomeIconsModule,
     SwitcherModule,
